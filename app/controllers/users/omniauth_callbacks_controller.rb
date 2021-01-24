@@ -18,7 +18,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         sign_in(:user, @profile.user)
       end
     end
-    redirect_to edit_user_registration_path
+    redirect_to user_path(@profile.user)
   end
 
   def failure
