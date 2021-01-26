@@ -34,6 +34,6 @@ class User < ApplicationRecord
 
   # アソシエーション
   has_many :sns_accounts, dependent: :destroy
-
+  has_one :coach, dependent: :destroy
 
 end
