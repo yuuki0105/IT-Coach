@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_25_152040) do
+ActiveRecord::Schema.define(version: 2021_01_26_150359) do
 
   create_table "coaches", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -51,4 +51,5 @@ ActiveRecord::Schema.define(version: 2021_01_25_152040) do
   end
 
   add_foreign_key "coaches", "users"
+  add_foreign_key "sns_accounts", "users"
 end
