@@ -8,4 +8,5 @@
 #  updated_at :datetime         not null
 #
 class SkillCategory < ApplicationRecord
+  has_many :skills, dependent: :destroy
 end
