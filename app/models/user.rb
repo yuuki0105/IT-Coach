@@ -35,5 +35,7 @@ class User < ApplicationRecord
   # アソシエーション
   has_many :sns_accounts, dependent: :destroy
   has_one :coach, dependent: :destroy
+  has_many :user_skills, dependent: :destroy
+  has_many :skills, through: :user_skills
 
 end
