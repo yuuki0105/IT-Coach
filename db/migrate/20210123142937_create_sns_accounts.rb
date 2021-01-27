@@ -4,7 +4,7 @@ class CreateSnsAccounts < ActiveRecord::Migration[6.1]
 
       t.string :provider, null: false
       t.string :uid, null: false
-      t.references :user, null: false, forign_key: true
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

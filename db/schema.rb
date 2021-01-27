@@ -23,12 +23,14 @@ ActiveRecord::Schema.define(version: 2021_01_27_030420) do
 
   create_table "skill_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
+    t.string "en_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "skills", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false, comment: "スキル名"
+    t.string "en_name", null: false, comment: "英語スキル名"
     t.boolean "published", default: true, null: false, comment: "公開非公開"
     t.bigint "skill_category_id", null: false
     t.datetime "created_at", precision: 6, null: false
