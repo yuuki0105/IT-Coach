@@ -20,3 +20,5 @@ Skill.create([
   #後からfindbyの書き方に変える
   {name:'Wix',en_name: 'wix',skill_category_id:1}
 ])
+
+#後から既に入っているファイルを作らないようにする
