@@ -1,3 +1,14 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
-<p>MyPage <%= @user.name %></p>
+<p>Name <%= @user.name %></p>
+
+<p>Profile <%= @user.profile %></p>
+
+<p>Skills</p>
+
+<% @user.user_skills.each do |user_skill| %>
+  <%= user_skill.skill.name %><br>
+  <%= user_skill.experience_year %>年<br>
+  <%= user_skill.level %><br>
+
+<% end %>

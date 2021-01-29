@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_26_150359) do
+ActiveRecord::Schema.define(version: 2021_01_27_030420) do
 
   create_table "coaches", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -21,6 +21,23 @@ ActiveRecord::Schema.define(version: 2021_01_26_150359) do
     t.index ["user_id"], name: "index_coaches_on_user_id"
   end
 
+  create_table "skill_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "en_name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "skills", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false, comment: "スキル名"
+    t.string "en_name", null: false, comment: "英語スキル名"
+    t.boolean "published", default: true, null: false, comment: "公開非公開"
+    t.bigint "skill_category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["skill_category_id"], name: "index_skills_on_skill_category_id"
+  end
+
   create_table "sns_accounts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "provider", null: false
     t.string "uid", null: false
@@ -28,6 +45,17 @@ ActiveRecord::Schema.define(version: 2021_01_26_150359) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_sns_accounts_on_user_id"
+  end
+
+  create_table "user_skills", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "experience_year", default: 0, null: false
+    t.integer "level", default: 1, null: false
+    t.bigint "user_id", null: false
+    t.bigint "skill_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["skill_id"], name: "index_user_skills_on_skill_id"
+    t.index ["user_id"], name: "index_user_skills_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -51,5 +79,8 @@ ActiveRecord::Schema.define(version: 2021_01_26_150359) do
   end
 
   add_foreign_key "coaches", "users"
+  add_foreign_key "skills", "skill_categories"
   add_foreign_key "sns_accounts", "users"
+  add_foreign_key "user_skills", "skills"
+  add_foreign_key "user_skills", "users"
 end
