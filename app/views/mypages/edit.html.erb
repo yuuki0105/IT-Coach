@@ -1,0 +1,17 @@
+<%= form_with model: @user, url: mypage_path do |form| %>
+
+  <div class="field">
+    <%= form.label :name %><br />
+    <%= form.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :profile %><br />
+    <%= form.text_area :profile %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update" %>
+  </div>
+
+<% end %>
