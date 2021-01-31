@@ -2,6 +2,13 @@
 <p>Find me in app/views/users/show.html.erb</p>
 <p>Name <%= @user.name %></p>
 
+<% if @user.image.attached? %>
+  <%= image_tag @user.image %>
+<% else %>
+  <%= image_tag "logomark.png" %>
+<% end %>
+
+
 <p>Profile <%= @user.profile %></p>
 
 <p>Skills</p>
