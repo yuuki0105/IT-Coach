@@ -5,6 +5,14 @@
     <%= form.text_field :name, autofocus: true %>
   </div>
 
+  <% if @user.image.attached? %>
+    <%= image_tag @user.image %>
+  <% else %>
+    <%= image_tag "logomark.png" %>
+  <% end %>
+
+  <%= form.file_field :image %>
+
   <div class="field">
     <%= form.label :profile %><br />
     <%= form.text_area :profile %>
