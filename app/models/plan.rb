@@ -24,4 +24,5 @@
 #  fk_rails_...  (coach_id => coaches.id)
 #
 class Plan < ApplicationRecord
+  belongs_to :coach
 end
