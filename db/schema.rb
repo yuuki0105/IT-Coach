@@ -57,29 +57,29 @@ ActiveRecord::Schema.define(version: 2021_01_31_134942) do
   end
 
   create_table "skills", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "skill_category_id", null: false
     t.string "name", null: false, comment: "スキル名"
     t.string "en_name", null: false, comment: "英語スキル名"
     t.boolean "published", default: true, null: false, comment: "公開非公開"
-    t.bigint "skill_category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["skill_category_id"], name: "index_skills_on_skill_category_id"
   end
 
   create_table "sns_accounts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.string "provider", null: false
     t.string "uid", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_sns_accounts_on_user_id"
   end
 
   create_table "user_skills", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "experience_year", default: 0, null: false
-    t.integer "level", default: 1, null: false
     t.bigint "user_id", null: false
     t.bigint "skill_id", null: false
+    t.integer "experience_year", default: 0, null: false
+    t.integer "level", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["skill_id"], name: "index_user_skills_on_skill_id"
