@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_31_134942) do
+ActiveRecord::Schema.define(version: 2021_02_01_134704) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -47,6 +47,21 @@ ActiveRecord::Schema.define(version: 2021_01_31_134942) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_coaches_on_user_id"
+  end
+
+  create_table "plans", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "coach_id", null: false
+    t.string "title", null: false
+    t.integer "term", null: false
+    t.integer "communication_style", null: false
+    t.integer "fee", null: false
+    t.string "target", null: false
+    t.string "content", null: false
+    t.boolean "published", default: true, null: false
+    t.boolean "deleted", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["coach_id"], name: "index_plans_on_coach_id"
   end
 
   create_table "skill_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -109,6 +124,7 @@ ActiveRecord::Schema.define(version: 2021_01_31_134942) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "coaches", "users"
+  add_foreign_key "plans", "coaches"
   add_foreign_key "skills", "skill_categories"
   add_foreign_key "sns_accounts", "users"
   add_foreign_key "user_skills", "skills"
