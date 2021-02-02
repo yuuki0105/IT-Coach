@@ -1,3 +1,11 @@
 <h1>Coaches#show</h1>
 <p>Find me in app/views/coaches/show.html.erb</p>
-<p>MyPage <%= @coach.user.name %></p>
+<p> <%= @coach.user.name %></p>
+
+<h2>プラン</h2>
+<% @coach.plans.each do |plan| %>
+  <%= plan.title %><br>
+  <%= plan.communication_style %><br>
+  <%= plan.fee %><br>
+
+<% end %>
