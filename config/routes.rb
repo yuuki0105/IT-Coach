@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :coaches, only: [:show] do
-    resources :plans, only: [:new, :edit]
+    resources :plans, only: [:new, :create, :edit, :update]
   end
   resource :mypage, only: [:edit, :update]
   resource :setting, only: [:show] do
