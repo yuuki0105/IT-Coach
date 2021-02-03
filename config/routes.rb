@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :coaches, only: [:show] do
     resources :plans, only: [:new, :create, :edit, :update]
   end
-  resource :mypage, only: [:edit, :update]
+  resource :mypage, only: [:edit, :update] do
+    resource :user_skill, only: [:new, :create]
+  end
   resource :setting, only: [:show] do
     resource :email, only: [:edit, :update], module: :settings
   end

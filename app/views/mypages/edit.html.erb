@@ -18,8 +18,27 @@
     <%= form.text_area :profile %>
   </div>
 
+  <%= form.fields_for :user_skills do |user_skill| %>
+
+    <div class="field">
+      <%= user_skill.label :skill_id %><br />
+      <%= user_skill.number_field :skill_id %>
+    </div>
+    <div class="field">
+      <%= user_skill.label :experience_year %><br />
+      <%= user_skill.number_field :experience_year %>
+    </div>
+    <div class="field">
+      <%= user_skill.label :level %><br />
+      <%= user_skill.number_field :level %>
+    </div>
+
+  <% end %>
+
   <div class="actions">
     <%= form.submit "Update" %>
   </div>
 
 <% end %>
+
+<%= link_to "スキルを新規作成",new_mypage_user_skill_path %><br>

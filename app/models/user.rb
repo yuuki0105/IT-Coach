@@ -38,4 +38,5 @@ class User < ApplicationRecord
   has_many :user_skills, dependent: :destroy
   has_many :skills, through: :user_skills
   has_one_attached :image
+  accepts_nested_attributes_for :user_skills
 end
