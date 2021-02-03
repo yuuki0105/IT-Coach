@@ -1,12 +1,1 @@
-<%= form_with model: @plan, url:coach_plans_path do |form| %>
-
-  <div class="field">
-    <%= form.label :title %><br />
-    <%= form.text_field :title, autofocus: true %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Create" %>
-  </div>
-
-<% end %>
+<%= render "plans/form" %>

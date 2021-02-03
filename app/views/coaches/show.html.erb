@@ -4,8 +4,10 @@
 
 <h2>プラン</h2>
 <% @coach.plans.each do |plan| %>
-  <%= plan.title %><br>
+  <%= link_to plan.title,edit_coach_plan_path(coach_id: @coach.id, plan_id: plan.id) %><br>
   <%= plan.communication_style %><br>
   <%= plan.fee %><br>
 
 <% end %>
+
+<%= link_to "新規作成",new_coach_plan_path(coach_id: @coach.id) %><br>

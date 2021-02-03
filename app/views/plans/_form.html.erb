@@ -1,0 +1,43 @@
+<%= form_with model: [current_user.coach,@plan] do |form| %>
+
+  <div class="field">
+    <%= form.label :title %><br />
+    <%= form.text_field :title, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :term %><br />
+    <%= form.number_field :term, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :communication_style %><br />
+    <%= form.number_field :communication_style, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fee %><br />
+    <%= form.number_field :fee, autofocus: true %>
+  </div>
+  <%# 手数料についてはactive hashで実施予定（スタイルと連動）#%>
+
+  <div class="field">
+    <%= form.label :target %><br />
+    <%= form.text_field :target, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %><br />
+    <%= form.text_area :content, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :published %><br />
+    <%= form.check_box :published, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Create" %>
+  </div>
+
+<% end %>
