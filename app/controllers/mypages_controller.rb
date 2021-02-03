@@ -15,7 +15,7 @@ class MypagesController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :profile, :image)
+    params.require(:user).permit(:name, :profile, :image,  { user_skills_attributes: [:id, :skill_id, :experience_year, :level]})
   end
 
 end
