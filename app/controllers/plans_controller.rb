@@ -23,7 +23,7 @@ class PlansController < ApplicationController
     if @plan.update(plan_params)
       redirect_to coach_path(@plan.coach)
     else
-      render :new
+      render :edit
     end
   end
 
