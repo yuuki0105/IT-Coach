@@ -20,4 +20,5 @@
 class Coach < ApplicationRecord
   belongs_to :user
   has_many :plans, dependent: :destroy
+  has_many :careers, dependent: :destroy
 end
