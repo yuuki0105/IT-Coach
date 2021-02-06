@@ -4,10 +4,19 @@
 
 <h2>プラン</h2>
 <% @coach.plans.each do |plan| %>
-  <%= link_to plan.title,edit_coach_plan_path(coach_id: @coach.id, plan_id: plan.id) %><br>
+  <%= link_to plan.title,edit_coach_plan_path(coach_id: @coach.id, id: plan.id) %><br>
   <%= plan.communication_style %><br>
   <%= plan.fee %><br>
-
 <% end %>
 
-<%= link_to "新規作成",new_coach_plan_path(coach_id: @coach.id) %><br>
+<h2>キャリア</h2>
+<% @coach.careers.each do |career| %>
+  <%= link_to career.organization,edit_coach_career_path(coach_id: @coach.id, id: career.id) %><br>
+  <%= career.role %><br>
+  <%= career.start_month %> 〜　<%= career.end_month %><br>
+<% end %>
+
+
+<h2>新規作成</h2>
+<%= link_to "プランを新規作成",new_coach_plan_path(coach_id: @coach.id) %><br>
+<%= link_to "キャリアを新規作成",new_coach_career_path(coach_id: @coach.id) %><br>
