@@ -16,7 +16,13 @@
   <%= career.start_month %> 〜　<%= career.end_month %><br>
 <% end %>
 
+<h2>ポートフォリオ</h2>
+<% @coach.portfolios.each do |portfolio| %>
+  <%= link_to portfolio.title,edit_coach_portfolio_path(coach_id: @coach.id, id: portfolio.id) %><br>
+  <%= link_to portfolio.url, portfolio.url %><br>
+<% end %>
 
 <h2>新規作成</h2>
 <%= link_to "プランを新規作成",new_coach_plan_path(coach_id: @coach.id) %><br>
 <%= link_to "キャリアを新規作成",new_coach_career_path(coach_id: @coach.id) %><br>
+<%= link_to "ポートフォリオを新規作成",new_coach_portfolio_path(coach_id: @coach.id) %><br>
