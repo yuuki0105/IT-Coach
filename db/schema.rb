@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_05_144320) do
+ActiveRecord::Schema.define(version: 2021_02_06_143849) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -76,6 +76,15 @@ ActiveRecord::Schema.define(version: 2021_02_05_144320) do
     t.index ["coach_id"], name: "index_plans_on_coach_id"
   end
 
+  create_table "portfolios", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "coach_id", null: false
+    t.string "title", null: false
+    t.string "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["coach_id"], name: "index_portfolios_on_coach_id"
+  end
+
   create_table "skill_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "en_name", null: false
@@ -138,6 +147,7 @@ ActiveRecord::Schema.define(version: 2021_02_05_144320) do
   add_foreign_key "careers", "coaches"
   add_foreign_key "coaches", "users"
   add_foreign_key "plans", "coaches"
+  add_foreign_key "portfolios", "coaches"
   add_foreign_key "skills", "skill_categories"
   add_foreign_key "sns_accounts", "users"
   add_foreign_key "user_skills", "skills"
