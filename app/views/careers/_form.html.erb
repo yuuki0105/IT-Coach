@@ -1,0 +1,34 @@
+<%= form_with model: [current_user.coach,@career] do |form| %>
+
+  <div class="field">
+    <%= form.label :organization %><br />
+    <%= form.text_field :organization, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :role %><br />
+    <%= form.text_field :role %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_month %><br />
+    <%= form.date_select :start_month ,discard_day: true, start_year: 2000,  end_year: Time.zone.today.year, use_month_numbers: true  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_month %><br />
+    <%= form.date_select :end_month ,discard_day: true, start_year: 2000,  end_year: Time.zone.today.year, use_month_numbers: true %>
+  </div>
+
+   <div class="field">
+     <%= form.label :ongoing %><br />
+     <%= form.check_box :ongoing %>
+  </div>
+
+  <%# Javascriptで実装 ＝ ongoingがtrueの場合、end_monthは入力不可 %>
+
+  <div class="actions">
+    <%= form.submit "Create" %>
+  </div>
+
+<% end %>
