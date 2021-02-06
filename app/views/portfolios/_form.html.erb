@@ -1,0 +1,17 @@
+<%= form_with model: [current_user.coach,@portfolio] do |form| %>
+
+  <div class="field">
+    <%= form.label :title %><br />
+    <%= form.text_field :title, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url %><br />
+    <%= form.url_field :url %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Create" %>
+  </div>
+
+<% end %>
