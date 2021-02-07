@@ -5,7 +5,8 @@
 <h2>プラン</h2>
 <% @coach.plans.each do |plan| %>
   <%= link_to plan.title,edit_coach_plan_path(coach_id: @coach.id, id: plan.id) %><br>
-  <%= plan.communication_style %><br>
+  <%= plan.communication_style.name %><br>
+  <%= plan.term.name %><br>
   <%= plan.fee %><br>
 <% end %>
 

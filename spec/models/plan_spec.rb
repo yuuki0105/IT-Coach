@@ -2,18 +2,18 @@
 #
 # Table name: plans
 #
-#  id                  :bigint           not null, primary key
-#  coach_id            :bigint           not null
-#  communication_style :integer          not null
-#  content             :string(255)      not null
-#  deleted             :boolean          default(FALSE), not null
-#  fee                 :integer          not null
-#  published           :boolean          default(TRUE), not null
-#  target              :string(255)      not null
-#  term                :integer          not null
-#  title               :string(255)      not null
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
+#  id                     :bigint           not null, primary key
+#  content                :string(255)      not null
+#  deleted                :boolean          default(FALSE), not null
+#  fee                    :integer          not null
+#  published              :boolean          default(TRUE), not null
+#  target                 :string(255)      not null
+#  title                  :string(255)      not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  coach_id               :bigint           not null
+#  communication_style_id :integer          not null
+#  term_id                :integer          not null
 #
 # Indexes
 #

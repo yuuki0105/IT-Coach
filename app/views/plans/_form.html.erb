@@ -6,13 +6,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :term %><br />
-    <%= form.number_field :term %>
+    <%= form.label :term_id %><br />
+    <%= form.select :term_id, Term.all.pluck(:name,:id) %>
   </div>
 
   <div class="field">
-    <%= form.label :communication_style %><br />
-    <%= form.number_field :communication_style %>
+    <%= form.label :communication_style_id %><br />
+    <%= form.select :communication_style_id, CommunicationStyle.all.pluck(:name,:id) %>
   </div>
 
   <div class="field">

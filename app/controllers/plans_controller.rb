@@ -29,7 +29,7 @@ class PlansController < ApplicationController
 
   private
   def plan_params
-    params.require(:plan).permit(:title, :term, :communication_style, :fee, :target, :content, :published).merge(coach_id: current_user.coach.id)
+    params.require(:plan).permit(:title, :term_id, :communication_style_id, :fee, :target, :content, :published).merge(coach_id: current_user.coach.id)
   end
 
 end

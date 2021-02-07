@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(version: 2021_02_06_143849) do
   create_table "plans", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "coach_id", null: false
     t.string "title", null: false
-    t.integer "term", null: false
-    t.integer "communication_style", null: false
+    t.integer "term_id", null: false
+    t.integer "communication_style_id", null: false
     t.integer "fee", null: false
     t.string "target", null: false
     t.string "content", null: false
