@@ -41,4 +41,23 @@
 
 <% end %>
 
+<% if @coach %>
+
+<h2>キャリア</h2>
+<% @coach.careers.each do |career| %>
+  <%= link_to career.organization,edit_coach_career_path(coach_id: @coach.id, id: career.id) %><br>
+  <%= career.role %><br>
+  <%= career.start_month %> 〜　<%= career.end_month %><br>
+  <%= link_to "削除", coach_career_path(coach_id: @coach.id, id: career.id),method: :delete,data: {confirm: "本当に削除しますか？"} %><br>
+<% end %>
+
+<h2>ポートフォリオ</h2>
+<% @coach.portfolios.each do |portfolio| %>
+  <%= link_to portfolio.title,edit_coach_portfolio_path(coach_id: @coach.id, id: portfolio.id) %><br>
+  <%= link_to portfolio.url, portfolio.url %><br>
+  <%= link_to "削除", coach_portfolio_path(coach_id: @coach.id, id: portfolio.id),method: :delete,data: {confirm: "本当に削除しますか？"} %><br>
+<% end %>
+
+<% end %>
+
 <%= link_to "スキルを新規作成",new_mypage_user_skill_path %><br>

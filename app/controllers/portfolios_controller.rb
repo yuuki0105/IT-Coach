@@ -26,6 +26,16 @@ class PortfoliosController < ApplicationController
     end
   end
 
+  def destroy
+    @portfolio = current_user.coach.portfolios.find(params[:id])
+    if @portfolio.destroy
+      redirect_to edit_mypage_path
+    else
+      flash[:error] = "削除に失敗しました"
+      redirect_to edit_mypage_path
+    end
+  end
+
   private
   def portfolio_params
     params.require(:portfolio).permit(:title, :url).merge(coach_id: current_user.coach.id)

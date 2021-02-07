@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :coaches, only: [:show] do
     resources :plans, only: [:new, :create, :edit, :update]
-    resources :careers, only: [:new, :create, :edit, :update]
-    resources :portfolios, only: [:new, :create, :edit, :update]
+    resources :careers, only: [:new, :create, :edit, :update, :destroy]
+    resources :portfolios, only: [:new, :create, :edit, :update, :destroy]
   end
   resource :mypage, only: [:edit, :update] do
     resource :user_skill, only: [:new, :create]
