@@ -2,6 +2,7 @@ class MypagesController < ApplicationController
 
   def edit
     @user = current_user
+    @coach = @user.coach
   end
 
   def update
