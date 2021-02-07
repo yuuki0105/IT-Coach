@@ -12,6 +12,21 @@ class UserSkillsController < ApplicationController
     end
   end
 
+  def edit
+    @user_skill = current_user.user_skills.find(params[:id])
+  end
+
+  def update
+    @user_skill = current_user.user_skills.find(params[:id])
+    if @user_skill.update(user_skill_params)
+      redirect_to edit_mypage_path
+    else
+      render :edit
+    end
+  end
+
+
+
   def destroy
     @user_skill = current_user.user_skills.find(params[:id])
     if @user_skill.destroy
