@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :portfolios, only: [:new, :create, :edit, :update, :destroy]
   end
   resource :mypage, only: [:edit, :update] do
-    resource :user_skill, only: [:new, :create]
+    resources :user_skills, only: [:new, :create, :destroy]
   end
   resource :setting, only: [:show] do
     resource :email, only: [:edit, :update], module: :settings

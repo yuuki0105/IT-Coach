@@ -22,7 +22,7 @@
 
     <div class="field">
       <%= user_skill.label :skill_id %><br />
-      <%= user_skill.number_field :skill_id %>
+      <%= user_skill.select :skill_id,Skill.all.pluck(:name, :id) %>
     </div>
     <div class="field">
       <%= user_skill.label :experience_year %><br />
@@ -32,6 +32,8 @@
       <%= user_skill.label :level %><br />
       <%= user_skill.number_field :level %>
     </div>
+
+    <%= link_to "削除", mypage_user_skill_path(id: user_skill.object.id),method: :delete,data: {confirm: "本当に削除しますか？"} %><br>
 
   <% end %>
 
