@@ -1,0 +1,16 @@
+- id: 1
+  name: 単発
+  type: spot
+  fee_rate: 0.5
+- id: 2
+  name: 時間
+  type: hourly
+  fee_rate: 0.2
+- id: 3
+  name: 月間
+  type: month
+  fee_rate: 0.1
+- id: 4
+  name: カスタマイズ
+  type: custom
+  fee_rate: 0.2

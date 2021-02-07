@@ -4,8 +4,8 @@ class CreatePlans < ActiveRecord::Migration[6.1]
 
       t.references :coach, null: false, foreign_key: true
       t.string   :title,          null: false
-      t.integer   :term,          null: false
-      t.integer   :communication_style,          null: false
+      t.integer   :term_id,          null: false
+      t.integer   :communication_style_id,          null: false
       t.integer   :fee,          null: false
       t.string   :target,          null: false
       t.string   :content,          null: false
