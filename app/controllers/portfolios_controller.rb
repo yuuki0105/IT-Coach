@@ -29,10 +29,10 @@ class PortfoliosController < ApplicationController
   def destroy
     @portfolio = current_user.coach.portfolios.find(params[:id])
     if @portfolio.destroy
-      redirect_to edit_mypage_path
+      redirect_to mypage_path
     else
       flash[:error] = "削除に失敗しました"
-      redirect_to edit_mypage_path
+      render :edit
     end
   end
 

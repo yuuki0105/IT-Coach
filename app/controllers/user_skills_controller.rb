@@ -6,7 +6,7 @@ class UserSkillsController < ApplicationController
   def create
     @user_skill = UserSkill.new(user_skill_params)
     if @user_skill.save
-      redirect_to edit_mypage_path
+      redirect_to mypage_path
     else
       render :new
     end
@@ -19,21 +19,19 @@ class UserSkillsController < ApplicationController
   def update
     @user_skill = current_user.user_skills.find(params[:id])
     if @user_skill.update(user_skill_params)
-      redirect_to edit_mypage_path
+      redirect_to mypage_path
     else
       render :edit
     end
   end
 
-
-
   def destroy
     @user_skill = current_user.user_skills.find(params[:id])
     if @user_skill.destroy
-      redirect_to edit_mypage_path
+      redirect_to mypage_path
     else
       flash[:error] = "削除に失敗しました"
-      redirect_to edit_mypage_path
+      render :edit
     end
   end
 
