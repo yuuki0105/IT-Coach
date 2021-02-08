@@ -1,5 +1,10 @@
 class MypagesController < ApplicationController
 
+  def show
+    @user = current_user
+    @coach = @user.coach
+  end
+
   def edit
     @user = current_user
     @coach = @user.coach
@@ -8,7 +13,7 @@ class MypagesController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      redirect_to edit_mypage_path
+      redirect_to mypage_path
     else
       render :edit
     end

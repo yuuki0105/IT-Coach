@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :careers, only: [:new, :create, :edit, :update, :destroy]
     resources :portfolios, only: [:new, :create, :edit, :update, :destroy]
   end
-  resource :mypage, only: [:edit, :update] do
+  resource :mypage, only: [:show, :edit, :update] do
     resources :user_skills, only: [:new, :create, :edit, :update, :destroy]
   end
   resource :setting, only: [:show] do
