@@ -8,7 +8,7 @@ class PlansController < ApplicationController
   def create
     @plan = Plan.new(plan_params)
     if @plan.save
-      redirect_to coach_path(@plan.coach)
+      redirect_to mypage_path
     else
       render :new
     end
@@ -21,7 +21,7 @@ class PlansController < ApplicationController
   def update
     @plan = current_user.coach.plans.find(params[:id])
     if @plan.update(plan_params)
-      redirect_to coach_path(@plan.coach)
+      redirect_to mypage_path
     else
       render :edit
     end

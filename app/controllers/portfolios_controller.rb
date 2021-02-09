@@ -7,7 +7,7 @@ class PortfoliosController < ApplicationController
   def create
     @portfolio = Portfolio.new(portfolio_params)
     if @portfolio.save
-      redirect_to coach_path(@portfolio.coach)
+      redirect_to mypage_path
     else
       render :new
     end
@@ -20,7 +20,7 @@ class PortfoliosController < ApplicationController
   def update
     @portfolio = current_user.coach.portfolios.find(params[:id])
     if @portfolio.update(portfolio_params)
-      redirect_to coach_path(@portfolio.coach)
+      redirect_to mypage_path
     else
       render :edit
     end
