@@ -3,8 +3,19 @@
   <h2>プロフィール</h2>
 
   <div class="field">
+    <%= form.label :name %><br />
+    <%= form.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %><br />
+    <%= form.file_field :image %>
+  </div>
+  <%# 写真の保存先の指定は本番環境時に行う（AWSを予定） %>
+
+  <div class="field">
     <%= form.label :profile %><br />
-    <%= form.text_field :profile, autofocus: true %>
+    <%= form.text_field :profile %>
   </div>
 
   <div class="actions">
