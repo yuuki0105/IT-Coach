@@ -1,0 +1,14 @@
+<%= form_with model: @user, url: mypage_profile_path do |form| %>
+
+  <h2>プロフィール</h2>
+
+  <div class="field">
+    <%= form.label :profile %><br />
+    <%= form.text_field :profile, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "更新する" %>
+  </div>
+
+<% end %>

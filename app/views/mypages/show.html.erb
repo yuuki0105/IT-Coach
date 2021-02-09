@@ -10,7 +10,8 @@
 
 
 <h2>プロフィール</h2>
-<p>Profile <%= @user.profile %></p>
+<%= @user.profile %><br>
+<%= link_to "プロフィールを編集する",edit_mypage_profile_path %><br>
 
 <% if @coach %>
 
