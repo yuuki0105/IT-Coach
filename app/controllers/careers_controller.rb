@@ -7,7 +7,7 @@ class CareersController < ApplicationController
   def create
     @career = Career.new(career_params)
     if @career.save
-      redirect_to coach_path(@career.coach)
+      redirect_to mypage_path
     else
       render :new
     end
@@ -20,7 +20,7 @@ class CareersController < ApplicationController
   def update
     @career = current_user.coach.careers.find(params[:id])
     if @career.update(career_params)
-      redirect_to coach_path(@career.coach)
+      redirect_to mypage_path
     else
       render :edit
     end
