@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2021_02_06_143849) do
     t.integer "communication_style_id", null: false
     t.integer "fee", null: false
     t.string "target", null: false
-    t.string "content", null: false
+    t.text "content", null: false
     t.boolean "published", default: true, null: false
     t.boolean "deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false

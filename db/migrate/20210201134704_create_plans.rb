@@ -8,7 +8,7 @@ class CreatePlans < ActiveRecord::Migration[6.1]
       t.integer   :communication_style_id,          null: false
       t.integer   :fee,          null: false
       t.string   :target,          null: false
-      t.string   :content,          null: false
+      t.text   :content,          null: false
       t.boolean   :published,       null: false,    default: true
       t.boolean   :deleted,       null: false,    default: false
 
