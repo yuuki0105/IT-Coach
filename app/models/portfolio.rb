@@ -19,4 +19,7 @@
 #
 class Portfolio < ApplicationRecord
   belongs_to :coach
+  validates :title, presence: true, length: { maximum: 80 }
+  validates :url, length: { maximum: 255 }
+
 end

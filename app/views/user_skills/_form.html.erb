@@ -1,5 +1,7 @@
 <%= form_with model: [:mypage, @user_skill]  do |form| %>
 
+  <%= render 'shared/error_messages', model: form.object %>
+
   <div class="field">
     <%= form.label :skill_id %><br />
     <%= form.select :skill_id,Skill.all.pluck(:name, :id) %>
