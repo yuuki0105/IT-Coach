@@ -1,0 +1,9 @@
+- id: 1
+  name: 審査前
+  type: before_examination
+- id: 2
+  name: 合格
+  type: passed
+- id: 3
+  name: 不合格
+  type: failed
