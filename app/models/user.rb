@@ -39,4 +39,7 @@ class User < ApplicationRecord
   has_many :skills, through: :user_skills
   has_one_attached :image
   accepts_nested_attributes_for :user_skills
+
+  validates :name, presence: true, length: { maximum: 60 }
+  validates :profile, length: { maximum: 255 }
 end

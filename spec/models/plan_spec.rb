@@ -3,7 +3,7 @@
 # Table name: plans
 #
 #  id                     :bigint           not null, primary key
-#  content                :string(255)      not null
+#  content                :text(65535)      not null
 #  deleted                :boolean          default(FALSE), not null
 #  fee                    :integer          not null
 #  published              :boolean          default(TRUE), not null

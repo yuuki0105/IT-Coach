@@ -22,4 +22,10 @@
 #
 class Career < ApplicationRecord
   belongs_to :coach
+
+  validates :organization, presence: true, length: { maximum: 20 }
+  validates :role, length: { maximum: 40 }
+  validates :start_month, presence: true
+  validates :ongoing, inclusion: { in: [true, false] }
+
 end
