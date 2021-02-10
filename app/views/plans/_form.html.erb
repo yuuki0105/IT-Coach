@@ -1,5 +1,7 @@
 <%= form_with model: [current_user.coach,@plan] do |form| %>
 
+  <%= render 'shared/error_messages', model: form.object %>
+
   <div class="field">
     <%= form.label :title %><br />
     <%= form.text_field :title, autofocus: true %>
