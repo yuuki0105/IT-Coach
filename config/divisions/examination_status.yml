@@ -1,0 +1,12 @@
+- id: 1
+  name: 審査前
+  type: before_examination
+  comment: コーチになるには情報入力・審査面談が必要です。
+- id: 10
+  name: 合格
+  type: passed
+  comment: null
+- id: 20
+  name: 不合格
+  type: failed
+  comment: コーチ審査は審査結果日から、90日後に再審査が可能となります。

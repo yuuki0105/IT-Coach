@@ -55,7 +55,8 @@ ActiveRecord::Schema.define(version: 2021_02_06_143849) do
   create_table "coaches", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.boolean "schedule_confirmed", default: false, null: false
-    t.integer "examination_status", default: 0, null: false
+    t.integer "examination_status_id", default: 1, null: false
+    t.date "examination_result_date", comment: "審査結果日"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_coaches_on_user_id"

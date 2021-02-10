@@ -33,6 +33,7 @@
   <%= user_skill.experience_year %>年<br>
   <%= user_skill.level %><br>
 <% end %>
+<%= link_to "スキルを新規作成",new_mypage_user_skill_path %><br>
 
 <% if @coach %>
 
@@ -50,5 +51,9 @@
   <%= link_to portfolio.url, portfolio.url %><br>
 <% end %>
 <%= link_to "ポートフォリオを新規作成",new_coach_portfolio_path(coach_id: @coach.id) %><br>
+
+<h2>コーチ審査ステータス</h2>
+<%= @coach.examination_status.name %><br>
+<%= @coach.examination_status.comment %>
 
 <% end %>
