@@ -1,3 +1,15 @@
-<%= link_to image_tag('logo.png'), 'トップページのパスを入れる' %>
-<%= link_to "ログイン", new_user_session_path %>
-<%= link_to "会員登録", new_user_registration_path %>
+<%= link_to image_tag('logo.png') %>
+
+<% if user_signed_in? %>
+
+  <%= link_to image_tag('search.png') %>
+  <%= link_to image_tag('message.png') %>
+  <%= link_to image_tag('alert.png') %>
+  <%= link_to image_tag('menu.png') %>
+
+<% else %>
+
+  <%= link_to "ログイン", new_user_session_path %>
+  <%= link_to "会員登録", new_user_registration_path %>
+
+<% end %>
