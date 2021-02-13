@@ -63,14 +63,14 @@ ActiveRecord::Schema.define(version: 2021_02_13_132311) do
   end
 
   create_table "messages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "coach_id", null: false
-    t.text "message", null: false
+    t.bigint "send_user_id", null: false, comment: "送信ユーザー"
+    t.bigint "receive_user_id", null: false, comment: "受信ユーザー"
+    t.text "content", null: false
     t.boolean "read", default: false, null: false, comment: "既読/未読"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["coach_id"], name: "index_messages_on_coach_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
+    t.index ["receive_user_id"], name: "index_messages_on_receive_user_id"
+    t.index ["send_user_id"], name: "index_messages_on_send_user_id"
   end
 
   create_table "plans", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -158,8 +158,8 @@ ActiveRecord::Schema.define(version: 2021_02_13_132311) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "careers", "coaches"
   add_foreign_key "coaches", "users"
-  add_foreign_key "messages", "coaches"
-  add_foreign_key "messages", "users"
+  add_foreign_key "messages", "users", column: "receive_user_id"
+  add_foreign_key "messages", "users", column: "send_user_id"
   add_foreign_key "plans", "coaches"
   add_foreign_key "portfolios", "coaches"
   add_foreign_key "skills", "skill_categories"

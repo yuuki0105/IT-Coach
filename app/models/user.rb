@@ -37,7 +37,8 @@ class User < ApplicationRecord
   has_one :coach, dependent: :destroy
   has_many :user_skills, dependent: :destroy
   has_many :skills, through: :user_skills
-  has_many :messages, dependent: :destroy
+  has_many :send_messages, dependent: :destroy, class_name: "Message", foreign_key: :send_user_id
+  has_many :receive_messages, dependent: :destroy, class_name: "Message", foreign_key: :receive_user_id
   has_one_attached :image
   accepts_nested_attributes_for :user_skills
 

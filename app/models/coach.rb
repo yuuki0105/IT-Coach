@@ -25,7 +25,6 @@ class Coach < ApplicationRecord
   has_many :plans, dependent: :destroy
   has_many :careers, dependent: :destroy
   has_many :portfolios, dependent: :destroy
-  has_many :messages, dependent: :destroy
 
   validates :schedule_confirmed, inclusion: { in: [true, false] }
   validates :examination_status_id, presence: true, inclusion: { in: ExaminationStatus.pluck(:id) }
