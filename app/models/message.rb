@@ -3,12 +3,12 @@
 # Table name: messages
 #
 #  id              :bigint           not null, primary key
+#  user_id         :bigint           not null
+#  coach_id        :bigint           not null
 #  message         :text(65535)      not null
 #  read(既読/未読) :boolean          default(FALSE), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  coach_id        :bigint           not null
-#  user_id         :bigint           not null
 #
 # Indexes
 #
