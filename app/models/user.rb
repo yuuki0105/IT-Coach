@@ -37,6 +37,7 @@ class User < ApplicationRecord
   has_one :coach, dependent: :destroy
   has_many :user_skills, dependent: :destroy
   has_many :skills, through: :user_skills
+  has_many :messages, dependent: :destroy
   has_one_attached :image
   accepts_nested_attributes_for :user_skills
 
