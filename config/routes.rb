@@ -3,9 +3,14 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do
     resources :messages, only: [:index, :create, :show]
+    resources :rooms, only: [:create], module: :users
   end
 
-  resources :coaches, only: [:show] do
+  resources :rooms, only: [:show] do
+    resources :messages, only: [:create], module: :rooms
+  end
+
+  resources :coaches, only: [:show, :index] do
     resources :plans, only: [:new, :create, :edit, :update]
     resources :careers, only: [:new, :create, :edit, :update, :destroy]
     resources :portfolios, only: [:new, :create, :edit, :update, :destroy]
