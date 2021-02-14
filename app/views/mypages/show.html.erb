@@ -57,3 +57,6 @@
 <%= @coach.examination_status.comment %>
 
 <% end %>
+
+<h2>ログアウト</h2>
+<%= link_to "ログアウト", destroy_user_session_path, method: :delete %><br>

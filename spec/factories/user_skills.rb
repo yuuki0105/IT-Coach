@@ -3,12 +3,12 @@
 # Table name: user_skills
 #
 #  id              :bigint           not null, primary key
+#  user_id         :bigint           not null
+#  skill_id        :bigint           not null
 #  experience_year :integer          default(0), not null
 #  level           :integer          default(1), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  skill_id        :bigint           not null
-#  user_id         :bigint           not null
 #
 # Indexes
 #

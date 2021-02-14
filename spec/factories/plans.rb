@@ -3,17 +3,17 @@
 # Table name: plans
 #
 #  id                     :bigint           not null, primary key
-#  content                :text(65535)      not null
-#  deleted                :boolean          default(FALSE), not null
-#  fee                    :integer          not null
-#  published              :boolean          default(TRUE), not null
-#  target                 :string(255)      not null
+#  coach_id               :bigint           not null
 #  title                  :string(255)      not null
+#  term_id                :integer          not null
+#  communication_style_id :integer          not null
+#  fee                    :integer          not null
+#  target                 :string(255)      not null
+#  content                :text(65535)      not null
+#  published              :boolean          default(TRUE), not null
+#  deleted                :boolean          default(FALSE), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  coach_id               :bigint           not null
-#  communication_style_id :integer          not null
-#  term_id                :integer          not null
 #
 # Indexes
 #

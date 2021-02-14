@@ -1,0 +1,23 @@
+<h2>ルーム</h2>
+
+<% @messages.each do |message| %>
+
+  <p>メッセージ：<%= message.content %></p>
+  <p>送信者：<%= message.user.name %></p>
+  <p>送信日時：<%= message.created_at %></p>
+
+<% end %>
+
+<%= form_with model: @message, url: room_messages_path(room_id: @room.id) do |form| %>
+
+  <div class="field">
+    <%= form.label :content %><br />
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "送信する" %>
+  </div>
+
+
+<% end %>

@@ -3,12 +3,12 @@
 # Table name: coaches
 #
 #  id                                  :bigint           not null, primary key
-#  examination_result_date(審査結果日) :date
+#  user_id                             :bigint           not null
 #  schedule_confirmed                  :boolean          default(FALSE), not null
+#  examination_status_id               :integer          default(1), not null
+#  examination_result_date(審査結果日) :date
 #  created_at                          :datetime         not null
 #  updated_at                          :datetime         not null
-#  examination_status_id               :integer          default(1), not null
-#  user_id                             :bigint           not null
 #
 # Indexes
 #

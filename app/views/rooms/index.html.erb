@@ -1,0 +1,7 @@
+<h2>ルーム一覧</h2>
+
+<% @rooms.each do |room| %>
+
+  <p>相手の名前：<%= link_to room.other_side_user(current_user).name, room_path(id: room.id) %></p>
+
+<% end %>

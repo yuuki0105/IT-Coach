@@ -1,27 +1,27 @@
 # == Schema Information
 #
-# Table name: user_skills
+# Table name: messages
 #
 #  id              :bigint           not null, primary key
+#  room_id         :bigint           not null
 #  user_id         :bigint           not null
-#  skill_id        :bigint           not null
-#  experience_year :integer          default(0), not null
-#  level           :integer          default(1), not null
+#  content         :text(65535)      not null
+#  read(既読/未読) :boolean          default(FALSE), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
 # Indexes
 #
-#  index_user_skills_on_skill_id  (skill_id)
-#  index_user_skills_on_user_id   (user_id)
+#  index_messages_on_room_id  (room_id)
+#  index_messages_on_user_id  (user_id)
 #
 # Foreign Keys
 #
-#  fk_rails_...  (skill_id => skills.id)
+#  fk_rails_...  (room_id => rooms.id)
 #  fk_rails_...  (user_id => users.id)
 #
 require 'rails_helper'
 
-RSpec.describe UserSkill, type: :model do
+RSpec.describe Message, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end
