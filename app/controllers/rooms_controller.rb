@@ -6,4 +6,8 @@ class RoomsController < ApplicationController
     @message = Message.new
   end
 
+  def index
+    @rooms = Room.relative(current_user)
+  end
+
 end

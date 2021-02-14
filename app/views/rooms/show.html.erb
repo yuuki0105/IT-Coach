@@ -2,8 +2,9 @@
 
 <% @messages.each do |message| %>
 
-  メッセージ：<%= message.content %>
-  送信者：<%= message.user.name %>
+  <p>メッセージ：<%= message.content %></p>
+  <p>送信者：<%= message.user.name %></p>
+  <p>送信日時：<%= message.created_at %></p>
 
 <% end %>
 

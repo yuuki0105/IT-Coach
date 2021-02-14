@@ -22,4 +22,12 @@ class Room < ApplicationRecord
   belongs_to :user
   belongs_to :other_user, class_name: "User"
   has_many :messages, dependent: :destroy
+
+  def other_side_user(me)
+    self.user == me ? other_user : me
+  end
+
+  def self.relative(me)
+    where(user: me).or(where(other_user: me))
+  end
 end
