@@ -2,7 +2,7 @@
 
 <p><%= link_to "マイページ", mypage_path %></p>
 <p><%= link_to "契約情報" %></p>
-<% if @user.coach.examination_status.id == 10 %>
+<% if @user.coach.examination_status.id == ExaminationStatus::PASSED_ID %>
 <p><%= link_to "売上情報" %></p>
 <% end %>
 <p><%= link_to "支払い情報" %></p>
