@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     resources :portfolios, only: [:new, :create, :edit, :update, :destroy]
   end
 
+  resource :menu, only: [:show] do
+  end
+
   resource :mypage, only: [:show, :edit, :update] do
     resource :profile, only: [:edit, :update]
     resources :user_skills, only: [:new, :create, :edit, :update, :destroy]
