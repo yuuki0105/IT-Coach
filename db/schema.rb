@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_13_132311) do
+ActiveRecord::Schema.define(version: 2021_02_16_141315) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -132,6 +132,15 @@ ActiveRecord::Schema.define(version: 2021_02_13_132311) do
     t.index ["user_id"], name: "index_sns_accounts_on_user_id"
   end
 
+  create_table "user_follows", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "follow_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["follow_id"], name: "index_user_follows_on_follow_id"
+    t.index ["user_id"], name: "index_user_follows_on_user_id"
+  end
+
   create_table "user_skills", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "skill_id", null: false
@@ -175,6 +184,8 @@ ActiveRecord::Schema.define(version: 2021_02_13_132311) do
   add_foreign_key "rooms", "users", column: "other_user_id"
   add_foreign_key "skills", "skill_categories"
   add_foreign_key "sns_accounts", "users"
+  add_foreign_key "user_follows", "users"
+  add_foreign_key "user_follows", "users", column: "follow_id"
   add_foreign_key "user_skills", "skills"
   add_foreign_key "user_skills", "users"
 end

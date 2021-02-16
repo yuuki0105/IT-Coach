@@ -8,7 +8,7 @@
   <% if @user.image.attached? %>
     <%= image_tag @user.image %>
   <% else %>
-    <%= image_tag "logomark.png" %>
+    <%= image_tag "default_icon.png" %>
   <% end %>
 
   <%= form.file_field :image %>
