@@ -15,13 +15,14 @@ Rails.application.routes.draw do
     resources :portfolios, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  resource :menu, only: [:show] do
-  end
+  resource :menu, only: [:show]
 
   resource :mypage, only: [:show, :edit, :update] do
     resource :profile, only: [:edit, :update]
     resources :user_skills, only: [:new, :create, :edit, :update, :destroy]
   end
+
+  resources :follows, only: [:index]
 
   resource :setting, only: [:show] do
     resource :email, only: [:edit, :update], module: :settings

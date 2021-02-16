@@ -1,0 +1,15 @@
+
+
+<h2>フォロー一覧</h2>
+<% @follows.each do |follow| %>
+
+  <% if follow.image.attached? %>
+    <%= image_tag follow.image %>
+  <% else %>
+    <%= image_tag "default_icon.png" %>
+  <% end %>
+
+  <%= follow.name %><br>
+  <%= follow.profile %><br>
+
+<% end %>
