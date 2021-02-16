@@ -39,6 +39,15 @@ class User < ApplicationRecord
   has_many :skills, through: :user_skills
   has_many :rooms, dependent: :destroy
   has_many :messages, dependent: :destroy
+
+  # 自分がフォローしている人
+  has_many :user_follows, class_name: "UserFollow", foreign_key: "user_id", dependent: :destroy
+  has_many :follows, through: :user_follows, source: :follower
+
+  # 自分をフォローしている人(自分がフォローされている人)
+  has_many :user_followers, class_name: "UserFollow", foreign_key: "follow_id", dependent: :destroy
+  has_many :followers, through: :user_followers, source: :user
+
   has_one_attached :image
   accepts_nested_attributes_for :user_skills
 
