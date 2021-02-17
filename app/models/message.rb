@@ -27,4 +27,8 @@ class Message < ApplicationRecord
   validates :content, presence: true, length: { maximum: 1000 }
   validates :read, inclusion: { in: [true, false] }
 
+  scope :have_unread, -> (user_id) do
+    where(read: false, user_id: user_id)
+  end
+
 end

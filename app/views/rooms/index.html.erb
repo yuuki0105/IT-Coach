@@ -2,6 +2,13 @@
 
 <% @rooms.each do |room| %>
 
-  <p>相手の名前：<%= link_to room.other_side_user(current_user).name, room_path(id: room.id) %></p>
+  <% other_side_user = room.other_side_user(current_user) %>
+
+  <p>相手の名前：<%= link_to other_side_user.name, room_path(id: room.id) %></p>
+
+  <% have_unread = room.messages.have_unread(other_side_user).exists? %>
+  <% if have_unread %>
+    <span>未読</span>
+  <% end %>
 
 <% end %>

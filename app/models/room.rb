@@ -27,7 +27,7 @@ class Room < ApplicationRecord
   validate :user_not_equal_other_user
 
   def other_side_user(me)
-    self.user == me ? other_user : me
+    self.user == me ? other_user : user
   end
 
   def self.relative(me)
