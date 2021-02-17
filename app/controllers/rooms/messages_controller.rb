@@ -6,8 +6,8 @@ class Rooms::MessagesController < ApplicationController
     if @message.save
       redirect_to room_path(id: @room.id)
     else
-      flash[:error] = "エラーがおきました"
-      redirect_to room_path(id: @room.id)
+      @messages = @room.messages
+      render "rooms/show"
     end
   end
 

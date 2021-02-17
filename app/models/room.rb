@@ -23,6 +23,9 @@ class Room < ApplicationRecord
   belongs_to :other_user, class_name: "User"
   has_many :messages, dependent: :destroy
 
+  validates :user_id, uniqueness: { scope: [:other_user_id] }
+  validate :user_not_equal_other_user
+
   def other_side_user(me)
     self.user == me ? other_user : me
   end
@@ -30,4 +33,12 @@ class Room < ApplicationRecord
   def self.relative(me)
     where(user: me).or(where(other_user: me))
   end
+
+  private
+  def user_not_equal_other_user
+    if user_id == other_user_id
+      errors.add(:user_id, "同じユーザー同士でルームをつくることはできません")
+    end
+  end
+
 end

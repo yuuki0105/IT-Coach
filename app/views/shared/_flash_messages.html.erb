@@ -1,0 +1,7 @@
+<% if flash[:error].present? %>
+  <div class="alert-area">
+    <ul class="alert-list">
+      <li><%= flash[:error] %></li>
+    </ul>
+  </div>
+<% end %>
