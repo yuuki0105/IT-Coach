@@ -4,8 +4,4 @@ class ExaminationStatus < ActiveYaml::Base
   set_filename "examination_status"
   enum_accessor :type
 
-  BEFORE_ID = 1
-  PASSED_ID = 10
-  FAILED_ID = 20
-
 end
