@@ -2,9 +2,20 @@
 <p>Find me in app/views/coaches/show.html.erb</p>
 <p> <%= @coach.user.name %></p>
 
-  <%= form_with(model: current_user.user_follows.build) do |f| %>
-    <%= f.hidden_field :follow_id, value: @coach.user.id %>
-    <%= f.submit "フォローする" %>
+  <% if current_user.following?(@coach.user) %>
+
+    <%= form_with(model: current_user.user_follows.find_by(follow_id: @coach.user.id),method: :delete) do |f| %>
+      <%= f.hidden_field :follow_id, value: @coach.user.id %>
+      <%= f.submit "フォローを解除する" %>
+    <% end %>
+
+  <% else %>
+
+    <%= form_with(model: current_user.user_follows.build) do |f| %>
+      <%= f.hidden_field :follow_id, value: @coach.user.id %>
+      <%= f.submit "フォローする" %>
+    <% end %>
+
   <% end %>
 
 <h2>プラン</h2>

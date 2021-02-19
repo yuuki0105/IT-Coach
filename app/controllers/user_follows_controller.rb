@@ -11,6 +11,12 @@ class UserFollowsController < ApplicationController
     # @userはフォローされたユーザーのこと
   end
 
+  def destroy
+    @user =User.find(user_follow_params[:follow_id])
+    current_user.unfollow(@user)
+    redirect_to coach_path(id: @user.coach.id)
+  end
+
   private
   def user_follow_params
     params.require(:user_follow).permit(:follow_id)
