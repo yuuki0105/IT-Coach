@@ -2,6 +2,11 @@
 <p>Find me in app/views/coaches/show.html.erb</p>
 <p> <%= @coach.user.name %></p>
 
+  <%= form_with(model: current_user.user_follows.build) do |f| %>
+    <%= f.hidden_field :follow_id, value: @coach.user.id %>
+    <%= f.submit "フォローする" %>
+  <% end %>
+
 <h2>プラン</h2>
 <% @coach.plans.each do |plan| %>
   <%= link_to plan.title,edit_coach_plan_path(coach_id: @coach.id, id: plan.id) %><br>

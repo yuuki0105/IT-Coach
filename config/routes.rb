@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :user_skills, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  resources :follows, only: [:index]
+  resources :user_follows, only: [:index, :create]
 
   resource :setting, only: [:show] do
     resource :email, only: [:edit, :update], module: :settings
