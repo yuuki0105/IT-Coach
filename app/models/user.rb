@@ -53,4 +53,20 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 60 }
   validates :profile, length: { maximum: 255 }
+
+  # フォローするメソッド
+  def follow(follower)
+    follows << follower
+  end
+
+  # フォローを解除するメソッド
+  def unfollow(follower)
+    self.user_follows.find_by(follow_id: follower.id).destroy
+  end
+
+  # すでにフォロー済みであればture返す
+  def following?(follower)
+    self.follows.include?(follower)
+  end
+
 end
