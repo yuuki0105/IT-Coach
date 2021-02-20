@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
+  root "home#show"
+
   resources :users, only: [:show] do
     resources :rooms, only: [:create], module: :users
   end
@@ -26,6 +28,9 @@ Rails.application.routes.draw do
 
   resource :setting, only: [:show] do
     resource :email, only: [:edit, :update], module: :settings
+  end
+
+  resources :search, only: [:index] do
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

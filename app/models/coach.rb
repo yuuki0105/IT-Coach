@@ -28,4 +28,16 @@ class Coach < ApplicationRecord
 
   validates :schedule_confirmed, inclusion: { in: [true, false] }
   validates :examination_status_id, presence: true, inclusion: { in: ExaminationStatus.pluck(:id) }
+
+  def self.search(keyword)
+
+    return Coach.all if keyword.blank?
+
+    skills = Skill.where('name LIKE ?', "%#{keyword}%").pluck(:id)
+    users = User.joins(:coach).eager_load(:user_skills).where('name LIKE ? OR profile LIKE ? OR user_skills.id in (?)', "%#{keyword}%","%#{keyword}%",skills.join(",")).distinct.pluck(:id)
+
+    eager_load(:careers,:portfolios).where('careers.organization LIKE ? OR careers.role LIKE ? OR portfolios.title LIKE ? OR user_id in (?)', "%#{keyword}%","%#{keyword}%","%#{keyword}%" ,users.join(","))
+
+  end
+
 end
