@@ -30,5 +30,8 @@ Rails.application.routes.draw do
     resource :email, only: [:edit, :update], module: :settings
   end
 
+  resources :search, only: [:index] do
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
