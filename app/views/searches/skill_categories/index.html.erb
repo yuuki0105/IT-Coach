@@ -1,0 +1,10 @@
+<ul>
+  <% @skill_categories.each do |skill_category| %>
+    <li><%= skill_category.name %></li>
+    <ul>
+      <% skill_category.skills.each do |skill| %>
+        <li><%= skill.name %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</ul>

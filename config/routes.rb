@@ -30,7 +30,10 @@ Rails.application.routes.draw do
     resource :email, only: [:edit, :update], module: :settings
   end
 
-  resources :search, only: [:index] do
+  resource :search, only: [:show] do
+    resources :skill_categories, only: [:index], param: :en_name, module: :searches do
+      resources :skills, only: [:index, :show], param: :en_name, module: :skill_categories
+    end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

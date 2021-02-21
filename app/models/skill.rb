@@ -25,4 +25,9 @@ class Skill < ApplicationRecord
 
   validates :name, presence: true
   validates :published, inclusion: { in: [true, false] }
+
+  def to_param
+    en_name
+  end
+
 end

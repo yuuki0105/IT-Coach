@@ -1,6 +1,6 @@
 <h2>コーチを探す</h2>
 
-<%= form_with url: search_index_path ,method: :get do |form| %>
+<%= form_with url: search_path ,method: :get do |form| %>
 
   <div class="field">
     <%= form.label :keyword %><br />
@@ -8,3 +8,14 @@
   </div>
 
 <% end %>
+
+<ul>
+  <% @skill_categories.each do |skill_category| %>
+    <li><%= link_to skill_category.name, search_skill_category_skills_path(skill_category_en_name: skill_category) %></li>
+    <ul>
+      <% skill_category.skills.each do |skill| %>
+         <li><%= link_to skill.name, search_skill_category_skill_path(skill_category_en_name: skill_category,en_name: skill) %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</ul>

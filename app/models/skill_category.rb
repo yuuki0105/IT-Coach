@@ -13,4 +13,9 @@ class SkillCategory < ApplicationRecord
 
   validates :name, presence: true
   validates :en_name, presence: true
+
+  def to_param
+    en_name
+  end
+
 end
