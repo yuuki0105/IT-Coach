@@ -10,6 +10,7 @@
 <% end %>
 
 <ul>
+  <li><%= link_to "すべて", search_skill_categories_path %></li>
   <% @skill_categories.each do |skill_category| %>
     <li><%= link_to skill_category.name, search_skill_category_skills_path(skill_category_en_name: skill_category) %></li>
     <ul>

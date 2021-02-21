@@ -1,0 +1,5 @@
+<% coaches.each do |coach| %>
+
+  <%= link_to coach.user.name,coach_path(id: coach.id) %>
+
+<% end %>

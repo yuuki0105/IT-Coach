@@ -4,3 +4,5 @@
     <li><%= link_to skill.name, search_skill_category_skill_path(skill_category_en_name: @skill_category,en_name: skill) %></li>
   <% end %>
 </ul>
+
+<%= render "coaches/list" ,coaches: @coaches %>
