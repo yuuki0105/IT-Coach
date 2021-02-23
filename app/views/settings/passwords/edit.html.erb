@@ -1,0 +1,22 @@
+<%= form_with model: @user, url: setting_password_path do |form| %>
+
+  <div class="field">
+    <%= form.label :current_password %><br />
+    <%= form.password_field :current_password, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %><br />
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation %><br />
+    <%= form.password_field :password_confirmation %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update" %>
+  </div>
+
+<% end %>

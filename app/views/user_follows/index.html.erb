@@ -7,7 +7,7 @@
     <%= image_tag "default_icon.png" %>
   <% end %>
 
-  <%= follow.name %><br>
+  <p><%= link_to follow.name, coach_path(id: follow.coach.id) %></p>
   <%= follow.profile %><br>
 
 <% end %>

@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
   resource :setting, only: [:show] do
     resource :email, only: [:edit, :update], module: :settings
+    resource :password, only: [:edit, :update], module: :settings
   end
 
   resource :search, only: [:show] do

@@ -1,3 +1,12 @@
-<h1>Settings#show</h1>
+<h1>設定</h1>
 
-<p>Name <%= @user.name %></p>
+<h2>メールアドレス</h2>
+<%= @user.email %>
+<%= link_to "メールアドレスを変更する",  edit_setting_email_path %>
+
+<h2>パスワード</h2>
+<%= link_to "パスワードを変更する",  edit_setting_password_path %>
+
+<h2>通知</h2>
+
+<h2>メール</h2>
