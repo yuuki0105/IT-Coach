@@ -15,9 +15,7 @@ class Settings::PasswordsController < ApplicationController
     if @user.valid_password?(current_user_params[:current_password])
       #パスワード変更
       if @user.update(user_params)
-        #ログインし直すことができるようにしたい
-        session[:user_id] = @user.id
-        flash[:success] = "パスワードを更新できました"
+        sign_in(@user, bypass: true) if current_user.id == @user.id
         redirect_to setting_path
       else
         render 'edit'
