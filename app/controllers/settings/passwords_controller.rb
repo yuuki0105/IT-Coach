@@ -8,8 +8,8 @@ class Settings::PasswordsController < ApplicationController
     @user = current_user
 
     if user_params[:password].empty?
-      @user.errors.add(:password, :blank)
-      render 'edit'
+      flash[:error] = "パスワード更新に失敗しました"
+      return render :edit
     end
 
     if @user.valid_password?(current_user_params[:current_password])
@@ -18,12 +18,13 @@ class Settings::PasswordsController < ApplicationController
         sign_in(@user, bypass: true) if current_user.id == @user.id
         redirect_to setting_path
       else
-        render 'edit'
+        flash[:error] = "パスワード更新に失敗しました"
+        render :edit
       end
     else
       #元の画面に戻す（エラーメッセージを正しく直す）
-      @user.errors.add(:password, :blank)
-      render 'edit'
+      flash[:error] = "パスワード更新に失敗しました"
+      render :edit
     end
 
   end
