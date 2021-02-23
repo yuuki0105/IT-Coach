@@ -1,5 +1,7 @@
 class Settings::EmailsController < ApplicationController
 
+  include AuthenticateUser
+
   def edit
     @user = current_user
   end

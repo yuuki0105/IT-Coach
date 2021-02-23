@@ -1,6 +1,6 @@
 class MypagesController < ApplicationController
 
-  before_action :authenticate_user!
+  include AuthenticateUser
 
   def show
     @user = current_user
