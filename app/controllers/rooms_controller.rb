@@ -1,5 +1,7 @@
 class RoomsController < ApplicationController
 
+  include AuthenticateUser
+
   def show
     @room = Room.find(params[:id])
     @messages = @room.messages

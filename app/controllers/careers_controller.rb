@@ -1,5 +1,7 @@
 class CareersController < ApplicationController
 
+  include AuthenticateUser
+
   def new
     @career = Career.new
   end

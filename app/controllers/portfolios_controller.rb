@@ -1,5 +1,7 @@
 class PortfoliosController < ApplicationController
 
+  include AuthenticateUser
+
   def new
     @portfolio = Portfolio.new
   end

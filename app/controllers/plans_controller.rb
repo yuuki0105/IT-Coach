@@ -1,5 +1,7 @@
 class PlansController < ApplicationController
 
+  include AuthenticateUser
+
   def new
     @plan = Plan.new
     #↑空っぽの変数をつくっている

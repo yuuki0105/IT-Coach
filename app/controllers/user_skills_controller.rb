@@ -1,4 +1,7 @@
 class UserSkillsController < ApplicationController
+
+  include AuthenticateUser
+
   def new
     @user_skill = UserSkill.new
   end

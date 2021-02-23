@@ -1,5 +1,7 @@
 class UserFollowsController < ApplicationController
 
+  include AuthenticateUser
+
   def index
     @follows = current_user.follows
   end
