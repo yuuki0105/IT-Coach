@@ -18,5 +18,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class SnsAccount < ApplicationRecord
-    belongs_to :user, optional: true
+  belongs_to :user, optional: true
+  validates :provider, presence: true
+  validates :uid, presence: true
 end

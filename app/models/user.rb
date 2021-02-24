@@ -39,6 +39,7 @@ class User < ApplicationRecord
   has_many :skills, through: :user_skills
   has_many :rooms, dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   # 自分がフォローしている人
   has_many :user_follows, class_name: "UserFollow", foreign_key: "user_id", dependent: :destroy
