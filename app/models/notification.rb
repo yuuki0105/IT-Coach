@@ -28,6 +28,24 @@ class Notification < ApplicationRecord
   belongs_to :notification_type
 
   validates :read, inclusion: { in: [true, false] }
-  validates :notification_type, presence: true, inclusion: { in: NotificationType.pluck(:id) }
+  validates :notification_type_id, presence: true, inclusion: { in: NotificationType.all.pluck(:id) }
+
+  scope :unread, -> do
+    where(read: false)
+  end
+
+  scope :type_is_messages, -> do
+    where(notification_type_id: NotificationType::MESSAGE.id)
+  end
+
+  def type_is_message?
+    notification_type == NotificationType::MESSAGE
+  end
+
+  def message_send_user
+    return unless message
+
+    message.room.other_side_user(user)
+  end
 
 end

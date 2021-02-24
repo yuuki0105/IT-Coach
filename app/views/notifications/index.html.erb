@@ -1,0 +1,17 @@
+<h1>通知一覧</h1>
+
+<% @notifications.each do |notification| %>
+
+  <% if notification.type_is_message? %>
+    <p><%= link_to notification.notification_type.comment % {name: notification.message_send_user.name}, room_path(id: notification.message.room_id) %></p>
+  <% end %>
+
+  <% if notification.created_at >= Time.current.yesterday %>
+    <%= time_ago_in_words(notification.created_at) %>前
+  <% else %>
+    <p><%= notification.created_at.strftime("%Y年%m月%d日%H時%M分") %></p>
+  <% end %>
+
+  <p><%= notification.read ? "既読" : "未読" %></p>
+
+<% end %>
