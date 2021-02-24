@@ -27,4 +27,7 @@ class Notification < ApplicationRecord
   belongs_to :message, optional: true
   belongs_to :notification_type
 
+  validates :read, inclusion: { in: [true, false] }
+  validates :notification_type, presence: true, inclusion: { in: NotificationType.pluck(:id) }
+
 end
