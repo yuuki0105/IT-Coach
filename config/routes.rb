@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :notifications, only: [:index]
 
-  resources :coaches, only: [:show, :index] do
+  resources :coaches, only: [:show, :index, :create] do
     resources :plans, only: [:new, :create, :edit, :update]
     resources :careers, only: [:new, :create, :edit, :update, :destroy]
     resources :portfolios, only: [:new, :create, :edit, :update, :destroy]
@@ -39,6 +39,8 @@ Rails.application.routes.draw do
       resources :skills, only: [:index, :show], param: :en_name, module: :skill_categories
     end
   end
+
+  resource :about_coach, only: [:show]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

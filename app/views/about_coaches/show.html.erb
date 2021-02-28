@@ -1,0 +1,15 @@
+<h1>ITコーチになろう！</h1>
+
+<% if user_signed_in? %>
+
+  <% if current_user.coach %>
+    <%= link_to  "コーチになる",mypage_path %>
+  <% else %>
+    <%= link_to "コーチになる", coaches_path, method: :post %>
+  <% end %>
+
+<% else %>
+
+  <%= link_to "コーチになる", new_user_registration_path %>
+
+<% end %>
