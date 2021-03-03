@@ -4,6 +4,7 @@ class CoachesController < ApplicationController
 
   def show
     @coach = Coach.find(params[:id])
+    @user = @coach.user
   end
 
   def index

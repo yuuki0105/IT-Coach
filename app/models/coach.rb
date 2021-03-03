@@ -37,7 +37,7 @@ class Coach < ApplicationRecord
     skills = Skill.where('name LIKE ?', "%#{keyword}%").pluck(:id)
     users = User.joins(:coach).eager_load(:user_skills).where('name LIKE ? OR profile LIKE ? OR user_skills.id in (?)', "%#{keyword}%","%#{keyword}%",skills.join(",")).distinct.pluck(:id)
 
-    eager_load(:careers,:portfolios).where('careers.organization LIKE ? OR careers.role LIKE ? OR portfolios.title LIKE ? OR user_id in (?)', "%#{keyword}%","%#{keyword}%","%#{keyword}%" ,users.join(","))
+    eager_load(:careers,:portfolios,:abilities).where('careers.organization LIKE ? OR careers.role LIKE ? OR portfolios.title LIKE ? OR abilities.content LIKE ? OR user_id in (?)', "%#{keyword}%","%#{keyword}%","%#{keyword}%","%#{keyword}%" ,users.join(","))
 
   end
 
