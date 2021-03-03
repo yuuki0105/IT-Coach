@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :plans, only: [:new, :create, :edit, :update]
     resources :careers, only: [:new, :create, :edit, :update, :destroy]
     resources :portfolios, only: [:new, :create, :edit, :update, :destroy]
+    resources :abilities, only: [:new, :create, :edit, :update, :destroy]
     resources :yen_per_hours, only: [:new, :create, :edit, :update]
   end
 
