@@ -18,6 +18,33 @@
 
   <% end %>
 
+<%= @coach.examination_status.name %>
+
+<% @user.skills.each do |skill| %>
+  <%= skill.name %>
+<% end %>
+
+<% if @coach.yen_per_hour %>
+  <p>¥<%= @coach.yen_per_hour.price %>/時間</p>
+<% end %>
+
+<%= time_ago_in_words(@user.last_sign_in_at) %>前
+
+<h2>プロフィール</h2>
+<%= @user.profile %>
+
+<h2>できること</h2>
+<% @coach.abilities.each do |ability| %>
+  <%= ability.content %>
+<% end %>
+
+<h2>スキル</h2>
+<% @user.user_skills.each do |user_skill| %>
+  <%= user_skill.skill.name %>
+  <p>レベル<%= user_skill.level %></p>
+  <p>経験年数<%= user_skill.experience_year %>年</p>
+<% end %>
+
 <h2>キャリア</h2>
 <% @coach.careers.each do |career| %>
   <%= link_to career.organization,edit_coach_career_path(coach_id: @coach.id, id: career.id) %><br>
@@ -31,5 +58,4 @@
   <%= link_to portfolio.url, portfolio.url %><br>
 <% end %>
 
-
-<h2><%= link_to "メッセージする",user_rooms_path(user_id: @coach.user_id), method: :post %></h2>
+<h2><%= link_to "メッセージする",user_rooms_path(user_id: @user.id), method: :post %></h2>
