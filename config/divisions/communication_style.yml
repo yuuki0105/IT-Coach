@@ -1,9 +1,0 @@
-- id: 1
-  name: ビデオ
-  type: video
-- id: 2
-  name: チャット
-  type: chat
-- id: 3
-  name: ビデオ&チャット
-  type: video_and_chat

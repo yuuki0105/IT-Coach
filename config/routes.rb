@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   resources :notifications, only: [:index]
 
   resources :coaches, only: [:show, :index, :create] do
-    resources :plans, only: [:new, :create, :edit, :update]
     resources :careers, only: [:new, :create, :edit, :update, :destroy]
     resources :portfolios, only: [:new, :create, :edit, :update, :destroy]
     resources :abilities, only: [:new, :create, :edit, :update, :destroy]
