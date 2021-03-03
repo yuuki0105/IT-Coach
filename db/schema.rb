@@ -92,21 +92,6 @@ ActiveRecord::Schema.define(version: 2021_03_03_023652) do
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
-  create_table "plans", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "coach_id", null: false
-    t.string "title", null: false
-    t.integer "term_id", null: false
-    t.integer "communication_style_id", null: false
-    t.integer "fee", null: false
-    t.string "target", null: false
-    t.text "content", null: false
-    t.boolean "published", default: true, null: false
-    t.boolean "deleted", default: false, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["coach_id"], name: "index_plans_on_coach_id"
-  end
-
   create_table "portfolios", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "coach_id", null: false
     t.string "title", null: false
@@ -208,7 +193,6 @@ ActiveRecord::Schema.define(version: 2021_03_03_023652) do
   add_foreign_key "messages", "users"
   add_foreign_key "notifications", "messages"
   add_foreign_key "notifications", "users"
-  add_foreign_key "plans", "coaches"
   add_foreign_key "portfolios", "coaches"
   add_foreign_key "rooms", "users"
   add_foreign_key "rooms", "users", column: "other_user_id"

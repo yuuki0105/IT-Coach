@@ -13,19 +13,6 @@
 <%= @user.profile %><br>
 <%= link_to "プロフィールを編集する",edit_mypage_profile_path %><br>
 
-<% if @coach %>
-
-<h2>プラン</h2>
-<% @coach.plans.each do |plan| %>
-  <%= link_to plan.title,edit_coach_plan_path(coach_id: @coach.id, id: plan.id) %><br>
-  <%= plan.communication_style.name %><br>
-  <%= plan.term.name %><br>
-  <%= plan.fee %><br>
-<% end %>
-<%= link_to "プランを新規作成",new_coach_plan_path(coach_id: @coach.id) %><br>
-
-<% end %>
-
 <h2>スキル</h2>
 
 <% @user.user_skills.each do |user_skill| %>
