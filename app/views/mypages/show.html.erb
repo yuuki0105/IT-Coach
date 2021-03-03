@@ -37,6 +37,12 @@
 
 <% if @coach %>
 
+<h2>できること</h2>
+<% @coach.abilities.each do |ability| %>
+  <%= link_to ability.content,edit_coach_ability_path(coach_id: @coach.id, id: ability.id) %><br>
+<% end %>
+<%= link_to "できることを新規作成",new_coach_ability_path(coach_id: @coach.id) %><br>
+
 <h2>時給</h2>
 
   <% if @coach.yen_per_hour %>

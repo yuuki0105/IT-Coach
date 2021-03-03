@@ -25,6 +25,7 @@ class Coach < ApplicationRecord
   has_many :plans, dependent: :destroy
   has_many :careers, dependent: :destroy
   has_many :portfolios, dependent: :destroy
+  has_many :abilities, dependent: :destroy
   has_one :yen_per_hour, dependent: :destroy
 
   validates :schedule_confirmed, inclusion: { in: [true, false] }
