@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_03_023652) do
+ActiveRecord::Schema.define(version: 2021_03_05_143410) do
 
   create_table "abilities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "coach_id", null: false
@@ -156,6 +156,15 @@ ActiveRecord::Schema.define(version: 2021_03_03_023652) do
     t.index ["user_id"], name: "index_user_skills_on_user_id"
   end
 
+  create_table "user_want_skills", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "skill_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["skill_id"], name: "index_user_want_skills_on_skill_id"
+    t.index ["user_id"], name: "index_user_want_skills_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -202,5 +211,7 @@ ActiveRecord::Schema.define(version: 2021_03_03_023652) do
   add_foreign_key "user_follows", "users", column: "follow_id"
   add_foreign_key "user_skills", "skills"
   add_foreign_key "user_skills", "users"
+  add_foreign_key "user_want_skills", "skills"
+  add_foreign_key "user_want_skills", "users"
   add_foreign_key "yen_per_hours", "coaches"
 end
