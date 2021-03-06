@@ -169,6 +169,7 @@ ActiveRecord::Schema.define(version: 2021_03_05_143410) do
     t.string "name", null: false
     t.string "email", null: false
     t.string "encrypted_password", null: false
+    t.boolean "password_create_myself", default: true, null: false, comment: "自分でパスワードを設定したか否か"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
