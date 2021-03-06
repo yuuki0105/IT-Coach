@@ -275,7 +275,7 @@ Devise.setup do |config|
 
   config.omniauth :facebook, Rails.application.credentials.facebook[:app_id], Rails.application.credentials.facebook[:secret_key_id], scope: %w(email)
 
-  config.omniauth :twitter, Rails.application.credentials.twitter[:api_key], Rails.application.credentials.twitter[:api_secret_key], scope: %w(email), callback_url: 'http://localhost:3000/users/auth/twitter/callback'
+  config.omniauth :twitter, Rails.application.credentials.twitter[:api_key], Rails.application.credentials.twitter[:api_secret_key], scope: %w(email)
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

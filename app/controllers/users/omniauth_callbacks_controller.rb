@@ -1,5 +1,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
+  require "open-uri"
+
   def facebook
     @omniauth = request.env['omniauth.auth']
       if @omniauth.present?
@@ -29,6 +31,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     unless @profile
       @profile = SnsAccount.new(provider: @omniauth['provider'], uid: @omniauth['uid'])
       @profile.user = current_user || User.create!(name: @omniauth['info']['name'], email: @omniauth['info']['email'], password: Devise.friendly_token)
+      unless @profile.user.image.attached?
+        image = open(@omniauth['info']['image'])
+        @profile.user.image.attach(io: image, filename: 'user.png')
+      end
       @profile.save!
     end
 
