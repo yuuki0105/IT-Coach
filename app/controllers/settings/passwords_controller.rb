@@ -12,9 +12,11 @@ class Settings::PasswordsController < ApplicationController
       return render :edit
     end
 
-    unless @user.valid_password?(current_user_params[:current_password])
-      flash[:error] = "パスワード更新に失敗しました"
-      return render :edit
+    if @user.password_create_myself
+      unless @user.valid_password?(current_user_params[:current_password])
+        flash[:error] = "パスワード更新に失敗しました"
+        return render :edit
+      end
     end
 
     if @user.update(user_params)
@@ -34,7 +36,7 @@ class Settings::PasswordsController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:password, :password_confirmation)
+      params.require(:user).permit(:password, :password_confirmation).merge(password_create_myself: true)
     end
 
 end

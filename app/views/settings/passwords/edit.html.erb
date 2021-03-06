@@ -1,9 +1,13 @@
 <%= form_with model: @user, url: setting_password_path do |form| %>
 
-  <div class="field">
-    <%= form.label :current_password %><br />
-    <%= form.password_field :current_password, autofocus: true %>
-  </div>
+  <% if @user.password_create_myself %>
+
+    <div class="field">
+      <%= form.label :current_password %><br />
+      <%= form.password_field :current_password, autofocus: true %>
+    </div>
+
+  <% end %>
 
   <div class="field">
     <%= form.label :password %><br />

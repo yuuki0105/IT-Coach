@@ -9,6 +9,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       ## Database authenticatable
       t.string :email,              null: false, uniqueness: true
       t.string :encrypted_password, null: false
+      t.boolean :password_create_myself, default: true, null: false, comment:"自分でパスワードを設定したか否か"
 
       ## Recoverable
       t.string   :reset_password_token
