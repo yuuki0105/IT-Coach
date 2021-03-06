@@ -8,4 +8,9 @@ class UserWantSkillsController < ApplicationController
   def create
   end
 
+  private
+  def user_want_skill_params
+    params.require(:user).permit(:user_want_skills)
+  end
+
 end
