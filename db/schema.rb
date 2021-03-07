@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2021_03_03_023652) do
 
   create_table "coaches", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.boolean "schedule_confirmed", default: false, null: false
+    t.boolean "examination_interview_date_confirmed", default: false, null: false, comment: "審査面談日程の確定"
     t.integer "examination_status_id", default: 1, null: false
     t.date "examination_result_date", comment: "審査結果日"
     t.datetime "created_at", precision: 6, null: false

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :portfolios, only: [:new, :create, :edit, :update, :destroy]
     resources :abilities, only: [:new, :create, :edit, :update, :destroy]
     resources :yen_per_hours, only: [:new, :create, :edit, :update]
+    resource :examination_interview_date, only: [:show, :update]
   end
 
   resource :menu, only: [:show]
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
   end
 
   resource :about_coach, only: [:show]
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
