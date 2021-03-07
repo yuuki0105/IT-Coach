@@ -16,6 +16,9 @@
     function(e) {
       if (isCalendlyEvent(e)) {
         console.log(e.data);
+        if(e.data.event === "calendly.event_scheduled"){
+          fetch(location.href, { method: 'PUT' })
+        }
       }
     }
   );
