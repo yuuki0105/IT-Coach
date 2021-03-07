@@ -53,6 +53,9 @@
 <% end %>
 <%= link_to "ポートフォリオを新規作成",new_coach_portfolio_path(coach_id: @coach.id) %><br>
 
+<h2>審査面談日程</h2>
+<%= link_to "審査面談日程を入力",coach_examination_interview_date_path(coach_id: @coach.id) %><br>
+
 <h2>コーチ審査ステータス</h2>
 <%= @coach.examination_status.name %><br>
 <%= @coach.examination_status.comment %>
