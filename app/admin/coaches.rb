@@ -8,4 +8,19 @@ ActiveAdmin.register Coach do
   # Uncomment all parameters which should be permitted for assignment
   #
 
+  form do |f|
+
+    unless f.object.examination_result_date
+      f.object.examination_result_date = Date.today
+    end
+
+    f.inputs do
+      f.input :user_id
+      f.input :examination_interview_date_confirmed
+      f.input :examination_status_id
+      f.input :examination_result_date
+    end
+    f.actions
+  end
+
 end
