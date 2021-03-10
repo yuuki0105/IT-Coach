@@ -8,7 +8,11 @@
 
   <div class="field">
 
-    <%= form.collection_check_boxes :want_skills, @skills, :id, :name %>
+    <p>website</p>
+    <%= form.collection_check_boxes :want_skills, @website_skills, :id, :name %>
+
+    <p>ec</p>
+    <%= form.collection_check_boxes :want_skills, @e_commerce_skills, :id, :name %>
 
   </div>
 

@@ -2,7 +2,8 @@ class UserWantSkillsController < ApplicationController
 
   def new
     @user = current_user
-    @skills = Skill.all
+    @website_skills = Skill.where(skill_category_id: 1)
+    @e_commerce_skills = Skill.where(skill_category_id: 2)
   end
 
   def create
