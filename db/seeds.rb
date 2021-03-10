@@ -18,7 +18,8 @@ SkillCategory.create([
 Skill.create([
   {name:'Wordpress',en_name: 'wordpress',skill_category_id:1},
   #後からfindbyの書き方に変える
-  {name:'Wix',en_name: 'wix',skill_category_id:1}
+  {name:'Wix',en_name: 'wix',skill_category_id:1},
+  {name:'shopify',en_name: 'shopify',skill_category_id:2},
 ])
 #後から既に入っているファイルを作らないようにする
 

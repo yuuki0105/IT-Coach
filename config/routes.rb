@@ -33,6 +33,8 @@ Rails.application.routes.draw do
 
   resources :user_follows, only: [:index, :create, :destroy]
 
+  resources :user_want_skills, only: [:new, :create]
+
   resource :setting, only: [:show] do
     resource :email, only: [:edit, :update], module: :settings
     resource :password, only: [:edit, :update], module: :settings
