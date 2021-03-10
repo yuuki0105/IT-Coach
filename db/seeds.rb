@@ -20,5 +20,6 @@ Skill.create([
   #後からfindbyの書き方に変える
   {name:'Wix',en_name: 'wix',skill_category_id:1}
 ])
-
 #後から既に入っているファイルを作らないようにする
+
+AdminUser.create!(email: Rails.application.credentials.admin[:email], password: Rails.application.credentials.admin[:password], password_confirmation: Rails.application.credentials.admin[:password])
