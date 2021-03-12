@@ -184,8 +184,8 @@ ActiveRecord::Schema.define(version: 2021_03_12_141551) do
 
   create_table "user_want_abilities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.integer "technology_id", null: false
-    t.integer "communication_id", null: false
+    t.integer "technology_degree_id", null: false
+    t.integer "communication_degree_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_user_want_abilities_on_user_id"
