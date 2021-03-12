@@ -8,11 +8,10 @@
 
   <div class="field">
 
-    <p>website</p>
-    <%= form.collection_check_boxes :want_skills, @website_skills, :id, :name %>
-
-    <p>ec</p>
-    <%= form.collection_check_boxes :want_skills, @e_commerce_skills, :id, :name %>
+    <% @skill_categories.each do |skill_category| %>
+      <h3><%= skill_category[:title] %></h3>
+      <%= form.collection_check_boxes :want_skills, skill_category[:skills], :id, :name %>
+    <% end %>
 
   </div>
 

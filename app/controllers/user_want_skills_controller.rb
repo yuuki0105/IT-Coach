@@ -2,8 +2,11 @@ class UserWantSkillsController < ApplicationController
 
   def new
     @user = current_user
-    @website_skills = Skill.where(skill_category_id: 1)
-    @e_commerce_skills = Skill.where(skill_category_id: 2)
+    @skill_categories = []
+    SkillCategory.all.each do |skill_category|
+      @skill_categories << {title: skill_category.name, skills: Skill.where(skill_category_id: skill_category.id)}
+    end
+
   end
 
   def create
