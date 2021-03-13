@@ -1,0 +1,4 @@
+<%= render "registrations_abilities/form" %>
+
+<%= link_to "削除", coach_ability_path(coach_id: @ability.coach.id, id: @ability.id),method: :delete,data: {confirm: "本当に削除しますか？"} %><br>
+

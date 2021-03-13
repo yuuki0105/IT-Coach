@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     resources :abilities, only: [:new, :create, :edit, :update, :destroy]
     resources :yen_per_hours, only: [:new, :create, :edit, :update]
     resource :examination_interview_date, only: [:show, :update]
+
+    resources :registrations_abilities, only: [:new, :create, :edit, :update, :destroy]
   end
 
   resource :menu, only: [:show]
