@@ -9,15 +9,20 @@ class ApplicationController < ActionController::Base
 
     # ログイン後のリダイレクト先
     def after_sign_in_path_for(resource)
-      mypage_path
+      if resource.is_a?(AdminUser)
+        admin_root_path
+      else
+        mypage_path
+      end
     end
 
+    private
     def basic_auth
-      if request.path.start_with?("/admin")
+        return unless Rails.env.production?
+        return unless request.path.start_with?("/admin")
         authenticate_or_request_with_http_basic do |id, password|
           id == Rails.application.credentials.basic_auth[:id] && password == Rails.application. credentials.basic_auth[:password]
         end
-      end
     end
 
 end

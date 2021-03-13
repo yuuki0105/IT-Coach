@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# 起動方法
+1. gem install foreman
+2. foreman start
