@@ -53,7 +53,7 @@ class User < ApplicationRecord
   has_many :followers, through: :user_followers, source: :user
 
   has_one_attached :image
-  accepts_nested_attributes_for :user_skills
+  accepts_nested_attributes_for :user_skills, allow_destroy: true, reject_if: :all_blank
 
   validates :name, presence: true, length: { maximum: 60 }
   validates :profile, length: { maximum: 255 }

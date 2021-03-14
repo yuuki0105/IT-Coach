@@ -1,6 +1,8 @@
 class Registrations::ProfilesController < ApplicationController
 
-  def edit
+  include AuthenticateUser
+
+  def show
     @user = current_user
   end
 
@@ -9,7 +11,7 @@ class Registrations::ProfilesController < ApplicationController
     if @user.update(user_params)
       redirect_to mypage_path
     else
-      render :edit
+      render :show
     end
 
   end

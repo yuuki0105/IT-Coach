@@ -1,0 +1,16 @@
+<%= form_with model: model, url: registrations_user_skills_path, method: :put do |form| %>
+
+  <%= render 'shared/error_messages', model: form.object %>
+
+  <div id="user_skills">
+    <%= link_to_add_association '追加する', form, :user_skills, data: { association_insertion_method: 'append' } %>
+    <%= form.fields_for :user_skills do |user_skill| %>
+     <%= render "registrations/user_skills/user_skill_fields", f: user_skill %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "更新する" %>
+  </div>
+
+<% end %>

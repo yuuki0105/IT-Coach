@@ -1,4 +1,4 @@
-class Registrations::ImagesController < ApplicationController
+class Registrations::UserSkillsController < ApplicationController
 
   include AuthenticateUser
 
@@ -18,7 +18,8 @@ class Registrations::ImagesController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:image)
+    params.require(:user).permit(user_skills_attributes: [:id, :skill_id, :experience_year, :level, :_destroy])
   end
+
 
 end
