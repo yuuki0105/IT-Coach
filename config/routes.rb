@@ -25,7 +25,9 @@ Rails.application.routes.draw do
   end
 
   namespace :registrations do
+    resource :image, only: [:edit, :update]
     resources :abilities, only: [:new, :create]
+
   end
 
   resource :menu, only: [:show]
