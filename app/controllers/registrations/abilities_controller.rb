@@ -1,4 +1,4 @@
-class RegistrationsAbilitiesController < ApplicationController
+class Registrations::AbilitiesController < ApplicationController
 
   include AuthenticateUser
 
@@ -11,7 +11,7 @@ class RegistrationsAbilitiesController < ApplicationController
     @coach.attributes = ability_params
     @coach.abilities = @coach.abilities.select{ |a| a.valid? }
     if @coach.save
-      redirect_to new_coach_registrations_ability_path(@coach)
+      redirect_to new_registrations_ability_path
     else
       render :new
     end

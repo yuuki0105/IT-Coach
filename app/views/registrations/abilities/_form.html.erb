@@ -1,11 +1,11 @@
-<%= form_with model: model, url: coach_registrations_abilities_path, method: :post do |form| %>
+<%= form_with model: model, url: registrations_abilities_path, method: :post do |form| %>
 
   <%= render 'shared/error_messages', model: form.object %>
 
   <div id="abilities">
     <%= link_to_add_association '追加する', form, :abilities, data: { association_insertion_method: 'append' } %>
     <%= form.fields_for :abilities do |ability| %>
-     <%= render "registrations_abilities/ability_fields", f: ability %>
+     <%= render "registrations/abilities/ability_fields", f: ability %>
     <% end %>
   </div>
 
