@@ -11,7 +11,7 @@ class Registrations::AbilitiesController < ApplicationController
     @coach.attributes = ability_params
     @coach.abilities = @coach.abilities.select{ |a| a.valid? }
     if @coach.save
-      redirect_to new_registrations_ability_path
+      redirect_to mypage_path
     else
       render :new
     end

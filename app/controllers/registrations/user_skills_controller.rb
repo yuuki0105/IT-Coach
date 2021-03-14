@@ -9,7 +9,7 @@ class Registrations::UserSkillsController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      redirect_to mypage_path
+      redirect_to registrations_abilities_path
     else
       render :show
     end
