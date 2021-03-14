@@ -24,6 +24,10 @@ Rails.application.routes.draw do
     resource :examination_interview_date, only: [:show, :update]
   end
 
+  namespace :registrations do
+    resources :abilities, only: [:new, :create]
+  end
+
   resource :menu, only: [:show]
 
   resource :mypage, only: [:show, :edit, :update] do
