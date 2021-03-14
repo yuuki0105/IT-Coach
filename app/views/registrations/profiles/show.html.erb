@@ -1,0 +1,13 @@
+<h2>プロフィール</h2>
+
+<%= form_with model: @user, url: registrations_profile_path, method: :put do |form| %>
+
+  <%= form.text_area :profile %>
+
+  <div class="actions">
+    <%= form.submit "次へ" %>
+  </div>
+
+<% end %>
+
+<%= link_to "戻る", registrations_image_path %>

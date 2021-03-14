@@ -25,7 +25,11 @@ Rails.application.routes.draw do
   end
 
   namespace :registrations do
-    resources :abilities, only: [:new, :create]
+    resource :image, only: [:show, :update]
+    resource :profile, only: [:show, :update]
+    resource :user_skills, only: [:show, :update]
+    resource :abilities, only: [:show, :update]
+
   end
 
   resource :menu, only: [:show]

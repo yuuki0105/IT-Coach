@@ -2,10 +2,10 @@
 
 <% if user_signed_in? %>
 
-  <% if current_user.coach %>
+  <% if current_user.coach&.examination_status != ExaminationStatus::BEFORE_EXAMINATION %>
     <%= link_to  "コーチになる",mypage_path %>
   <% else %>
-    <%= link_to "コーチになる", coaches_path, method: :post %>
+    <%= link_to "コーチになる", registrations_image_path %>
   <% end %>
 
 <% else %>
