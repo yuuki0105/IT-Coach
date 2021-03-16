@@ -29,6 +29,7 @@ class Coach < ApplicationRecord
 
   accepts_nested_attributes_for :abilities, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :careers, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :portfolios, allow_destroy: true, reject_if: :all_blank
 
   validates :examination_interview_date_confirmed, inclusion: { in: [true, false] }
   validates :examination_status_id, presence: true, inclusion: { in: ExaminationStatus.pluck(:id) }

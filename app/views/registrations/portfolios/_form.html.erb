@@ -1,0 +1,16 @@
+<%= form_with model: model, url: registrations_portfolios_path, method: :put do |form| %>
+
+  <%= render 'shared/error_messages', model: form.object %>
+
+  <div id="portfolios">
+    <%= link_to_add_association '追加する', form, :portfolios, data: { association_insertion_method: 'append' } %>
+    <%= form.fields_for :portfolios do |portfolio| %>
+     <%= render "registrations/portfolios/portfolio_fields", f: portfolio %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "次へ" %>
+  </div>
+
+<% end %>

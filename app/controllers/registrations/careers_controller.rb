@@ -11,7 +11,7 @@ class Registrations::CareersController < ApplicationController
     @coach.attributes = career_params
     @coach.careers = @coach.careers.select{ |a| a.valid? }
     if @coach.save
-      # redirect_to registrations_yen_per_hours_path
+      redirect_to registrations_portfolios_path
     else
       render :new
     end
