@@ -1,0 +1,13 @@
+<h2>時給</h2>
+
+<%= form_with model: @yen_per_hour, url: registrations_yen_per_hours_path, method: :put do |form| %>
+
+  <%= form.number_field :price %>
+
+  <div class="actions">
+    <%= form.submit "次へ" %>
+  </div>
+
+<% end %>
+
+<%= link_to "戻る", registrations_abilities_path %>

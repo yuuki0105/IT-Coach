@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     resource :profile, only: [:show, :update]
     resource :user_skills, only: [:show, :update]
     resource :abilities, only: [:show, :update]
-
+    resource :yen_per_hours, only: [:show, :update]
   end
 
   resource :menu, only: [:show]
