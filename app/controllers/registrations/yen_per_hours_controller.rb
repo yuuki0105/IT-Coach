@@ -4,12 +4,13 @@ class Registrations::YenPerHoursController < ApplicationController
   before_action :set_yen_per_hour
 
   def show
+    @coach = Coach.find_or_create_by(user: current_user)
   end
 
   def update
      @yen_per_hour.attributes = yen_per_hour_params
     if @yen_per_hour.save
-      # redirect_to registrations_career_path
+      redirect_to registrations_careers_path
     else
       render :show
     end
