@@ -11,7 +11,7 @@ class Registrations::PortfoliosController < ApplicationController
     @coach.attributes = portfolio_params
     @coach.portfolios = @coach.portfolios.select{ |a| a.valid? }
     if @coach.save
-      # redirect_to registrations_yen_per_hours_path
+      redirect_to registrations_examination_interview_date_path
     else
       render :new
     end

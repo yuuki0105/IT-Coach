@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resource :yen_per_hours, only: [:show, :update]
     resource :careers, only: [:show, :update]
     resource :portfolios, only: [:show, :update]
+    resource :examination_interview_date, only: [:show, :update]
   end
 
   resource :menu, only: [:show]
