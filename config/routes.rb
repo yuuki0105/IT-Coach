@@ -21,7 +21,6 @@ Rails.application.routes.draw do
     resources :portfolios, only: [:new, :create, :edit, :update, :destroy]
     resources :abilities, only: [:new, :create, :edit, :update, :destroy]
     resources :yen_per_hours, only: [:new, :create, :edit, :update]
-    resource :examination_interview_date, only: [:show, :update]
   end
 
   namespace :registrations do
@@ -29,7 +28,10 @@ Rails.application.routes.draw do
     resource :profile, only: [:show, :update]
     resource :user_skills, only: [:show, :update]
     resource :abilities, only: [:show, :update]
-
+    resource :yen_per_hours, only: [:show, :update]
+    resource :careers, only: [:show, :update]
+    resource :portfolios, only: [:show, :update]
+    resource :examination_interview_date, only: [:show, :update]
   end
 
   resource :menu, only: [:show]
