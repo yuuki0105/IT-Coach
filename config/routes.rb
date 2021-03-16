@@ -21,7 +21,6 @@ Rails.application.routes.draw do
     resources :portfolios, only: [:new, :create, :edit, :update, :destroy]
     resources :abilities, only: [:new, :create, :edit, :update, :destroy]
     resources :yen_per_hours, only: [:new, :create, :edit, :update]
-    resource :examination_interview_date, only: [:show, :update]
   end
 
   namespace :registrations do
