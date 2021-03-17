@@ -45,4 +45,40 @@ class Coach < ApplicationRecord
 
   end
 
+  def registration_complete?
+    return false unless registration_complete_without_interview_date?
+    return false unless examination_interview_date_confirmed
+    true
+  end
+
+  def registration_complete_without_interview_date?
+    return false if user.image.blank?
+    return false if user.profile.blank?
+    return false if user.user_skills.blank?
+    return false if abilities.blank?
+    return false if yen_per_hour.blank?
+    return false if careers.blank?
+    return false if portfolios.blank?
+    true
+  end
+
+  def registration_complete_or_after_examination?
+    return true if self.passed?
+    return true if self.failed?
+    return true if self.registration_complete?
+    false
+  end
+
+  def before_examination?
+    self.examination_status_id == ExaminationStatus::BEFORE_EXAMINATION.id
+  end
+
+  def passed?
+    self.examination_status_id == ExaminationStatus::PASSED.id
+  end
+
+  def failed?
+    self.examination_status_id == ExaminationStatus::FAILED.id
+  end
+
 end

@@ -2,6 +2,8 @@
 
 <%= form_with model: @user, url: registrations_image_path, method: :put do |form| %>
 
+  <%= form.hidden_field :id %>
+
   <% if @user.image.attached? %>
     <%= image_tag @user.image %>
   <% else %>
@@ -11,7 +13,7 @@
   <%= form.file_field :image %>
 
   <div class="actions">
-    <%= form.submit "次へ" %>
+    <%= form.submit "保存して次へ" %>
   </div>
 
 <% end %>
