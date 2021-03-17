@@ -1,7 +1,5 @@
-<% if flash[:error].present? %>
-  <div class="alert-area">
-    <ul class="alert-list">
-      <li><%= flash[:error] %></li>
-    </ul>
-  </div>
+<% flash.each do |key, value| %>
+  <ul class="alert alert-<%= key %>">
+    <li><%= value %></li>
+  </ul>
 <% end %>

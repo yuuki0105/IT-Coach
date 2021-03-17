@@ -1,6 +1,5 @@
-class Registrations::YenPerHoursController < ApplicationController
+class Registrations::YenPerHoursController < Registrations::BaseController
 
-  include AuthenticateUser
   before_action :set_yen_per_hour
 
   def show

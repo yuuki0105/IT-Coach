@@ -1,6 +1,4 @@
-class Registrations::ProfilesController < ApplicationController
-
-  include AuthenticateUser
+class Registrations::ProfilesController < Registrations::BaseController
 
   def show
     @user = current_user
