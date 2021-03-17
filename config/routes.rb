@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 
   resources :user_want_skills, only: [:new, :create]
   resources :user_want_abilities, only: [:new, :create]
+  resources :user_want_budgets, only: [:new, :create]
 
   resource :setting, only: [:show] do
     resource :email, only: [:edit, :update], module: :settings
