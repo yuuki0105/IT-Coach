@@ -18,6 +18,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class UserWantAbility < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   belongs_to :technology_degree
   belongs_to :communication_degree
