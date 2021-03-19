@@ -2,6 +2,8 @@ class UserWantBudgetsController < ApplicationController
 
   def new
     @user_want_budget = UserWantBudget.new
+    @want_budgets = WantBudget.all
+    @want_yen_per_hours = WantYenPerHour.all
   end
 
   def create
