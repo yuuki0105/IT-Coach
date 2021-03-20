@@ -1,6 +1,6 @@
 class User::Mailer < ApplicationMailer
 
-  default from: 'info@it_coach.com'
+  default from: 'komatsu@member.co.jp'
 
   include User::Emails::Password
 
