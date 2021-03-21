@@ -75,9 +75,8 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   ActionMailer::Base.smtp_settings = {
-
     user_name: Rails.application.credentials.sendgrid[:user_name],
-    password: Rails.application.credentials.sendgrid[:password],
+    password: Rails.application.credentials.sendgrid[:api_key],
     domain: 'member.co.jp',
     address: 'smtp.sendgrid.net',
     port: 587,
