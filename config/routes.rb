@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :rooms, only: [:create], module: :users
   end
 
+  resource :reset_password, only: [:show, :create, :edit, :update]
+
   resources :rooms, only: [:show, :index] do
     resources :messages, only: [:create], module: :rooms
   end

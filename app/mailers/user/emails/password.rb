@@ -2,7 +2,7 @@ module User::Emails::Password
 
   extend ActiveSupport::Concern
 
-  def password_reset_email(user)
+  def reset_password_email(user)
     @user = user
 
     from = SendGrid::Email.new(email: 'komatsu@member.co.jp')

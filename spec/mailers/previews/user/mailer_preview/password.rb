@@ -1,4 +1,4 @@
-# Preview all emails at http://localhost:3000/rails/mailers/user/password_reset
+# Preview all emails at http://localhost:3000/rails/mailers/user/reset_password
 
 class User::MailerPreview
 
@@ -6,9 +6,9 @@ class User::MailerPreview
   extend ActiveSupport::Concern
     included do
 
-      def password_reset_email
+      def reset_password_email
         @user = User.find_by(id: params[:id]) || User.last
-        User::Mailer.password_reset_email(@user)
+        User::Mailer.reset_password_email(@user)
       end
 
     end
