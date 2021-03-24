@@ -65,7 +65,7 @@ group :development do
 
   # modelファイルにテーブル情報を自動で書いてくれるgem
   gem 'annotate'
-
+  gem 'letter_opener_web'
 
 end
 
