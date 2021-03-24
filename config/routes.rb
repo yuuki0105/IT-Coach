@@ -3,12 +3,15 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
   root "home#show"
 
   resources :users, only: [:show] do
     resources :rooms, only: [:create], module: :users
   end
+
+  resource :reset_password, only: [:show, :create, :edit, :update]
 
   resources :rooms, only: [:show, :index] do
     resources :messages, only: [:create], module: :rooms

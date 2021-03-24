@@ -40,8 +40,6 @@ gem 'activeadmin'
 
 gem "cocoon"
 
-gem "sendgrid-ruby"
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -65,7 +63,7 @@ group :development do
 
   # modelファイルにテーブル情報を自動で書いてくれるgem
   gem 'annotate'
-
+  gem 'letter_opener_web'
 
 end
 

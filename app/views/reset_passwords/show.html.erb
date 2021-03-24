@@ -1,0 +1,10 @@
+<h1>パスワード変更</h1>
+
+<%= form_with url: reset_password_path do |f| %>
+
+<%= f.label :email , 'メールアドレス' %>
+<%= f.text_field :email %>
+
+<%= f.submit '送信する' %>
+
+<% end %>

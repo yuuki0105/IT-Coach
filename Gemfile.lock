@@ -154,6 +154,14 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
+    launchy (2.5.0)
+      addressable (~> 2.7)
+    letter_opener (1.7.0)
+      launchy (~> 2.2)
+    letter_opener_web (1.4.0)
+      actionmailer (>= 3.2)
+      letter_opener (~> 1.0)
+      railties (>= 3.2)
     listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -278,7 +286,6 @@ GEM
       rspec-support (~> 3.10)
     rspec-support (3.10.1)
     ruby2_keywords (0.0.4)
-    ruby_http_client (3.5.2)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -294,8 +301,6 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (2.3.1)
-    sendgrid-ruby (6.4.0)
-      ruby_http_client (~> 3.4)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -349,6 +354,7 @@ DEPENDENCIES
   devise
   factory_bot_rails
   jbuilder (~> 2.7)
+  letter_opener_web
   listen (~> 3.3)
   mysql2 (~> 0.5)
   omniauth
@@ -363,7 +369,6 @@ DEPENDENCIES
   rspec-rails
   sass-rails (>= 6)
   selenium-webdriver
-  sendgrid-ruby
   spring
   turbolinks (~> 5)
   tzinfo-data
