@@ -16,7 +16,7 @@ class UserWantBudgetsController < ApplicationController
 
   private
   def user_want_budget_params
-    params.require(:user_want_budget).permit(:will, :budget, :yen_per_hour).merge(user_id: current_user.id)
+    params.require(:user_want_budget).permit(:will, :want_budget_id, :want_yen_per_hour_id).merge(user_id: current_user.id)
   end
 
 end
