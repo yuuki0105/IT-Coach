@@ -1,13 +1,13 @@
 <h1>マイページ</h1>
 
+<%= @user.name %><br>
+<%= link_to "名前を編集する",edit_mypage_name_path %><br>
+
 <% if @user.image.attached? %>
   <%= image_tag @user.image %>
 <% else %>
   <%= image_tag "default_icon.png" %>
 <% end %>
-
-<%= @user.name %><br>
-<%= link_to "名前を編集する",edit_mypage_name_path %><br>
 
 <h2>プロフィール</h2>
 <%= @user.profile %><br>
