@@ -27,6 +27,10 @@ class Coach < ApplicationRecord
   has_many :abilities, dependent: :destroy
   has_one :yen_per_hour, dependent: :destroy
 
+  accepts_nested_attributes_for :abilities, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :careers, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :portfolios, allow_destroy: true, reject_if: :all_blank
+
   validates :examination_interview_date_confirmed, inclusion: { in: [true, false] }
   validates :examination_status_id, presence: true, inclusion: { in: ExaminationStatus.pluck(:id) }
 
@@ -39,6 +43,42 @@ class Coach < ApplicationRecord
 
     eager_load(:careers,:portfolios,:abilities).where('careers.organization LIKE ? OR careers.role LIKE ? OR portfolios.title LIKE ? OR abilities.content LIKE ? OR user_id in (?)', "%#{keyword}%","%#{keyword}%","%#{keyword}%","%#{keyword}%" ,users.join(","))
 
+  end
+
+  def registration_complete?
+    return false unless registration_complete_without_interview_date?
+    return false unless examination_interview_date_confirmed
+    true
+  end
+
+  def registration_complete_without_interview_date?
+    return false if user.image.blank?
+    return false if user.profile.blank?
+    return false if user.user_skills.blank?
+    return false if abilities.blank?
+    return false if yen_per_hour.blank?
+    return false if careers.blank?
+    return false if portfolios.blank?
+    true
+  end
+
+  def registration_complete_or_after_examination?
+    return true if self.passed?
+    return true if self.failed?
+    return true if self.registration_complete?
+    false
+  end
+
+  def before_examination?
+    self.examination_status_id == ExaminationStatus::BEFORE_EXAMINATION.id
+  end
+
+  def passed?
+    self.examination_status_id == ExaminationStatus::PASSED.id
+  end
+
+  def failed?
+    self.examination_status_id == ExaminationStatus::FAILED.id
   end
 
 end

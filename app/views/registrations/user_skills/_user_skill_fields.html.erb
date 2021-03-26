@@ -1,0 +1,21 @@
+<div class="nested-fields">
+
+<div class="field">
+    <%= f.label :skill_id %><br />
+    <%= f.select :skill_id,Skill.all.pluck(:name, :id) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :experience_year %><br />
+    <%= f.number_field :experience_year %>
+  </div>
+
+  <div class="field">
+    <%= f.label :level %><br />
+    <%= f.number_field :level %>
+  </div>
+
+  <%= link_to_remove_association "削除", f %>
+
+
+</div>

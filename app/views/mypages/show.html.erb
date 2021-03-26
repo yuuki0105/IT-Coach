@@ -1,5 +1,5 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>マイページ</h1>
+
 <p>Name <%= @user.name %></p>
 
 <% if @user.image.attached? %>
@@ -23,46 +23,56 @@
 <%= link_to "スキルを新規作成",new_mypage_user_skill_path %><br>
 
 <% if @coach %>
+  <% if @coach.registration_complete_or_after_examination? %>
 
-<h2>できること</h2>
-<% @coach.abilities.each do |ability| %>
-  <%= link_to ability.content,edit_coach_ability_path(coach_id: @coach.id, id: ability.id) %><br>
-<% end %>
-<%= link_to "できることを新規作成",new_coach_ability_path(coach_id: @coach.id) %><br>
+    <h2>できること</h2>
+    <% @coach.abilities.each do |ability| %>
+      <%= link_to ability.content,edit_coach_ability_path(coach_id: @coach.id, id: ability.id) %><br>
+    <% end %>
+    <%= link_to "できることを新規作成",new_coach_ability_path(coach_id: @coach.id) %><br>
 
-<h2>時給</h2>
+    <h2>時給</h2>
 
-  <% if @coach.yen_per_hour %>
-    <%= link_to @coach.yen_per_hour.price,edit_coach_yen_per_hour_path(coach_id: @coach.id, id: @coach.yen_per_hour.id) %><br>
-  <% else %>
-    <%= link_to "時給を新規作成",new_coach_yen_per_hour_path(coach_id: @coach.id) %><br>
+      <% if @coach.yen_per_hour %>
+        <%= link_to @coach.yen_per_hour.price,edit_coach_yen_per_hour_path(coach_id: @coach.id, id: @coach.yen_per_hour.id) %><br>
+      <% else %>
+        <%= link_to "時給を新規作成",new_coach_yen_per_hour_path(coach_id: @coach.id) %><br>
+      <% end %>
+
+    <h2>キャリア</h2>
+    <% @coach.careers.each do |career| %>
+      <%= link_to career.organization,edit_coach_career_path(coach_id: @coach.id, id: career.id) %><br>
+      <%= career.role %><br>
+      <%= career.start_month %> 〜　<%= career.end_month %><br>
+    <% end %>
+    <%= link_to "キャリアを新規作成",new_coach_career_path(coach_id: @coach.id) %><br>
+
+    <h2>ポートフォリオ</h2>
+    <% @coach.portfolios.each do |portfolio| %>
+      <%= link_to portfolio.title,edit_coach_portfolio_path(coach_id: @coach.id, id: portfolio.id) %><br>
+      <%= link_to portfolio.url, portfolio.url %><br>
+    <% end %>
+    <%= link_to "ポートフォリオを新規作成",new_coach_portfolio_path(coach_id: @coach.id) %><br>
+
   <% end %>
 
-<h2>キャリア</h2>
-<% @coach.careers.each do |career| %>
-  <%= link_to career.organization,edit_coach_career_path(coach_id: @coach.id, id: career.id) %><br>
-  <%= career.role %><br>
-  <%= career.start_month %> 〜　<%= career.end_month %><br>
-<% end %>
-<%= link_to "キャリアを新規作成",new_coach_career_path(coach_id: @coach.id) %><br>
+  <% unless @coach.passed? %>
+    <h2>コーチ審査ステータス</h2>
+  <% end %>
 
-<h2>ポートフォリオ</h2>
-<% @coach.portfolios.each do |portfolio| %>
-  <%= link_to portfolio.title,edit_coach_portfolio_path(coach_id: @coach.id, id: portfolio.id) %><br>
-  <%= link_to portfolio.url, portfolio.url %><br>
-<% end %>
-<%= link_to "ポートフォリオを新規作成",new_coach_portfolio_path(coach_id: @coach.id) %><br>
+  <% if @coach.before_examination? %>
+    <% if @coach.registration_complete? %>
+      <p>現在審査中です</p>
+      <p>面談後1週間ほどで結果通知を登録メールアドレスにお送りします</p>
+    <% else %>
+      <%= link_to "コーチ情報入力へ戻る",registrations_image_path %><br>
+      <p>コーチ審査に不足している項目があります</p>
+    <% end %>
 
-<h2>審査面談日程</h2>
-<% if @coach.examination_interview_date_confirmed %>
-  <p>審査面談日程は確定しています。</p><br>
-<% else %>
-  <%= link_to "審査面談日程を入力",coach_examination_interview_date_path(coach_id: @coach.id) %><br>
-<% end %>
-
-<h2>コーチ審査ステータス</h2>
-<%= @coach.examination_status.name %><br>
-<%= @coach.examination_status.comment %>
+  <% elsif @coach.failed? %>
+    <%= @coach.examination_status.name %><br>
+    <%= @coach.examination_status.comment %>
+  <% end %>
 
 <% end %>
 
