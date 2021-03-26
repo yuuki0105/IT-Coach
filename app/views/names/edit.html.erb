@@ -1,0 +1,16 @@
+<%= form_with model: @user, url: mypage_name_path do |form| %>
+
+  <%= render 'shared/error_messages', model: form.object %>
+
+  <h2>名前</h2>
+
+  <div class="field">
+    <%= form.label :name %><br />
+    <%= form.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "更新する" %>
+  </div>
+
+<% end %>
