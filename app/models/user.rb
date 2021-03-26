@@ -37,6 +37,7 @@ class User < ApplicationRecord
   has_one :coach, dependent: :destroy
   has_one :user_want_ability, dependent: :destroy
   has_one :user_want_budget, dependent: :destroy
+  has_one :user_want_free, dependent: :destroy
 
   has_many :sns_accounts, dependent: :destroy
   has_many :user_skills, dependent: :destroy
