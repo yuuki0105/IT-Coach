@@ -1,5 +1,7 @@
 class UserWantSkillsController < ApplicationController
 
+  include AuthenticateUser
+
   def new
     @user = current_user
     @skill_categories = []

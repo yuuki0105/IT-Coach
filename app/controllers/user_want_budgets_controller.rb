@@ -1,5 +1,7 @@
 class UserWantBudgetsController < ApplicationController
 
+  include AuthenticateUser
+
   def new
     @user_want_budget = UserWantBudget.new
     @want_budgets = WantBudget.all

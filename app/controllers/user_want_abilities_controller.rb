@@ -1,5 +1,7 @@
 class UserWantAbilitiesController < ApplicationController
 
+  include AuthenticateUser
+
   def new
     @user_want_ability = UserWantAbility.new
   end
