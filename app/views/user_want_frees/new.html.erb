@@ -1,0 +1,12 @@
+<%= form_with model: @user_want_free do |form| %>
+
+  <h2>その他</h2>
+  <p>何か希望することがあれば教えてください</p>
+
+  <%= form.text_area :content %>
+
+  <div class="actions">
+    <%= form.submit "完了" %>
+  </div>
+
+<% end %>

@@ -1,0 +1,20 @@
+<%= form_with model: @user_want_ability do |form| %>
+
+  <h2>求める能力</h2>
+  <p>ITコーチを選ぶ際に技術力をどのぐらい重視していますか？</p>
+
+  <%= form.radio_button :technology_degree_id, 1 %>とても重視している
+  <%= form.radio_button :technology_degree_id, 10, checked: true %>重視している
+  <%= form.radio_button :technology_degree_id, 20 %>あまり重視していない
+
+  <p>ITコーチを選ぶ際にコミュニケーション能力をどのぐらい重視していますか？</p>
+
+  <%= form.radio_button :communication_degree_id, 1 %>とても重視している
+  <%= form.radio_button :communication_degree_id, 10, checked: true %>重視している
+  <%= form.radio_button :communication_degree_id, 20 %>あまり重視していない
+
+  <div class="actions">
+    <%= form.submit "次へ" %>
+  </div>
+
+<% end %>

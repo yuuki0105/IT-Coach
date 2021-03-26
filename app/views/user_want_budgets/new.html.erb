@@ -1,0 +1,17 @@
+<%= form_with model: @user_want_budget do |form| %>
+
+  <h2>希望している予算</h2>
+  <p>ITコーチを活用して実現したいことと予算を教えてください</p>
+
+  <%= form.text_area :will %>
+  <p><%= form.select :want_budget_id, @want_budgets.pluck(:range, :id) %>円</p>
+
+  <p>希望するITコーチの時給目安を教えてください</p>
+
+  <p><%= form.select :want_yen_per_hour_id, @want_yen_per_hours.pluck(:range, :id) %>円</p>
+
+  <div class="actions">
+    <%= form.submit "次へ" %>
+  </div>
+
+<% end %>

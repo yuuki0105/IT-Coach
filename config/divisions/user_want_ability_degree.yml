@@ -1,0 +1,9 @@
+- id: 1
+  degree: とても重視している
+  type: high
+- id: 10
+  degree: 重視している
+  type: middle
+- id: 20
+  degree: あまり重視していない
+  type: low
