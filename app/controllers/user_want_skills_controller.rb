@@ -18,6 +18,7 @@ class UserWantSkillsController < ApplicationController
       user_want_skills << UserWantSkill.new(user_id: current_user.id, skill_id: skill_id)
     end
     UserWantSkill.import user_want_skills
+    redirect_to new_user_want_ability_path
   end
 
   private

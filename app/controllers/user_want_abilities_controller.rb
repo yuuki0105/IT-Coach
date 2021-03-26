@@ -9,6 +9,7 @@ class UserWantAbilitiesController < ApplicationController
   def create
     @user_want_ability = UserWantAbility.new(user_want_ability_params)
     if @user_want_ability.save
+      redirect_to new_user_want_budget_path
     else
       render :new
     end

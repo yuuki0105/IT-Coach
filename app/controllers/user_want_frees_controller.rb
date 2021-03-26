@@ -9,6 +9,8 @@ class UserWantFreesController < ApplicationController
   def create
     @user_want_free = UserWantFree.new(user_want_free_params)
     if @user_want_free.save
+      flash[:success] = "登録が完了しました"
+      redirect_to root_path
     else
       render :new
     end

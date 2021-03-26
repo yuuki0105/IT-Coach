@@ -11,6 +11,7 @@ class UserWantBudgetsController < ApplicationController
   def create
     @user_want_budget = UserWantBudget.new(user_want_budget_params)
     if @user_want_budget.save
+      redirect_to new_user_want_free_path
     else
       render :new
     end
