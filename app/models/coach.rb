@@ -34,6 +34,18 @@ class Coach < ApplicationRecord
   validates :examination_interview_date_confirmed, inclusion: { in: [true, false] }
   validates :examination_status_id, presence: true, inclusion: { in: ExaminationStatus.pluck(:id) }
 
+  scope :before_examinations, -> do
+    where(examination_status_id: ExaminationStatus::BEFORE_EXAMINATION.id)
+  end
+
+  scope :failed, -> do
+    where(examination_status_id: ExaminationStatus::FAILED.id)
+  end
+
+  scope :passed, -> do
+    where(examination_status_id: ExaminationStatus::PASSED.id)
+  end
+
   def self.search(keyword)
 
     return Coach.all if keyword.blank?
