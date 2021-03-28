@@ -1,7 +1,6 @@
 class Registrations::PortfoliosController < Registrations::BaseController
 
   def show
-    @coach = Coach.find_or_create_by(user: current_user)
     @coach.portfolios.build if @coach.portfolios.blank?
   end
 

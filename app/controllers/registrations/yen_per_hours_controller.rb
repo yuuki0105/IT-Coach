@@ -3,7 +3,6 @@ class Registrations::YenPerHoursController < Registrations::BaseController
   before_action :set_yen_per_hour
 
   def show
-    @coach = Coach.find_or_create_by(user: current_user)
   end
 
   def update
