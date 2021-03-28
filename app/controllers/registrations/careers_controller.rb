@@ -1,7 +1,6 @@
 class Registrations::CareersController < Registrations::BaseController
 
   def show
-    @coach = Coach.find_or_create_by(user: current_user)
     @coach.careers.build if @coach.careers.blank?
   end
 
