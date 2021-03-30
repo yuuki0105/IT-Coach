@@ -25,7 +25,10 @@
       if (isCalendlyEvent(e)) {
         console.log(e.data);
         if(e.data.event === "calendly.event_scheduled"){
-          fetch(location.href, { method: 'PUT' })
+          $.ajax({
+            url: '/registrations/examination_interview_date',
+            type: 'PUT'
+          });
         }
       }
     }
