@@ -9,7 +9,7 @@
   <%= form.hidden_field :id %>
 
   <% if @user.image.attached? %>
-    <%= image_tag @user.image %>
+    <%= image_tag @user.image.variant(resize: "100x100") %>
   <% else %>
     <%= image_tag "default_icon.png" %>
   <% end %>

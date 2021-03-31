@@ -1,0 +1,24 @@
+<%= form_with model: @user, url: mypage_image_path do |form| %>
+
+  <%= render 'shared/error_messages', model: form.object %>
+
+  <h2>プロフィール画像</h2>
+
+   <%= form.hidden_field :id %>
+
+  <div class="field">
+    <%= form.file_field :image %>
+  </div>
+  <%# 写真の保存先の指定は本番環境時に行う（AWSを予定） %>
+
+  <% if @user.image.attached? %>
+    <%= image_tag @user.image.variant(resize: "100x100") %>
+  <% else %>
+    <%= image_tag "default_icon.png" %>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit "更新する" %>
+  </div>
+
+<% end %>
