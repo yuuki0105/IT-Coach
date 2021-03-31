@@ -41,6 +41,7 @@ Rails.application.routes.draw do
 
   resource :mypage, only: [:show] do
     resource :name, only: [:edit, :update]
+    resource :image, only: [:edit, :update]
     resource :profile, only: [:edit, :update]
     resources :user_skills, only: [:new, :create, :edit, :update, :destroy]
   end

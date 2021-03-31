@@ -3,11 +3,15 @@
 <%= @user.name %><br>
 <%= link_to "名前を編集する",edit_mypage_name_path %><br>
 
-<% if @user.image.attached? %>
-  <%= image_tag @user.image %>
-<% else %>
-  <%= image_tag "default_icon.png" %>
+
+<%= link_to edit_mypage_image_path do  %>
+  <% if @user.image.attached? %>
+    <%= image_tag @user.image.variant(resize: "100x100") %>
+  <% else %>
+    <%= image_tag "default_icon.png" %>
+  <% end %>
 <% end %>
+
 
 <h2>プロフィール</h2>
 <%= @user.profile %><br>
