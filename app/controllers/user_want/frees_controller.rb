@@ -1,4 +1,4 @@
-class UserWantFreesController < ApplicationController
+class UserWant::FreesController < ApplicationController
 
   include AuthenticateUser
 

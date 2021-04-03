@@ -1,4 +1,4 @@
-class UserWantAbilitiesController < ApplicationController
+class UserWant::AbilitiesController < ApplicationController
 
   include AuthenticateUser
 

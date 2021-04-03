@@ -52,10 +52,12 @@ Rails.application.routes.draw do
 
   resources :user_follows, only: [:index, :create, :destroy]
 
-  resources :user_want_skills, only: [:new, :create]
-  resources :user_want_abilities, only: [:new, :create]
-  resources :user_want_budgets, only: [:new, :create]
-  resources :user_want_frees, only: [:new, :create]
+  namespace :user_want do
+    resources :skills, only: [:new, :create]
+    resources :abilities, only: [:new, :create]
+    resources :budgets, only: [:new, :create]
+    resources :frees, only: [:new, :create]
+  end
 
   resource :setting, only: [:show] do
     scope module: :settings do

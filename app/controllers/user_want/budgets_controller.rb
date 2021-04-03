@@ -1,4 +1,4 @@
-class UserWantBudgetsController < ApplicationController
+class UserWant::BudgetsController < ApplicationController
 
   include AuthenticateUser
 
