@@ -1,0 +1,3 @@
+<%= render "coaches/portfolios/form" %>
+
+<%= link_to "削除", coach_portfolio_path(coach_id: @portfolio.coach.id, id: @portfolio.id),method: :delete,data: {confirm: "本当に削除しますか？"} %><br>
