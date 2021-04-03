@@ -1,4 +1,4 @@
-class UserSkillsController < ApplicationController
+class Mypages::UserSkillsController < ApplicationController
 
   include AuthenticateUser
 

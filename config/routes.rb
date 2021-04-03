@@ -20,10 +20,12 @@ Rails.application.routes.draw do
   resources :notifications, only: [:index]
 
   resources :coaches, only: [:show, :index, :create] do
-    resources :careers, only: [:new, :create, :edit, :update, :destroy]
-    resources :portfolios, only: [:new, :create, :edit, :update, :destroy]
-    resources :abilities, only: [:new, :create, :edit, :update, :destroy]
-    resources :yen_per_hours, only: [:new, :create, :edit, :update]
+    scope module: :coaches do
+      resources :careers, only: [:new, :create, :edit, :update, :destroy]
+      resources :portfolios, only: [:new, :create, :edit, :update, :destroy]
+      resources :abilities, only: [:new, :create, :edit, :update, :destroy]
+      resources :yen_per_hours, only: [:new, :create, :edit, :update]
+    end
   end
 
   namespace :registrations do
@@ -40,10 +42,12 @@ Rails.application.routes.draw do
   resource :menu, only: [:show]
 
   resource :mypage, only: [:show] do
-    resource :name, only: [:edit, :update]
-    resource :image, only: [:edit, :update]
-    resource :profile, only: [:edit, :update]
-    resources :user_skills, only: [:new, :create, :edit, :update, :destroy]
+    scope module: :mypages do
+      resource :name, only: [:edit, :update]
+      resource :image, only: [:edit, :update]
+      resource :profile, only: [:edit, :update]
+      resources :user_skills, only: [:new, :create, :edit, :update, :destroy]
+    end
   end
 
   resources :user_follows, only: [:index, :create, :destroy]
@@ -54,8 +58,10 @@ Rails.application.routes.draw do
   resources :user_want_frees, only: [:new, :create]
 
   resource :setting, only: [:show] do
-    resource :email, only: [:edit, :update], module: :settings
-    resource :password, only: [:edit, :update], module: :settings
+    scope module: :settings do
+      resource :email, only: [:edit, :update]
+      resource :password, only: [:edit, :update]
+    end
   end
 
   resource :search, only: [:show] do

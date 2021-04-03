@@ -1,4 +1,4 @@
-class AbilitiesController < ApplicationController
+class Coaches::AbilitiesController < ApplicationController
 
   include AuthenticateUser
 

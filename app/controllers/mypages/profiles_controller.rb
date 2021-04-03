@@ -1,4 +1,4 @@
-class ImagesController < ApplicationController
+class Mypages::ProfilesController < ApplicationController
 
   include AuthenticateUser
 
@@ -8,7 +8,7 @@ class ImagesController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update(image_params)
+    if @user.update(profile_params)
       redirect_to mypage_path
     else
       render :edit
@@ -16,8 +16,8 @@ class ImagesController < ApplicationController
   end
 
   private
-  def image_params
-    params.require(:user).permit(:image)
+  def profile_params
+    params.require(:user).permit(:profile)
   end
 
 end

@@ -1,4 +1,4 @@
-class NamesController < ApplicationController
+class Mypages::NamesController < ApplicationController
 
   def edit
     @user = current_user

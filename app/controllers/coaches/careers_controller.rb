@@ -1,4 +1,4 @@
-class CareersController < ApplicationController
+class Coaches::CareersController < ApplicationController
 
   include AuthenticateUser
 

@@ -1,4 +1,4 @@
-class PortfoliosController < ApplicationController
+class Coaches::PortfoliosController < ApplicationController
 
   include AuthenticateUser
 

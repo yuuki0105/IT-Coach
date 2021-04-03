@@ -1,4 +1,4 @@
-class YenPerHoursController < ApplicationController
+class Coaches::YenPerHoursController < ApplicationController
 
   include AuthenticateUser
 
