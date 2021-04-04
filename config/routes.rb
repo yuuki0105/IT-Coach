@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :google_calendar_events, only: [:new, :show]
+
   namespace :registrations do
     resource :image, only: [:show, :update]
     resource :profile, only: [:show, :update]

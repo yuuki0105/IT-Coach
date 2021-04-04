@@ -1,19 +1,18 @@
-class MypagesController < ApplicationController
+class GoogleCalendarEventsController < ApplicationController
 
   include AuthenticateUser
 
-  def show
-    @user = current_user
-    @coach = @user.coach
-
+  def new
     client = Signet::OAuth2::Client.new(client_options)
-    client.update!(session[:authorization])
-    service = Google::Apis::CalendarV3::CalendarService.new
-    service.authorization = client
-    calendar_id = "primary"
-    @events = service.list_events(calendar_id, max_results: 10, single_events: true ,order_by: "startTime", time_min: Time.current.rfc3339)
-    binding.pry
+    redirect_to client.authorization_uri.to_s
+  end
 
+  def show
+    client = Signet::OAuth2::Client.new(client_options)
+    client.code = params[:code]
+    response = client.fetch_access_token!
+    session[:authorization] = response
+    redirect_to coach_path(current_user.coach)
   end
 
   private
