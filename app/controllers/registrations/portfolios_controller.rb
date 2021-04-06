@@ -9,7 +9,7 @@ class Registrations::PortfoliosController < Registrations::BaseController
     @coach.attributes = portfolio_params
     @coach.portfolios = @coach.portfolios.select{ |a| a.valid? }
     if @coach.save
-      redirect_to registrations_examination_interview_date_path
+      redirect_to registrations_schedules_path
     else
       render :new
     end

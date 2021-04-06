@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :google_calendar_events, only: [:new, :show]
+
   namespace :registrations do
     resource :image, only: [:show, :update]
     resource :profile, only: [:show, :update]
@@ -36,6 +38,7 @@ Rails.application.routes.draw do
     resource :yen_per_hours, only: [:show, :update]
     resource :careers, only: [:show, :update]
     resource :portfolios, only: [:show, :update]
+    resource :schedules, only: [:show]
     resource :examination_interview_date, only: [:show, :update]
   end
 
