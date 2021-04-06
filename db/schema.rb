@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_26_134823) do
+ActiveRecord::Schema.define(version: 2021_04_06_141619) do
 
   create_table "abilities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "coach_id", null: false
@@ -94,6 +94,14 @@ ActiveRecord::Schema.define(version: 2021_03_26_134823) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_coaches_on_user_id"
+  end
+
+  create_table "google_calendar_tokens", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "coach_id", null: false
+    t.string "access_token", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["coach_id"], name: "index_google_calendar_tokens_on_coach_id"
   end
 
   create_table "messages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -252,6 +260,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_134823) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "careers", "coaches"
   add_foreign_key "coaches", "users"
+  add_foreign_key "google_calendar_tokens", "coaches"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "notifications", "messages"

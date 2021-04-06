@@ -26,6 +26,7 @@ class Coach < ApplicationRecord
   has_many :portfolios, dependent: :destroy
   has_many :abilities, dependent: :destroy
   has_one :yen_per_hour, dependent: :destroy
+  has_one :google_calendar_token, dependent: :destroy
 
   accepts_nested_attributes_for :abilities, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :careers, allow_destroy: true, reject_if: :all_blank
