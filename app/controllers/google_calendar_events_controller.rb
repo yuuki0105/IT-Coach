@@ -10,8 +10,10 @@ class GoogleCalendarEventsController < ApplicationController
   def show
     client = Signet::OAuth2::Client.new(client_options)
     client.code = params[:code]
-    response = client.fetch_access_token!
-    session[:authorization] = response
+    token = client.fetch_access_token!
+    google_calendar_token = GoogleCalendarToken.find_or_initialize_by(coach: current_user.coach)
+    google_calendar_token.access_token = token["access_token"]
+    google_calendar_token.save
     if current_user.coach.before_examination? && !current_user.coach.registration_complete?
       redirect_to registrations_examination_interview_date_path
     else
