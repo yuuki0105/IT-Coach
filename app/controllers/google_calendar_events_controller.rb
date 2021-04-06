@@ -12,7 +12,7 @@ class GoogleCalendarEventsController < ApplicationController
     client.code = params[:code]
     response = client.fetch_access_token!
     session[:authorization] = response
-    if current_user.coach.before_examination && !current_user.coach.registration_complete?
+    if current_user.coach.before_examination? && !current_user.coach.registration_complete?
       redirect_to registrations_examination_interview_date_path
     else
       redirect_to coach_path(current_user.coach)

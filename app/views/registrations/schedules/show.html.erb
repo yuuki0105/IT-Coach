@@ -1,0 +1,9 @@
+<h1>コーチになる</h1>
+<%= render "registrations/shared/registration_complete_rate", registration_complete_rate: @registration_complete_rate %>
+
+<h2>スケジュール</h2>
+
+<%= link_to "Googleカレンダーと連携する", new_google_calendar_events_path %>
+
+<%= link_to "次へ", registrations_examination_interview_date_path %>
+<%= link_to "戻る", registrations_portfolios_path %>
