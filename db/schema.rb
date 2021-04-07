@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
 
   create_table "scheduled_events", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "coach_id", null: false
-    t.string "google_calender_event_id", null: false
+    t.string "google_calendar_event_id", null: false
     t.datetime "start_time", null: false
     t.datetime "end_time", null: false
     t.datetime "created_at", precision: 6, null: false

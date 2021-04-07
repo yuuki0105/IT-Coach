@@ -4,7 +4,7 @@
 #
 #  id                       :bigint           not null, primary key
 #  coach_id                 :bigint           not null
-#  google_calender_event_id :string(255)      not null
+#  google_calendar_event_id :string(255)      not null
 #  start_time               :datetime         not null
 #  end_time                 :datetime         not null
 #  created_at               :datetime         not null
