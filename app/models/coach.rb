@@ -20,11 +20,14 @@
 #
 class Coach < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
+
+  # Relations
   belongs_to :examination_status
   belongs_to :user
   has_many :careers, dependent: :destroy
   has_many :portfolios, dependent: :destroy
   has_many :abilities, dependent: :destroy
+  has_many :scheduled_events, dependent: :destroy
   has_one :yen_per_hour, dependent: :destroy
   has_one :google_calendar_token, dependent: :destroy
 
@@ -32,9 +35,15 @@ class Coach < ApplicationRecord
   accepts_nested_attributes_for :careers, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :portfolios, allow_destroy: true, reject_if: :all_blank
 
+  # Validations
   validates :examination_interview_date_confirmed, inclusion: { in: [true, false] }
   validates :examination_status_id, presence: true, inclusion: { in: ExaminationStatus.pluck(:id) }
 
+  # Callbacks
+
+  # Delegates
+
+  # Scopes
   scope :before_examinations, -> do
     where(examination_status_id: ExaminationStatus::BEFORE_EXAMINATION.id)
   end
@@ -47,6 +56,7 @@ class Coach < ApplicationRecord
     where(examination_status_id: ExaminationStatus::PASSED.id)
   end
 
+  # Methods
   def self.search(keyword)
 
     return Coach.all if keyword.blank?

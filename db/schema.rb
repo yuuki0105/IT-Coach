@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_06_141619) do
+ActiveRecord::Schema.define(version: 2021_04_07_142120) do
 
   create_table "abilities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "coach_id", null: false
@@ -144,6 +144,16 @@ ActiveRecord::Schema.define(version: 2021_04_06_141619) do
     t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
+  create_table "scheduled_events", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "coach_id", null: false
+    t.string "google_calender_event_id", null: false
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["coach_id"], name: "index_scheduled_events_on_coach_id"
+  end
+
   create_table "skill_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "en_name", null: false
@@ -268,6 +278,7 @@ ActiveRecord::Schema.define(version: 2021_04_06_141619) do
   add_foreign_key "portfolios", "coaches"
   add_foreign_key "rooms", "users"
   add_foreign_key "rooms", "users", column: "other_user_id"
+  add_foreign_key "scheduled_events", "coaches"
   add_foreign_key "skills", "skill_categories"
   add_foreign_key "sns_accounts", "users"
   add_foreign_key "user_follows", "users"
