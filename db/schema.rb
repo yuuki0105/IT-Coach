@@ -98,7 +98,8 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
 
   create_table "google_calendar_tokens", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "coach_id", null: false
-    t.string "access_token", null: false
+    t.string "refresh_token", default: "", null: false, comment: "googleカレンダーへアクセスするトークンを生成処理をするために使う"
+    t.string "next_sync_token", default: "", null: false, comment: "googleカレンダーの更新された情報を最新化するために使う"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["coach_id"], name: "index_google_calendar_tokens_on_coach_id"
