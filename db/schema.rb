@@ -162,6 +162,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["coach_id"], name: "index_scheduled_events_on_coach_id"
+    t.index ["google_calendar_event_id", "google_calendar_id"], name: "google_calendar_event_id_index", unique: true
     t.index ["google_calendar_id"], name: "index_scheduled_events_on_google_calendar_id"
   end
 

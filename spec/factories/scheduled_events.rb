@@ -13,6 +13,7 @@
 #
 # Indexes
 #
+#  google_calendar_event_id_index                (google_calendar_event_id,google_calendar_id) UNIQUE
 #  index_scheduled_events_on_coach_id            (coach_id)
 #  index_scheduled_events_on_google_calendar_id  (google_calendar_id)
 #
