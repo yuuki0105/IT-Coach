@@ -15,9 +15,16 @@ namespace :batch do
       service = Google::Apis::CalendarV3::CalendarService.new
       service.authorization = client
       calendar = coach.google_calendar
-      response = service.list_events(calendar.calendar_id, single_events: true, time_min: now.rfc3339, time_max: (now + 3.months).rfc3339)
+      response = service.list_events(calendar.calendar_id, single_events: true, time_min: now.rfc3339, time_max: (now + 12.months).rfc3339)
 
-      events = response.items.map do |item|
+      items = response.items
+
+      if response.next_page_token
+        new_items = next_page_request(service, calendar, response, items, 1)
+        items.push(new_items)
+      end
+      binding.pry
+      events = items.map do |item|
         {
           coach_id: coach.id,
           google_calendar_event_id: item.id,
@@ -31,11 +38,8 @@ namespace :batch do
         ScheduledEvent.import(events, on_duplicate_key_ignore: true)
         calendar.update(next_sync_token: response.next_sync_token)
       end
-
     end
-
   end
-
 end
 
 def client_options
@@ -47,4 +51,13 @@ def client_options
     scope: Google::Apis::CalendarV3::AUTH_CALENDAR_EVENTS,
     redirect_uri: "http://localhost:3000/google_calendar_events"
   }
+end
+
+def next_page_request(service, calendar, response, items, repeat_count)
+  repeat_count = repeat_count+1
+  next_response = service.list_events(calendar.calendar_id, page_token: response.next_page_token)
+  items.push(next_response.items)
+  return items if next_response.next_page_token.nil?
+  return items if repeat_count > 10
+  next_page_request(service, calendar, next_response, items, repeat_count) if next_response.next_page_token
 end
