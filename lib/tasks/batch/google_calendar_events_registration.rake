@@ -14,16 +14,14 @@ namespace :batch do
 
       service = Google::Apis::CalendarV3::CalendarService.new
       service.authorization = client
-      primary_calendar = service.get_calendar("primary")
-      calendar = GoogleCalendar.find_or_create_by(coach: coach, calendar_id: primary_calendar.id)
-
+      calendar = coach.google_calendar
       response = service.list_events(calendar.calendar_id, single_events: true, time_min: now.rfc3339, time_max: (now + 3.months).rfc3339)
 
       events = response.items.map do |item|
         {
           coach_id: coach.id,
           google_calendar_event_id: item.id,
-          google_calendar_id: calendar.id,
+          google_calendar_id: calendar.calendar_id,
           start_time: item.start.date_time || item.start.date,
           end_time: item.end.date_time || item.end.date
         }
