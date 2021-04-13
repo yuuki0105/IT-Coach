@@ -98,10 +98,19 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
 
   create_table "google_calendar_tokens", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "coach_id", null: false
-    t.string "access_token", null: false
+    t.string "refresh_token", default: "", null: false, comment: "googleカレンダーへアクセスするトークンを生成処理をするために使う"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["coach_id"], name: "index_google_calendar_tokens_on_coach_id"
+  end
+
+  create_table "google_calendars", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "coach_id", null: false
+    t.string "calendar_id", null: false
+    t.string "next_sync_token", default: "", null: false, comment: "googleカレンダーの更新された情報を最新化するために使う"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["coach_id"], name: "index_google_calendars_on_coach_id"
   end
 
   create_table "messages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -146,12 +155,15 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
 
   create_table "scheduled_events", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "coach_id", null: false
+    t.bigint "google_calendar_id", null: false
     t.string "google_calendar_event_id", null: false
     t.datetime "start_time", null: false
     t.datetime "end_time", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["coach_id"], name: "index_scheduled_events_on_coach_id"
+    t.index ["google_calendar_event_id", "google_calendar_id"], name: "google_calendar_event_id_index", unique: true
+    t.index ["google_calendar_id"], name: "index_scheduled_events_on_google_calendar_id"
   end
 
   create_table "skill_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -271,6 +283,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
   add_foreign_key "careers", "coaches"
   add_foreign_key "coaches", "users"
   add_foreign_key "google_calendar_tokens", "coaches"
+  add_foreign_key "google_calendars", "coaches"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "notifications", "messages"
@@ -279,6 +292,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
   add_foreign_key "rooms", "users"
   add_foreign_key "rooms", "users", column: "other_user_id"
   add_foreign_key "scheduled_events", "coaches"
+  add_foreign_key "scheduled_events", "google_calendars"
   add_foreign_key "skills", "skill_categories"
   add_foreign_key "sns_accounts", "users"
   add_foreign_key "user_follows", "users"

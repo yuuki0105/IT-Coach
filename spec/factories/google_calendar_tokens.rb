@@ -2,11 +2,11 @@
 #
 # Table name: google_calendar_tokens
 #
-#  id           :bigint           not null, primary key
-#  coach_id     :bigint           not null
-#  access_token :string(255)      not null
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
+#  id                                                                              :bigint           not null, primary key
+#  coach_id                                                                        :bigint           not null
+#  refresh_token(googleカレンダーへアクセスするトークンを生成処理をするために使う) :string(255)      default(""), not null
+#  created_at                                                                      :datetime         not null
+#  updated_at                                                                      :datetime         not null
 #
 # Indexes
 #
