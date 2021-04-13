@@ -1,7 +1,6 @@
 namespace :batch do
   # bundle exec rake batch:google_calendar_events_registration
   desc "googleカレンダーから予定を取得してscheduled_eventsテーブルに入れる"
-
   task google_calendar_events_registration: :environment do
     google_calendar_tokens = GoogleCalendarToken.all
     client = Signet::OAuth2::Client.new(client_options)
@@ -15,7 +14,7 @@ namespace :batch do
       service = Google::Apis::CalendarV3::CalendarService.new
       service.authorization = client
       calendar = coach.google_calendar
-      response = service.list_events(calendar.calendar_id, single_events: true, time_min: now.rfc3339, time_max: (now + 12.months).rfc3339)
+      response = service.list_events(calendar.calendar_id, single_events: true, time_min: now.rfc3339, time_max: (now + 3.months).rfc3339)
 
       items = response.items
       next_sync_token = response.next_sync_token
