@@ -18,9 +18,9 @@ namespace :batch do
       response = service.list_events(calendar.calendar_id, single_events: true, time_min: now.rfc3339, time_max: (now + 12.months).rfc3339)
 
       items = response.items
-
+      next_sync_token = response.next_sync_token
       if response.next_page_token
-        items = next_page_request(service, calendar, response, items, 1)
+        items,next_sync_token = next_page_request(service, calendar, response, items, 1)
       end
       confirmed_items = items.select{|item| item.status == "confirmed"}
 
@@ -36,7 +36,7 @@ namespace :batch do
 
       ActiveRecord::Base.transaction do
         ScheduledEvent.import(events, on_duplicate_key_ignore: true)
-        # calendar.update(next_sync_token: response.next_sync_token)
+        calendar.update(next_sync_token: next_sync_token)
       end
     end
   end
@@ -57,7 +57,7 @@ def next_page_request(service, calendar, response, items, repeat_count)
   repeat_count = repeat_count+1
   next_response = service.list_events(calendar.calendar_id, page_token: response.next_page_token)
   items.concat(next_response.items)
-  return items if next_response.next_page_token.nil?
-  return items if repeat_count > 10
+  return items,next_response.next_sync_token if next_response.next_page_token.nil?
+  return items,next_response.next_sync_token if repeat_count > 10
   next_page_request(service, calendar, next_response, items, repeat_count) if next_response.next_page_token
 end
