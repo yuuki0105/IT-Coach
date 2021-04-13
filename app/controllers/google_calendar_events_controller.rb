@@ -19,6 +19,7 @@ class GoogleCalendarEventsController < ApplicationController
       google_calendar_token = GoogleCalendarToken.find_or_initialize_by(coach: current_user.coach)
       google_calendar_token.refresh_token = client.refresh_token
       google_calendar_token.save
+      #TODO:いずれ複数カレンダーにも対応するように作る
       primary_calendar = service.get_calendar("primary")
       calendar = GoogleCalendar.find_or_create_by(coach: current_user.coach, calendar_id: primary_calendar.id)
     end
