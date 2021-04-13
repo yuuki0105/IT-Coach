@@ -20,15 +20,15 @@ namespace :batch do
       items = response.items
 
       if response.next_page_token
-        new_items = next_page_request(service, calendar, response, items, 1)
-        items.push(new_items)
+        items = next_page_request(service, calendar, response, items, 1)
       end
-      binding.pry
-      events = items.map do |item|
+      confirmed_items = items.select{|item| item.status == "confirmed"}
+
+      events = confirmed_items.map do |item|
         {
           coach_id: coach.id,
           google_calendar_event_id: item.id,
-          google_calendar_id: calendar.calendar_id,
+          google_calendar_id: calendar.id,
           start_time: item.start.date_time || item.start.date,
           end_time: item.end.date_time || item.end.date
         }
@@ -36,7 +36,7 @@ namespace :batch do
 
       ActiveRecord::Base.transaction do
         ScheduledEvent.import(events, on_duplicate_key_ignore: true)
-        calendar.update(next_sync_token: response.next_sync_token)
+        # calendar.update(next_sync_token: response.next_sync_token)
       end
     end
   end
@@ -56,7 +56,7 @@ end
 def next_page_request(service, calendar, response, items, repeat_count)
   repeat_count = repeat_count+1
   next_response = service.list_events(calendar.calendar_id, page_token: response.next_page_token)
-  items.push(next_response.items)
+  items.concat(next_response.items)
   return items if next_response.next_page_token.nil?
   return items if repeat_count > 10
   next_page_request(service, calendar, next_response, items, repeat_count) if next_response.next_page_token
