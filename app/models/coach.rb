@@ -20,6 +20,7 @@
 #
 class Coach < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
+  include Coach::GoogleCalendarClient
 
   # Relations
   belongs_to :examination_status
@@ -43,6 +44,7 @@ class Coach < ApplicationRecord
   # Callbacks
 
   # Delegates
+  delegate :refresh_token, to: :google_calendar_token, allow_nil: true
 
   # Scopes
   scope :before_examinations, -> do
