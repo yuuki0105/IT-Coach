@@ -2,8 +2,6 @@ class Coach < ApplicationRecord
   module GoogleCalendarClient
     extend ActiveSupport::Concern
 
-    FROM_LIST_EVENTS_DIFF_DATE = 90.days
-
     included do
       def google_calendar_api_client
         oauth = GoogleOauthApi.new
