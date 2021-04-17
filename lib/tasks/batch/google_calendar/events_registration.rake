@@ -4,24 +4,23 @@ namespace :batch do
     desc "googleカレンダーから予定を取得してscheduled_eventsテーブルに入れる"
     task events_registration: :environment do
       google_calendar_tokens = GoogleCalendarToken.all
-      client = Signet::OAuth2::Client.new(client_options)
       now = Time.current
 
       google_calendar_tokens.each do |token|
         coach = token.coach
-        client.refresh_token = token.refresh_token
-        client.fetch_access_token! #アクセストークンを生成
-
-        service = Google::Apis::CalendarV3::CalendarService.new
-        service.authorization = client
         calendar = coach.google_calendar
-        response = service.list_events(calendar.calendar_id, single_events: true, time_min: now.rfc3339, time_max: (now + 3.months).rfc3339)
+        response = calendar.list_events_in_term(from: now, to: now + 3.months)
 
         items = response.items
         next_sync_token = response.next_sync_token
-        if response.next_page_token
-          items,next_sync_token = next_page_request(service, calendar, response, items, 1)
+        repeat_count = 1
+
+        while response.next_page_token && repeat_count <= 10 do
+          repeat_count += 1
+          response = calendar.list_events_next_page(page_token: response.next_page_token)
+          items.concat(response.items)
         end
+
         confirmed_items = items.select{|item| item.status == "confirmed"}
 
         events = events_format(confirmed_items,coach.id,calendar.id)
@@ -33,7 +32,7 @@ namespace :batch do
       end
     end
 
-    def events_format(items,coach_id,calendar_id)
+    def events_format(items, coach_id, calendar_id)
       items.map do |item|
         {
           coach_id: coach_id,
@@ -44,27 +43,6 @@ namespace :batch do
         }
       end
     end
-
-    def client_options
-      {
-        client_id: Rails.application.credentials.google_calendar[:client_id],
-        client_secret: Rails.application.credentials.google_calendar[:client_secret],
-        authorization_uri: 'https://accounts.google.com/o/oauth2/auth',
-        token_credential_uri: 'https://accounts.google.com/o/oauth2/token',
-        scope: Google::Apis::CalendarV3::AUTH_CALENDAR_EVENTS,
-        redirect_uri: "http://localhost:3000/google_calendar_events"
-      }
-    end
-
-    def next_page_request(service, calendar, response, items, repeat_count)
-      repeat_count = repeat_count+1
-      next_response = service.list_events(calendar.calendar_id, page_token: response.next_page_token)
-      items.concat(next_response.items)
-      return items,next_response.next_sync_token if next_response.next_page_token.nil?
-      return items,next_response.next_sync_token if repeat_count > 10
-      next_page_request(service, calendar, next_response, items, repeat_count) if next_response.next_page_token
-    end
-
   end
 end
 

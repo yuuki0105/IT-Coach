@@ -18,6 +18,8 @@
 #  fk_rails_...  (coach_id => coaches.id)
 #
 class GoogleCalendar < ApplicationRecord
+  include GoogleCalendar::Client
+
   # Relations
   belongs_to :coach
   has_many :scheduled_events, dependent: :destroy
