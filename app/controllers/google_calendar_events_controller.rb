@@ -3,13 +3,13 @@ class GoogleCalendarEventsController < ApplicationController
   include AuthenticateUser
 
   def new
-    oauth = GoogleOAuthApi.new
+    oauth = GoogleOauthApi.new
     redirect_to oauth.client.authorization_uri.to_s
   end
 
   def show
     coach = current_user.coach
-    oauth = GoogleOAuthApi.new
+    oauth = GoogleOauthApi.new
     oauth.client.code = params[:code]
     oauth.client.fetch_access_token! # Refresh Token
 
