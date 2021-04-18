@@ -16,12 +16,14 @@
 
   <body>
 
+    <%= render "shared/header" %>
+
     <div class="mx-5 sm:mx-0">
-      <%= render "shared/header" %>
       <%= render "shared/flash_messages" %>
       <%= yield %>
     </div>
-      <%= render "shared/footer" %>
+
+    <%= render "shared/footer" %>
 
   </body>
 </html>
