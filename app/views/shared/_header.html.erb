@@ -1,4 +1,4 @@
-<header class="flex justify-between items-center px-5 py-4 sm:px-10 sm:py-5 shadow fixed top-0 w-full">
+<header class="flex justify-between items-center px-5 py-4 sm:px-10 sm:py-5 shadow fixed top-0 w-full bg-white">
 
     <div>
       <%= link_to root_path do %>
@@ -11,26 +11,22 @@
     <% if user_signed_in? %>
 
       <%= link_to root_path do %>
-        <%= image_tag 'search.svg', class: "h-6 sm:h-full" %>
+        <%= image_tag 'search.svg', class: "h-6 sm:h-full my-1" %>
       <% end %>
       <%= link_to rooms_path do %>
-        <%= image_tag 'message.svg', class: "h-6 sm:h-full" %>
+        <%= image_tag 'message.svg', class: "h-6 sm:h-full my-1" %>
       <% end %>
       <%= link_to notifications_path do %>
-        <%= image_tag 'alert.svg', class: "h-6 sm:h-full" %>
+        <%= image_tag 'alert.svg', class: "h-6 sm:h-full my-1" %>
       <% end %>
       <%= link_to menu_path do %>
-        <%= image_tag 'menu.svg', class: "h-6 sm:h-full" %>
+        <%= image_tag 'menu.svg', class: "h-6 sm:h-full my-1" %>
       <% end %>
 
     <% else %>
 
-      <%# TODO: SPは済み。PC版のレスポンシブ対応はこれから %>
-      <%# TODO: borderのグラデーションを作ってみる %>
-      <%# TODO: PC版のボタンは44pxで40pxから4オーバーしている %>
-
-      <%= link_to "ログイン", new_user_session_path, class: "px-3.5 sm:px-5 py-2 border sm:border-2 border-primary rounded-2xl sm:rounded-3xl text-sm sm:text-base text-primary font-medium leading-3" %>
-      <%= link_to "会員登録", new_user_registration_path, class: "px-3.5 sm:px-5 py-2 border sm:border-2 border-white bg-primary text-white text-sm sm:text-base rounded-2xl sm:rounded-3xl font-medium leading-3" %>
+      <%= link_to "ログイン", new_user_session_path, class: "px-3.5 sm:px-5 py-2 sm:py-1.5 border-2 border-primary rounded-2xl sm:rounded-3xl text-sm sm:text-base text-primary font-medium leading-3" %>
+      <%= link_to "会員登録", new_user_registration_path, class: "px-3.5 sm:px-5 py-2 sm:py-1.5 border-2 border-primary bg-primary text-white text-sm sm:text-base rounded-2xl sm:rounded-3xl font-medium leading-3" %>
 
     <% end %>
 
