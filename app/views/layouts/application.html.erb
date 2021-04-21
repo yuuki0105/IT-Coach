@@ -7,7 +7,7 @@
     <%= csp_meta_tag %>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag "application", "data-turbo-track": "reload" %>
@@ -18,7 +18,7 @@
 
     <%= render "shared/header" %>
 
-    <div class="mx-5 mt-16 sm:mx-0 sm:mt-20">
+    <div class="mx-5 sm:mx-0 pt-16 sm:pt-20 bg-base">
       <%= render "shared/flash_messages" %>
       <%= yield %>
     </div>
