@@ -18,10 +18,14 @@ module.exports = {
     borderColor: theme => ({
       ...theme('colors'),
       'primary': '#6C6AD2',
-    }),backgroundColor: theme => ({
+      'base': '#EDEDED',
+    }),
+    backgroundColor: theme => ({
       ...theme('colors'),
       'primary': '#6C6AD2',
+      'base': '#EDEDED',
     }),
+
     // グラデーション
     // backgroundImage: theme => ({
     //   ...theme('colors'),
