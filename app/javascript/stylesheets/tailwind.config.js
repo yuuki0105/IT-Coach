@@ -18,11 +18,15 @@ module.exports = {
     borderColor: theme => ({
       ...theme('colors'),
       'primary': '#6C6AD2',
-    }),
-    backgroundImage: theme => ({
+    }),backgroundColor: theme => ({
       ...theme('colors'),
-      'primary': 'linear-gradient(93.63deg, #7775D7 0%, #A775FF 100%)',
+      'primary': '#6C6AD2',
     }),
+    // グラデーション
+    // backgroundImage: theme => ({
+    //   ...theme('colors'),
+    //   'primary': 'linear-gradient(93.63deg, #7775D7 0%, #A775FF 100%)',
+    // }),
   },
   variants: {
     extend: {},
