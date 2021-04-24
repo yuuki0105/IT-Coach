@@ -11,6 +11,7 @@
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag "application", "data-turbo-track": "reload" %>
+    <%= yield :javascripts %>
 
   </head>
 
@@ -18,7 +19,7 @@
 
     <%= render "shared/header" %>
 
-    <div class="mx-5 sm:mx-0 pt-16 sm:pt-20 bg-base">
+    <div class="mx-5 sm:mx-0 pt-16 sm:pt-20">
       <%= render "shared/flash_messages" %>
       <%= yield %>
     </div>
