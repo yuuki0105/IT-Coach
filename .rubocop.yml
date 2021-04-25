@@ -46,3 +46,7 @@ Metrics/AbcSize:
 # frozen_string_literal：trueは書かない
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+# 末尾の空行を入れない ：trueは書かない
+Layout/TrailingEmptyLines:
+  Enabled: false
