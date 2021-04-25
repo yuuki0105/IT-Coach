@@ -1,0 +1,44 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+inherit_mode:
+  merge:
+    - Exclude
+    - AllowedMethods
+
+AllCops:
+  Exclude:
+    - "vendor/**/*"
+    - "db/**/*"
+    - "log/**/*"
+    - "bin/**/*"
+    - ".git/**/*"
+    - "tmp/**/*"
+    - "public/**/*"
+  DisplayCopNames: true
+  TargetRubyVersion: 2.7
+  NewCops: enable
+
+Rails:
+  Enabled: true
+
+# Checks for proper usage of fail and raise.
+Style/SignalException:
+  Enabled: false
+
+# Prefer ' strings when you don't need string interpolation or special symbols.
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# 引数の数は5以上で警告とする
+Metrics/ParameterLists:
+  Max: 5
+
+# メソッドの複雑さはチェックしない
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+# AbcSizeはチェックしない
+Metrics/AbcSize:
+  Enabled: false
