@@ -5,7 +5,7 @@ class UserWant::SkillsController < ApplicationController
     @user = current_user
     @skill_categories = []
     SkillCategory.all.each do |skill_category|
-      @skill_categories << {title: skill_category.name, skills: Skill.where(skill_category_id: skill_category.id)}
+      @skill_categories << { title: skill_category.name, skills: Skill.where(skill_category_id: skill_category.id) }
     end
 
   end
@@ -26,6 +26,6 @@ class UserWant::SkillsController < ApplicationController
 
   private
   def user_want_skill_params
-    params.require(:user).permit({want_skills: []})
+    params.require(:user).permit({ want_skills: [] })
   end
 end
