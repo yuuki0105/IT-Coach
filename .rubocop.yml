@@ -50,3 +50,7 @@ Style/FrozenStringLiteralComment:
 # 末尾の空行を入れない ：trueは書かない
 Layout/TrailingEmptyLines:
   Enabled: false
+
+# シンボルの配列の書き方の指定 :%iは使わない
+Style/SymbolArray:
+  Enabled: false
