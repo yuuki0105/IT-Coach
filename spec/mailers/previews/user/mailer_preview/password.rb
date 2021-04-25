@@ -1,7 +1,6 @@
 # Preview all emails at http://localhost:3000/rails/mailers/user/reset_password
 
 class User::MailerPreview
-
   module Password
   extend ActiveSupport::Concern
     included do
@@ -12,5 +11,4 @@ class User::MailerPreview
     end
 
   end
-
 end

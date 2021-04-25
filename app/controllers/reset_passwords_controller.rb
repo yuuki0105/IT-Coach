@@ -1,5 +1,4 @@
 class ResetPasswordsController < ApplicationController
-
   def show
   end
 
@@ -29,5 +28,4 @@ class ResetPasswordsController < ApplicationController
   def user_params
     params.require(:user).permit(:reset_password_token, :password, :password_confirmation)
   end
-
 end

@@ -1,5 +1,4 @@
 class Mypages::NamesController < ApplicationController
-
   def edit
     @user = current_user
   end
@@ -17,5 +16,4 @@ class Mypages::NamesController < ApplicationController
   def name_params
     params.require(:user).permit(:name)
   end
-
 end

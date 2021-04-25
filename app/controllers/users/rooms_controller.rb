@@ -1,5 +1,4 @@
 class Users::RoomsController < ApplicationController
-
   def create
     @room = Room.find_or_initialize_by(user_id: current_user.id, other_user_id: params[:user_id])
 
@@ -12,5 +11,4 @@ class Users::RoomsController < ApplicationController
     end
 
   end
-
 end

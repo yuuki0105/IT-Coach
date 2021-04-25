@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
     before_action :configure_permitted_parameters, if: :devise_controller?
     before_action :basic_auth
 
@@ -24,5 +23,4 @@ class ApplicationController < ActionController::Base
           id == Rails.application.credentials.basic_auth[:id] && password == Rails.application. credentials.basic_auth[:password]
         end
     end
-
 end

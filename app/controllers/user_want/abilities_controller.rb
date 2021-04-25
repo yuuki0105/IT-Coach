@@ -1,5 +1,4 @@
 class UserWant::AbilitiesController < ApplicationController
-
   include AuthenticateUser
 
   def new
@@ -19,5 +18,4 @@ class UserWant::AbilitiesController < ApplicationController
   def user_want_ability_params
     params.require(:user_want_ability).permit(:technology_degree_id, :communication_degree_id).merge(user_id: current_user.id)
   end
-
 end

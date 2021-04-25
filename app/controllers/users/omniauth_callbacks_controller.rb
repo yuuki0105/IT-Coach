@@ -1,5 +1,4 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-
   require "open-uri"
 
   def facebook
@@ -44,6 +43,5 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
     redirect_to user_path(@profile.user)
   end
-
 end
 

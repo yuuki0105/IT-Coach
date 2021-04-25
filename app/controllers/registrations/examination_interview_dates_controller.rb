@@ -1,5 +1,4 @@
 class Registrations::ExaminationInterviewDatesController < Registrations::BaseController
-
   before_action :arleady_examination_interview_date_confirmed
   protect_from_forgery except: [:update]
 
@@ -19,5 +18,4 @@ class Registrations::ExaminationInterviewDatesController < Registrations::BaseCo
       redirect_to registrations_image_path, notice: "必須項目の入力が完了しておりません"
     end
   end
-
 end

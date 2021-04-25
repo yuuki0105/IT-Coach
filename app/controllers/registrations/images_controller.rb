@@ -1,5 +1,4 @@
 class Registrations::ImagesController < Registrations::BaseController
-
   def show
     @user = current_user
   end
@@ -18,5 +17,4 @@ class Registrations::ImagesController < Registrations::BaseController
   def user_params
     params.require(:user).permit(:image)
   end
-
 end

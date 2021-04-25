@@ -1,5 +1,4 @@
 class Mypages::ProfilesController < ApplicationController
-
   include AuthenticateUser
 
   def edit
@@ -19,5 +18,4 @@ class Mypages::ProfilesController < ApplicationController
   def profile_params
     params.require(:user).permit(:profile)
   end
-
 end

@@ -1,5 +1,4 @@
 class RoomsController < ApplicationController
-
   include AuthenticateUser
 
   def show
@@ -15,5 +14,4 @@ class RoomsController < ApplicationController
   def index
     @rooms = Room.relative(current_user)
   end
-
 end

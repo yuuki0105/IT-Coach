@@ -1,5 +1,4 @@
 class UserFollowsController < ApplicationController
-
   include AuthenticateUser
 
   def index
@@ -23,5 +22,4 @@ class UserFollowsController < ApplicationController
   def user_follow_params
     params.require(:user_follow).permit(:follow_id)
   end
-
 end

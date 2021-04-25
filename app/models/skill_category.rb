@@ -17,5 +17,4 @@ class SkillCategory < ApplicationRecord
   def to_param
     en_name
   end
-
 end

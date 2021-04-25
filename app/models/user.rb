@@ -76,5 +76,4 @@ class User < ApplicationRecord
   def following?(follower)
     self.follows.include?(follower)
   end
-
 end

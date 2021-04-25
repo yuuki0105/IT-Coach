@@ -32,5 +32,4 @@ class GoogleCalendar < ApplicationRecord
   # Scopes
 
   # Methods
-
 end

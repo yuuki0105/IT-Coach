@@ -1,5 +1,4 @@
 class Settings::EmailsController < ApplicationController
-
   include AuthenticateUser
 
   def edit
@@ -19,5 +18,4 @@ class Settings::EmailsController < ApplicationController
   def user_params
     params.require(:user).permit(:email)
   end
-
 end

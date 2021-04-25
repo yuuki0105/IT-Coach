@@ -1,5 +1,4 @@
 class Registrations::AbilitiesController < Registrations::BaseController
-
   def show
     @coach.abilities.build if @coach.abilities.blank?
   end
@@ -19,5 +18,4 @@ class Registrations::AbilitiesController < Registrations::BaseController
   def ability_params
     params.require(:coach).permit(abilities_attributes: [:id, :content, :_destroy])
   end
-
 end

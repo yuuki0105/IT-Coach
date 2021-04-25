@@ -1,5 +1,4 @@
 class CoachesController < ApplicationController
-
   before_action :authenticate_user!, only: [:create]
 
   def show
@@ -19,5 +18,4 @@ class CoachesController < ApplicationController
       redirect_to about_coach_path
     end
   end
-
 end

@@ -23,7 +23,6 @@
 #  fk_rails_...  (google_calendar_id => google_calendars.id)
 #
 class ScheduledEvent < ApplicationRecord
-
   # Relations
   belongs_to :coach
   belongs_to :google_calendar
@@ -38,5 +37,4 @@ class ScheduledEvent < ApplicationRecord
   # Scopes
 
   # Methods
-
 end

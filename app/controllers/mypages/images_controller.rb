@@ -1,5 +1,4 @@
 class Mypages::ImagesController < ApplicationController
-
   include AuthenticateUser
 
   def edit
@@ -19,5 +18,4 @@ class Mypages::ImagesController < ApplicationController
   def image_params
     params.require(:user).permit(:image)
   end
-
 end

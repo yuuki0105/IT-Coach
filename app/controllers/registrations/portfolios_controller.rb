@@ -1,5 +1,4 @@
 class Registrations::PortfoliosController < Registrations::BaseController
-
   def show
     @coach.portfolios.build if @coach.portfolios.blank?
   end
@@ -19,5 +18,4 @@ class Registrations::PortfoliosController < Registrations::BaseController
   def portfolio_params
     params.require(:coach).permit(portfolios_attributes: [:id, :title, :url, :_destroy])
   end
-
 end

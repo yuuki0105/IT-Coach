@@ -1,5 +1,4 @@
 class UserWant::FreesController < ApplicationController
-
   include AuthenticateUser
 
   def new
@@ -20,5 +19,4 @@ class UserWant::FreesController < ApplicationController
   def user_want_free_params
     params.require(:user_want_free).permit(:content).merge(user_id: current_user.id)
   end
-
 end

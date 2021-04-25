@@ -1,5 +1,4 @@
 class Registrations::BaseController < ApplicationController
-
   include AuthenticateUser
   before_action :set_coach
   before_action :require_before_examination
@@ -15,5 +14,4 @@ class Registrations::BaseController < ApplicationController
       redirect_to mypage_path, notice: "既にコーチ審査は完了しています"
     end
   end
-
 end

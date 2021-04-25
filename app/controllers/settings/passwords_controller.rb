@@ -1,5 +1,4 @@
 class Settings::PasswordsController < ApplicationController
-
   def edit
     @user = current_user
   end
@@ -38,5 +37,4 @@ class Settings::PasswordsController < ApplicationController
     def user_params
       params.require(:user).permit(:password, :password_confirmation).merge(password_create_myself: true)
     end
-
 end

@@ -27,5 +27,4 @@ class Career < ApplicationRecord
   validates :role, length: { maximum: 40 }
   validates :start_month, presence: true
   validates :ongoing, inclusion: { in: [true, false] }
-
 end

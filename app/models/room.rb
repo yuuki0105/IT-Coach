@@ -40,5 +40,4 @@ class Room < ApplicationRecord
       errors.add(:user_id, "同じユーザー同士でルームをつくることはできません")
     end
   end
-
 end

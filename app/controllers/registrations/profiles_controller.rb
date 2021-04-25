@@ -1,5 +1,4 @@
 class Registrations::ProfilesController < Registrations::BaseController
-
   def show
     @user = current_user
   end
@@ -18,5 +17,4 @@ class Registrations::ProfilesController < Registrations::BaseController
   def user_params
     params.require(:user).permit(:profile)
   end
-
 end

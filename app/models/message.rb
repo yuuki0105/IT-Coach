@@ -31,5 +31,4 @@ class Message < ApplicationRecord
   scope :have_unread, -> (user_id) do
     where(read: false, user_id: user_id)
   end
-
 end

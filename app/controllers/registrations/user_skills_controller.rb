@@ -1,5 +1,4 @@
 class Registrations::UserSkillsController < Registrations::BaseController
-
   def show
     @user = current_user
     @user.user_skills.build if @user.user_skills.blank?
@@ -21,6 +20,4 @@ class Registrations::UserSkillsController < Registrations::BaseController
   def user_skill_params
     params.require(:user).permit(user_skills_attributes: [:id, :skill_id, :experience_year, :level, :_destroy])
   end
-
-
 end

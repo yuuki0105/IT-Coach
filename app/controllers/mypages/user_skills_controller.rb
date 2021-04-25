@@ -1,5 +1,4 @@
 class Mypages::UserSkillsController < ApplicationController
-
   include AuthenticateUser
 
   def new
@@ -42,5 +41,4 @@ class Mypages::UserSkillsController < ApplicationController
   def user_skill_params
     params.require(:user_skill).permit(:skill_id, :experience_year, :level).merge(user_id: current_user.id)
   end
-
 end

@@ -1,5 +1,4 @@
 class UserWant::SkillsController < ApplicationController
-
   include AuthenticateUser
 
   def new
@@ -29,5 +28,4 @@ class UserWant::SkillsController < ApplicationController
   def user_want_skill_params
     params.require(:user).permit({want_skills: []})
   end
-
 end
