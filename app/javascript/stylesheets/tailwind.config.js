@@ -6,22 +6,16 @@ module.exports = {
       fontFamily: {
         sans: ['Noto Sans JP', 'sans-serif']
       },
+      colors: {
+         primary: '#6C6AD2',
+         baseGray: '#EDEDED',
+         facebook: '#1877F2',
+         twitter: '#1D9BF0',
+       },
+      fontSize: {
+        '3.5xl': '2rem',
+      },
     },
-    color: theme => ({
-      ...theme('colors'),
-      'primary': '#6C6AD2',
-    }),
-    textColor: theme => ({
-      ...theme('colors'),
-      'primary': '#6C6AD2',
-    }),
-    borderColor: theme => ({
-      ...theme('colors'),
-      'primary': '#6C6AD2',
-    }),backgroundColor: theme => ({
-      ...theme('colors'),
-      'primary': '#6C6AD2',
-    }),
     // グラデーション
     // backgroundImage: theme => ({
     //   ...theme('colors'),

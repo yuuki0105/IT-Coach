@@ -1,34 +1,46 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+<% content_for :javascripts do %>
+  <%= javascript_pack_tag "utilities/form" %>
+  <%= javascript_pack_tag "utilities/text" %>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="sm:mt-5 sm:px-8 max-w-sm mx-auto">
+
+  <h1 class="h1_text">会員登録</h1>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "mt-3 py-6"}) do |f| %>
+    <%= render "shared/error_messages", model: resource %>
+
+  <div class="space-y-4 my-6">
+
+    <div>
+      <%= f.label :name, "名前", class: "form_label" %>
+      <%= f.text_field :name, autofocus: true, class: "text_field block w-full", placeholder: "名前"  %>
+    </div>
+
+    <div>
+      <%= f.label :email, "メールアドレス", class: "form_label" %>
+      <%= f.email_field :email, autocomplete: "email", class: "text_field block w-full", placeholder: "メールアドレス" %>
+    </div>
+
+    <div>
+      <%= f.label :password, "パスワード", class: "form_label" %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "text_field block w-full", placeholder: "#{@minimum_password_length}文字以上でご入力ください" %>
+    </div>
+
+    <div>
+      <%= f.label :password_confirmation, "パスワード（確認用）", class: "form_label" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "text_field block w-full", placeholder: "再度パスワードをご入力ください" %>
+    </div>
+
+  </div>
+
+    <div>
+      <%= f.submit "登録する" , class: "px-3.5 sm:px-5 py-3 sm:py-1.5 bg-primary text-white sm:text-base rounded-3xl sm:rounded-3xl font-medium leading-4 w-full" %>
+    </div>
+  <% end %>
+
+  <div class="mt-3">
+    <%= render "devise/shared/links" %>
+  </div>
+
+</div>

@@ -1,0 +1,7 @@
+.text_field {
+  @apply border focus:outline-none focus:ring mt-4 py-1 px-3 rounded-md;
+}
+
+.form_label {
+  @apply font-bold block;
+}
