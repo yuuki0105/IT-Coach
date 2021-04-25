@@ -60,7 +60,6 @@ group :development, :test do
   gem "rubocop-rails", require: false
   gem "rubocop-performance", require: false
   gem "rubocop-rspec", require: false
-
 end
 
 group :development do
@@ -76,7 +75,6 @@ group :development do
   # modelファイルにテーブル情報を自動で書いてくれるgem
   gem "annotate"
   gem "letter_opener_web"
-
 end
 
 group :test do

@@ -18,6 +18,5 @@
 #
 FactoryBot.define do
   factory :yen_per_hour do
-
   end
 end

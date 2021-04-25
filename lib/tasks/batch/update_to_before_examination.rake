@@ -9,5 +9,4 @@ namespace :batch do
       coaches.update(examination_status_id: ExaminationStatus::BEFORE_EXAMINATION.id,examination_result_date: nil)
     end
   end
-
 end

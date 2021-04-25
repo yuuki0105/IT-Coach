@@ -42,3 +42,7 @@ Metrics/PerceivedComplexity:
 # AbcSizeはチェックしない
 Metrics/AbcSize:
   Enabled: false
+
+# frozen_string_literal：trueは書かない
+Style/FrozenStringLiteralComment:
+  Enabled: false

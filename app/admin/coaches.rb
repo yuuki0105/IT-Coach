@@ -1,5 +1,4 @@
 ActiveAdmin.register Coach do
-
   permit_params :examination_interview_date_confirmed, :examination_status_id, :examination_result_date
 
   # See permitted parameters documentation:
@@ -9,7 +8,6 @@ ActiveAdmin.register Coach do
   #
 
   form do |f|
-
     unless f.object.examination_result_date
       f.object.examination_result_date = Date.today
     end
@@ -22,5 +20,4 @@ ActiveAdmin.register Coach do
     end
     f.actions
   end
-
 end
