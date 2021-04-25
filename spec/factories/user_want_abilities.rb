@@ -19,6 +19,5 @@
 #
 FactoryBot.define do
   factory :user_want_ability do
-
   end
 end

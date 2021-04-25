@@ -18,6 +18,5 @@
 #
 FactoryBot.define do
   factory :google_calendar_token do
-
   end
 end
