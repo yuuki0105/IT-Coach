@@ -18,7 +18,7 @@
 #
 #  fk_rails_...  (skill_category_id => skill_categories.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Skill, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"

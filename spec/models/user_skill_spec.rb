@@ -20,7 +20,7 @@
 #  fk_rails_...  (skill_id => skills.id)
 #  fk_rails_...  (user_id => users.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe UserSkill, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
