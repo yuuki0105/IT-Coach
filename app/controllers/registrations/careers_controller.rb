@@ -15,6 +15,7 @@ class Registrations::CareersController < Registrations::BaseController
   end
 
   private
+
   def career_params
     params.require(:coach).permit(careers_attributes: [:id, :organization, :role, :start_month, :end_month, :ongoing, :_destroy])
   end

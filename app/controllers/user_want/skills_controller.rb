@@ -25,6 +25,7 @@ class UserWant::SkillsController < ApplicationController
   end
 
   private
+
   def user_want_skill_params
     params.require(:user).permit({ want_skills: [] })
   end

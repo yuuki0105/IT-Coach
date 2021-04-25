@@ -19,6 +19,7 @@ class UserFollowsController < ApplicationController
   end
 
   private
+
   def user_follow_params
     params.require(:user_follow).permit(:follow_id)
   end

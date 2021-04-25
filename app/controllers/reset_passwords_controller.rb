@@ -25,6 +25,7 @@ class ResetPasswordsController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:reset_password_token, :password, :password_confirmation)
   end

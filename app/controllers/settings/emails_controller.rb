@@ -15,6 +15,7 @@ class Settings::EmailsController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:email)
   end

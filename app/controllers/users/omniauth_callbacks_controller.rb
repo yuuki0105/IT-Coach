@@ -14,6 +14,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   private
+
   def sns_callback
 
     @omniauth = request.env["omniauth.auth"]

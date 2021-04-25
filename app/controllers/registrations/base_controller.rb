@@ -4,6 +4,7 @@ class Registrations::BaseController < ApplicationController
   before_action :require_before_examination
 
   private
+
   def set_coach
     @coach = Coach.find_or_create_by(user: current_user)
     @registration_complete_rate = @coach.registration_complete_rate

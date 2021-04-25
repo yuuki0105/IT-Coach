@@ -16,6 +16,7 @@ class Rooms::MessagesController < ApplicationController
   end
 
   private
+
   def message_params
     params.require(:message).permit(:content).merge(user_id: current_user.id, room_id: @room.id)
   end

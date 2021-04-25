@@ -15,6 +15,7 @@ class Registrations::AbilitiesController < Registrations::BaseController
   end
 
   private
+
   def ability_params
     params.require(:coach).permit(abilities_attributes: [:id, :content, :_destroy])
   end

@@ -15,6 +15,7 @@ class UserWant::AbilitiesController < ApplicationController
   end
 
   private
+
   def user_want_ability_params
     params.require(:user_want_ability).permit(:technology_degree_id, :communication_degree_id).merge(user_id: current_user.id)
   end

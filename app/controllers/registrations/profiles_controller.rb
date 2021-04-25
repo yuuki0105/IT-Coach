@@ -14,6 +14,7 @@ class Registrations::ProfilesController < Registrations::BaseController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:profile)
   end

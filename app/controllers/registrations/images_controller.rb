@@ -14,6 +14,7 @@ class Registrations::ImagesController < Registrations::BaseController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:image)
   end

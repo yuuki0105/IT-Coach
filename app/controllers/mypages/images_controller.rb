@@ -15,6 +15,7 @@ class Mypages::ImagesController < ApplicationController
   end
 
   private
+
   def image_params
     params.require(:user).permit(:image)
   end

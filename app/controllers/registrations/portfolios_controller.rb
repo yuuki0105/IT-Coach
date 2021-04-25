@@ -15,6 +15,7 @@ class Registrations::PortfoliosController < Registrations::BaseController
   end
 
   private
+
   def portfolio_params
     params.require(:coach).permit(portfolios_attributes: [:id, :title, :url, :_destroy])
   end

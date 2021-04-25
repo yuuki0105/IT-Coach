@@ -13,6 +13,7 @@ class Mypages::NamesController < ApplicationController
   end
 
   private
+
   def name_params
     params.require(:user).permit(:name)
   end

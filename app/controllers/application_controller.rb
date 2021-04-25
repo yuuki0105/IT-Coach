@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
     end
 
     private
+
     def basic_auth
         return unless Rails.env.production?
         return unless request.path.start_with?("/admin")
