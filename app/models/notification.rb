@@ -21,7 +21,6 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Notification < ApplicationRecord
-
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   belongs_to :message, optional: true
@@ -47,5 +46,4 @@ class Notification < ApplicationRecord
 
     message.room.other_side_user(user)
   end
-
 end

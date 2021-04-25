@@ -1,5 +1,4 @@
 class Coaches::YenPerHoursController < ApplicationController
-
   include AuthenticateUser
 
   def new
@@ -29,8 +28,8 @@ class Coaches::YenPerHoursController < ApplicationController
   end
 
   private
+
   def yen_per_hour_params
     params.require(:yen_per_hour).permit(:price).merge(coach_id: current_user.coach.id)
   end
-
 end

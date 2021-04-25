@@ -1,5 +1,4 @@
 class Coaches::AbilitiesController < ApplicationController
-
   include AuthenticateUser
 
   def new
@@ -39,8 +38,8 @@ class Coaches::AbilitiesController < ApplicationController
   end
 
   private
+
   def ability_params
     params.require(:ability).permit(:content).merge(coach_id: current_user.coach.id)
   end
-
 end

@@ -18,7 +18,7 @@
 #  fk_rails_...  (other_user_id => users.id)
 #  fk_rails_...  (user_id => users.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Room, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"

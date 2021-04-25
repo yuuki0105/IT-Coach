@@ -22,7 +22,7 @@
 #  fk_rails_...  (coach_id => coaches.id)
 #  fk_rails_...  (google_calendar_id => google_calendars.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe ScheduledEvent, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"

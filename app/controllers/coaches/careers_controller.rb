@@ -1,5 +1,4 @@
 class Coaches::CareersController < ApplicationController
-
   include AuthenticateUser
 
   def new
@@ -39,8 +38,8 @@ class Coaches::CareersController < ApplicationController
   end
 
   private
+
   def career_params
     params.require(:career).permit(:organization, :role, :start_month, :end_month, :ongoing).merge(coach_id: current_user.coach.id)
   end
-
 end

@@ -19,6 +19,5 @@
 #
 FactoryBot.define do
   factory :google_calendar do
-    
   end
 end

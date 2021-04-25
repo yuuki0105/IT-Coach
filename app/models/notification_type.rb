@@ -3,5 +3,4 @@ class NotificationType < ActiveYaml::Base
   set_root_path "config/divisions"
   set_filename "notification_type"
   enum_accessor :type
-
 end

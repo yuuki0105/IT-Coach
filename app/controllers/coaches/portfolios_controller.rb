@@ -1,5 +1,4 @@
 class Coaches::PortfoliosController < ApplicationController
-
   include AuthenticateUser
 
   def new
@@ -39,8 +38,8 @@ class Coaches::PortfoliosController < ApplicationController
   end
 
   private
+
   def portfolio_params
     params.require(:portfolio).permit(:title, :url).merge(coach_id: current_user.coach.id)
   end
-
 end

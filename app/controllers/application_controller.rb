@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
     before_action :configure_permitted_parameters, if: :devise_controller?
     before_action :basic_auth
 
@@ -17,6 +16,7 @@ class ApplicationController < ActionController::Base
     end
 
     private
+
     def basic_auth
         return unless Rails.env.production?
         return unless request.path.start_with?("/admin")
@@ -24,5 +24,4 @@ class ApplicationController < ActionController::Base
           id == Rails.application.credentials.basic_auth[:id] && password == Rails.application. credentials.basic_auth[:password]
         end
     end
-
 end

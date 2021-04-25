@@ -1,5 +1,4 @@
 class GoogleCalendarEventsController < ApplicationController
-
   include AuthenticateUser
 
   def new
@@ -29,5 +28,4 @@ class GoogleCalendarEventsController < ApplicationController
       redirect_to coach_path(coach)
     end
   end
-
 end

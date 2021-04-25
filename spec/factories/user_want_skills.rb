@@ -20,6 +20,5 @@
 #
 FactoryBot.define do
   factory :user_want_skill do
-    
   end
 end
