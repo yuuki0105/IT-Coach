@@ -24,6 +24,6 @@
 #
 FactoryBot.define do
   factory :scheduled_event do
-    
+
   end
 end

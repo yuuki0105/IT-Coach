@@ -20,6 +20,6 @@
 #
 FactoryBot.define do
   factory :user_want_budget do
-    
+
   end
 end

@@ -18,6 +18,6 @@
 #
 FactoryBot.define do
   factory :user_want_free do
-    
+
   end
 end
