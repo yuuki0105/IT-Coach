@@ -14,11 +14,11 @@
   <%#- resource_class.omniauth_providers.each do |provider| %>
 
   <div class="mt-2 space-y-4">
-    <%= link_to omniauth_authorize_path(:user, :facebook), method: :post ,class: "flex px-3.5 sm:px-5 py-2 sm:py-1.5 bg-facebook text-white sm:text-base rounded-3xl sm:rounded-3xl font-medium leading-4 w-full justify-center items-center" do %>
+    <%= link_to omniauth_authorize_path(:user, :facebook), method: :post ,class: "flex px-3.5 sm:px-5 py-2 sm:py-1.5 bg-facebook border sm:border-2 border-facebook text-white sm:text-base rounded-3xl sm:rounded-3xl font-medium leading-4 w-full justify-center items-center" do %>
       <%= image_tag 'facebook.svg', class: "" %><span>Facebookで登録</span>
     <% end %>
 
-    <%= link_to omniauth_authorize_path(:user, :twitter), method: :post ,class: "flex px-3.5 sm:px-5 py-2 sm:py-1.5 bg-twitter text-white sm:text-base rounded-3xl sm:rounded-3xl font-medium leading-4 w-full justify-center items-center" do %>
+    <%= link_to omniauth_authorize_path(:user, :twitter), method: :post ,class: "flex px-3.5 sm:px-5 py-2 sm:py-1.5 bg-twitter border sm:border-2 border-twitter text-white sm:text-base rounded-3xl sm:rounded-3xl font-medium leading-4 w-full justify-center items-center" do %>
       <%= image_tag 'twitter.svg', class: "" %><span>Twitterで登録</span>
     <% end %>
   </div>
