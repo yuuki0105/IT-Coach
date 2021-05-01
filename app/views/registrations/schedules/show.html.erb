@@ -1,9 +1,17 @@
-<h1>コーチになる</h1>
-<%= render "registrations/shared/registration_complete_rate", registration_complete_rate: @registration_complete_rate %>
+<% content_for :javascripts do %>
+  <%= javascript_pack_tag "utilities/form" %>
+  <%= javascript_pack_tag "utilities/text" %>
+<% end %>
 
-<h2>スケジュール</h2>
+<div class="sm:px-8">
 
-<%= link_to "Googleカレンダーと連携する", new_google_calendar_events_path %>
+  <%= render "registrations/shared/coach_registration_title", registration_complete_rate: @registration_complete_rate %>
 
-<%= link_to "次へ", registrations_examination_interview_date_path %>
-<%= link_to "戻る", registrations_portfolios_path %>
+  <h2>スケジュール</h2>
+
+  <%= link_to "Googleカレンダーと連携する", new_google_calendar_events_path %>
+
+  <%= link_to "次へ", registrations_examination_interview_date_path %>
+  <%= link_to "戻る", registrations_portfolios_path %>
+
+</div>

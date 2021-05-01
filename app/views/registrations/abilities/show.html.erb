@@ -1,7 +1,15 @@
-<h1>コーチになる</h1>
-<%= render "registrations/shared/registration_complete_rate", registration_complete_rate: @registration_complete_rate %>
+<% content_for :javascripts do %>
+  <%= javascript_pack_tag "utilities/form" %>
+  <%= javascript_pack_tag "utilities/text" %>
+<% end %>
 
-<h2>できること</h2>
-<%= render "registrations/abilities/form", model: @coach %>
+<div class="sm:px-8">
 
-<%= link_to "戻る", registrations_user_skills_path %>
+  <%= render "registrations/shared/coach_registration_title", registration_complete_rate: @registration_complete_rate %>
+
+  <h2>できること</h2>
+  <%= render "registrations/abilities/form", model: @coach %>
+
+  <%= link_to "戻る", registrations_user_skills_path %>
+
+</div>

@@ -1,3 +1,7 @@
 .h1_text {
-  @apply py-8 text-3.5xl font-bold tracking-tight;
+  @apply text-3.5xl font-bold tracking-tight;
+}
+
+.h2_text {
+  @apply text-xl sm:text-2xl font-bold tracking-tight;
 }

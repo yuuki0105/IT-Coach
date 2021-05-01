@@ -1,23 +1,30 @@
-<h1>コーチになる</h1>
+<% content_for :javascripts do %>
+  <%= javascript_pack_tag "utilities/form" %>
+  <%= javascript_pack_tag "utilities/text" %>
+<% end %>
 
-<%= render "registrations/shared/registration_complete_rate", registration_complete_rate: @registration_complete_rate %>
+<div class="sm:px-8">
 
-<h2>プロフィール画像</h2>
+  <%= render "registrations/shared/coach_registration_title", registration_complete_rate: @registration_complete_rate %>
 
-<%= form_with model: @user, url: registrations_image_path, method: :put do |form| %>
+  <h2>プロフィール画像</h2>
 
-  <%= form.hidden_field :id %>
+  <%= form_with model: @user, url: registrations_image_path, method: :put do |form| %>
 
-  <% if @user.image.attached? %>
-    <%= image_tag @user.image.variant(resize: "100x100") %>
-  <% else %>
-    <%= image_tag "default_icon.png" %>
+    <%= form.hidden_field :id %>
+
+    <% if @user.image.attached? %>
+      <%= image_tag @user.image.variant(resize: "100x100") %>
+    <% else %>
+      <%= image_tag "default_icon.png" %>
+    <% end %>
+
+    <%= form.file_field :image %>
+
+    <div class="actions">
+      <%= form.submit "保存して次へ" %>
+    </div>
+
   <% end %>
 
-  <%= form.file_field :image %>
-
-  <div class="actions">
-    <%= form.submit "保存して次へ" %>
-  </div>
-
-<% end %>
+</div>

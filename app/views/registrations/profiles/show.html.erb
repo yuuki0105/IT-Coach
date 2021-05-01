@@ -1,16 +1,25 @@
-<h1>コーチになる</h1>
-<%= render "registrations/shared/registration_complete_rate", registration_complete_rate: @registration_complete_rate %>
-
-<h2>プロフィール</h2>
-
-<%= form_with model: @user, url: registrations_profile_path, method: :put do |form| %>
-
-  <%= form.text_area :profile %>
-
-  <div class="actions">
-    <%= form.submit "保存して次へ" %>
-  </div>
-
+<% content_for :javascripts do %>
+  <%= javascript_pack_tag "utilities/form" %>
+  <%= javascript_pack_tag "utilities/text" %>
+  <%= javascript_pack_tag "utilities/button" %>
 <% end %>
 
-<%= link_to "戻る", registrations_image_path %>
+<div class="sm:px-8">
+
+  <%= render "registrations/shared/coach_registration_title", registration_complete_rate: @registration_complete_rate %>
+
+  <h2 class="h2_text mt-6 sm:mt-8">プロフィール</h2>
+
+  <%= form_with model: @user, url: registrations_profile_path, method: :put, class: "mt-4" do |form|  %>
+
+    <%= form.text_area :profile , rows: 10 , placeholder: "プロフィールを入力（400文字以内）", class: "text_field w-full" %>
+
+    <div class="py-4 space-y-4 sm:space-y-0 sm:space-x-6 mt-6 sm:mt-8 sm:flex">
+      <%= form.submit "保存して次へ" , class: "button_main" %>
+      <%= link_to "戻る", registrations_image_path, class: "button_sub" %>
+    </div>
+
+  <% end %>
+
+
+</div>
