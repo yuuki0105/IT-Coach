@@ -18,5 +18,5 @@
 #
 class Ability < ApplicationRecord
   belongs_to :coach
-  validates :content, presence: true, length: { maximum: 60 }
+  validates :content, presence: true, length: { maximum: 120 }
 end
