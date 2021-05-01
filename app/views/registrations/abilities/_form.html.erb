@@ -9,8 +9,6 @@
     <% end %>
   </div>
 
-  <div class="actions">
-    <%= form.submit "保存して次へ" %>
-  </div>
+  <%= render "registrations/shared/buttons", form: form, path: registrations_user_skills_path %>
 
 <% end %>
