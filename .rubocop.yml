@@ -75,3 +75,10 @@ Lint/EmptyBlock:
 # 1行長さに指定なし
 Layout/LineLength:
   Enabled: false
+
+# Block内の行数指定
+Metrics/BlockLength:
+  Exclude:
+    - "lib/tasks/**/*"
+    - "config/routes.rb"
+    - "config/environments/**"
