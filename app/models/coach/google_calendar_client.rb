@@ -5,7 +5,7 @@ class Coach < ApplicationRecord
     included do
       def google_calendar_api_client
         oauth = GoogleOauthApi.new
-        oauth.client.refresh_token = self.refresh_token
+        oauth.client.refresh_token = refresh_token
         oauth.client.fetch_access_token!
 
         service = Google::Apis::CalendarV3::CalendarService.new

@@ -69,11 +69,11 @@ class User < ApplicationRecord
 
   # フォローを解除するメソッド
   def unfollow(follower)
-    self.user_follows.find_by(follow_id: follower.id).destroy
+    user_follows.find_by(follow_id: follower.id).destroy
   end
 
   # すでにフォロー済みであればture返す
   def following?(follower)
-    self.follows.include?(follower)
+    follows.include?(follower)
   end
 end

@@ -89,22 +89,22 @@ class Coach < ApplicationRecord
   end
 
   def registration_complete_or_after_examination?
-    return true if self.passed?
-    return true if self.failed?
-    return true if self.registration_complete?
+    return true if passed?
+    return true if failed?
+    return true if registration_complete?
     false
   end
 
   def before_examination?
-    self.examination_status_id == ExaminationStatus::BEFORE_EXAMINATION.id
+    examination_status_id == ExaminationStatus::BEFORE_EXAMINATION.id
   end
 
   def passed?
-    self.examination_status_id == ExaminationStatus::PASSED.id
+    examination_status_id == ExaminationStatus::PASSED.id
   end
 
   def failed?
-    self.examination_status_id == ExaminationStatus::FAILED.id
+    examination_status_id == ExaminationStatus::FAILED.id
   end
 
   def registration_complete_rate
