@@ -15,7 +15,7 @@ namespace :batch do
         next_sync_token = response.next_sync_token
         repeat_count = 1
 
-        while response.next_page_token && repeat_count <= 10 do
+        while response.next_page_token && repeat_count <= 10
           repeat_count += 1
           response = calendar.list_events_next_page(page_token: response.next_page_token)
           items.concat(response.items)
