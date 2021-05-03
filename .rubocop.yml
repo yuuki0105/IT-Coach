@@ -71,3 +71,7 @@ Style/Documentation:
 Lint/EmptyBlock:
   Exclude:
     - "spec/**/*"
+
+# 1行長さに指定なし
+Layout/LineLength:
+  Enabled: false
