@@ -47,17 +47,17 @@ class Coach < ApplicationRecord
   delegate :refresh_token, to: :google_calendar_token, allow_nil: true
 
   # Scopes
-  scope :before_examinations, -> do
+  scope :before_examinations, lambda {
     where(examination_status_id: ExaminationStatus::BEFORE_EXAMINATION.id)
-  end
+  }
 
-  scope :failed, -> do
+  scope :failed, lambda {
     where(examination_status_id: ExaminationStatus::FAILED.id)
-  end
+  }
 
-  scope :passed, -> do
+  scope :passed, lambda {
     where(examination_status_id: ExaminationStatus::PASSED.id)
-  end
+  }
 
   # Methods
   def self.search(keyword)
