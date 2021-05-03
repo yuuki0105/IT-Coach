@@ -13,7 +13,8 @@ class Registrations::ExaminationInterviewDatesController < Registrations::BaseCo
   def arleady_examination_interview_date_confirmed
     return redirect_to mypage_path, notice: "既に審査日程は確定しています" if @coach.examination_interview_date_confirmed
 
-    return if unless @coach.registration_complete_without_interview_date?
-    return redirect_to registrations_image_path, notice: "必須項目の入力が完了しておりません"
+    return if @coach.registration_complete_without_interview_date?
+
+    redirect_to registrations_image_path, notice: "必須項目の入力が完了しておりません"
   end
 end

@@ -91,6 +91,6 @@ Style/IfUnlessModifier:
 Rails/InverseOf:
   Enabled: false
 
-# メソッド名は11文字まで
+# メソッド名は17文字まで
 Metrics/MethodLength:
-  Max: 11
+  Max: 17
