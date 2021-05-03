@@ -25,7 +25,6 @@ class Settings::PasswordsController < ApplicationController
       flash[:error] = "パスワード更新に失敗しました"
       render :edit
     end
-
   end
 
   private

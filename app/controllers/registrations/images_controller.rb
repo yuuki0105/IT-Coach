@@ -10,7 +10,6 @@ class Registrations::ImagesController < Registrations::BaseController
     else
       render :show
     end
-
   end
 
   private

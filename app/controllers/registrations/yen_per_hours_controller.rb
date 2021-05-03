@@ -11,7 +11,6 @@ class Registrations::YenPerHoursController < Registrations::BaseController
     else
       render :show
     end
-
   end
 
   private

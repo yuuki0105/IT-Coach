@@ -61,14 +61,12 @@ class Coach < ApplicationRecord
 
   # Methods
   def self.search(keyword)
-
     return Coach.all if keyword.blank?
 
     skills = Skill.where("name LIKE ?", "%#{keyword}%").pluck(:id)
     users = User.joins(:coach).eager_load(:user_skills).where("name LIKE ? OR profile LIKE ? OR user_skills.id in (?)", "%#{keyword}%", "%#{keyword}%", skills.join(",")).distinct.pluck(:id)
 
     eager_load(:careers, :portfolios, :abilities).where("careers.organization LIKE ? OR careers.role LIKE ? OR portfolios.title LIKE ? OR abilities.content LIKE ? OR user_id in (?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%" , users.join(","))
-
   end
 
   def registration_complete?
@@ -111,7 +109,6 @@ class Coach < ApplicationRecord
   end
 
   def registration_complete_rate
-
     complete_array = []
 
     complete_array << user.image.present?
@@ -124,6 +121,5 @@ class Coach < ApplicationRecord
     complete_array << examination_interview_date_confirmed
     float_rate = (complete_array.select{ |n| n }.size.to_f / complete_array.size.to_f) * 100
     float_rate.round
-
   end
 end

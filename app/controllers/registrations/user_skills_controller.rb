@@ -13,7 +13,6 @@ class Registrations::UserSkillsController < Registrations::BaseController
     else
       render :show
     end
-
   end
 
   private

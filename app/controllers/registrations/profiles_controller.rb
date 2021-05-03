@@ -10,7 +10,6 @@ class Registrations::ProfilesController < Registrations::BaseController
     else
       render :show
     end
-
   end
 
   private

@@ -16,7 +16,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   private
 
   def sns_callback
-
     @omniauth = request.env["omniauth.auth"]
     @profile = SnsAccount.find_by(provider: @omniauth["provider"], uid: @omniauth["uid"])
 

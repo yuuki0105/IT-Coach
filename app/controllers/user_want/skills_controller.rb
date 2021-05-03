@@ -7,7 +7,6 @@ class UserWant::SkillsController < ApplicationController
     SkillCategory.all.each do |skill_category|
       @skill_categories << { title: skill_category.name, skills: Skill.where(skill_category_id: skill_category.id) }
     end
-
   end
 
   def create
