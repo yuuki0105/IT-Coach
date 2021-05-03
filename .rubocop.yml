@@ -94,3 +94,7 @@ Rails/InverseOf:
 # メソッド名は17文字まで
 Metrics/MethodLength:
   Max: 17
+
+# 循環複雑度は8がMax
+Metrics/CyclomaticComplexity:
+  Max: 8
