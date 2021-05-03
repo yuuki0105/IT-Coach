@@ -6,7 +6,7 @@ namespace :batch do
     target_date = Date.today - 90.days
     coaches = Coach.failed.where("examination_result_date <= ?", target_date)
     ActiveRecord::Base.transaction do
-      coaches.update(examination_status_id: ExaminationStatus::BEFORE_EXAMINATION.id,examination_result_date: nil)
+      coaches.update(examination_status_id: ExaminationStatus::BEFORE_EXAMINATION.id, examination_result_date: nil)
     end
   end
 end

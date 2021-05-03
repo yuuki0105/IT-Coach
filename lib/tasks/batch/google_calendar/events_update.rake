@@ -10,7 +10,7 @@ namespace :batch do
         response = calendar.list_events_next_token
         items = response.items
         next_sync_token = response.next_sync_token
-        events = events_format(items,coach.id, calendar.id)
+        events = events_format(items, coach.id, calendar.id)
         ActiveRecord::Base.transaction do
           events.each do |event|
             # TODO: 時間変更以外の変更も取得してしまうが、後々直したい

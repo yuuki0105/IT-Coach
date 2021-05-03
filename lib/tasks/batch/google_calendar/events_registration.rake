@@ -23,7 +23,7 @@ namespace :batch do
 
         confirmed_items = items.select{|item| item.status == "confirmed"}
 
-        events = events_format(confirmed_items,coach.id,calendar.id)
+        events = events_format(confirmed_items, coach.id, calendar.id)
 
         ActiveRecord::Base.transaction do
           ScheduledEvent.import(events, on_duplicate_key_ignore: true)

@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
     before_action :basic_auth
 
     def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:password_create_myself]) # 新規登録時(sign_up時)にname,password_create_myselfというキーのパラメーターを追加で許可する
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :password_create_myself]) # 新規登録時(sign_up時)にname,password_create_myselfというキーのパラメーターを追加で許可する
     end
 
     # ログイン後のリダイレクト先

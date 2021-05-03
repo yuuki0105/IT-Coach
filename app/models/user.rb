@@ -31,7 +31,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable,
          # Omniauthを使用するためのオプション
-         :omniauthable, omniauth_providers: [:facebook,:twitter]
+         :omniauthable, omniauth_providers: [:facebook, :twitter]
 
   # アソシエーション
   has_one :coach, dependent: :destroy
