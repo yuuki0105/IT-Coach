@@ -37,8 +37,8 @@ class Room < ApplicationRecord
   private
 
   def user_not_equal_other_user
-    if user_id == other_user_id
-      errors.add(:user_id, "同じユーザー同士でルームをつくることはできません")
-    end
+    return if user_id != other_user_id
+
+    errors.add(:user_id, "同じユーザー同士でルームをつくることはできません")
   end
 end

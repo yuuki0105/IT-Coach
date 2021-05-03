@@ -11,8 +11,8 @@ class Registrations::BaseController < ApplicationController
   end
 
   def require_before_examination
-    unless @coach.before_examination?
-      redirect_to mypage_path, notice: "既にコーチ審査は完了しています"
-    end
+    return if @coach.before_examination?
+
+    redirect_to mypage_path, notice: "既にコーチ審査は完了しています"
   end
 end

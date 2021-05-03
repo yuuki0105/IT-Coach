@@ -11,14 +11,13 @@ class ResetPasswordsController < ApplicationController
 
   def edit
     @user = User.find_by(reset_password_token: params[:token])
-    unless @user&.reset_password_period_valid?
-      redirect_to reset_password_path, alert: "失敗しました"
-    end
+    return redirect_to reset_password_path, alert: "失敗しました" unless @user&.reset_password_period_valid?
   end
 
   def update
     @user = User.find_by(reset_password_token: user_params[:reset_password_token])
-    redirect_to reset_password_path, alert: "失敗しました" unless @user&.reset_password_period_valid?
+    return redirect_to reset_password_path, alert: "失敗しました" unless @user&.reset_password_period_valid?
+
     @user.reset_password(user_params[:password], user_params[:password_confirmation])
     redirect_to new_user_session_path, notice: "パスワードを更新しました"
   end
