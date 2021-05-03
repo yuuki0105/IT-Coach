@@ -22,7 +22,8 @@ class ApplicationController < ActionController::Base
     return unless request.path.start_with?("/admin")
 
     authenticate_or_request_with_http_basic do |id, password|
-      id == Rails.application.credentials.basic_auth[:id] && password == Rails.application. credentials.basic_auth[:password]
+      id == Rails.application.credentials.basic_auth[:id] &&
+      password == Rails.application.credentials.basic_auth[:password]
     end
   end
 end
