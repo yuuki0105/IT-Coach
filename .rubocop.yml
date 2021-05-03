@@ -82,3 +82,7 @@ Metrics/BlockLength:
     - "lib/tasks/**/*"
     - "config/routes.rb"
     - "config/environments/**"
+
+# if/unless分を1行で書かなくてもいい
+Style/IfUnlessModifier:
+  Enabled: false
