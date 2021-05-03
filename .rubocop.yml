@@ -2,11 +2,6 @@ require:
   - rubocop-rails
   - rubocop-performance
 
-inherit_mode:
-  merge:
-    - Exclude
-    - AllowedMethods
-
 AllCops:
   Exclude:
     - "vendor/**/*"
@@ -16,9 +11,11 @@ AllCops:
     - ".git/**/*"
     - "tmp/**/*"
     - "public/**/*"
+    - 'node_modules/**/*'
+    - "lib/templates/**/*"
   DisplayCopNames: true
-  TargetRubyVersion: 2.7
   NewCops: enable
+  TargetRubyVersion: 2.7
 
 Rails:
   Enabled: true
@@ -98,3 +95,6 @@ Metrics/MethodLength:
 # 循環複雑度は8がMax
 Metrics/CyclomaticComplexity:
   Max: 8
+
+Rails/FilePath:
+  Enabled: true
