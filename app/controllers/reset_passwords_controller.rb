@@ -1,6 +1,5 @@
 class ResetPasswordsController < ApplicationController
-  def show
-  end
+  def show; end
 
   def create
     user = User.find_by(email: params[:email])

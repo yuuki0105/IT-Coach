@@ -2,8 +2,7 @@ class Registrations::ExaminationInterviewDatesController < Registrations::BaseCo
   before_action :arleady_examination_interview_date_confirmed
   protect_from_forgery except: [:update]
 
-  def show
-  end
+  def show; end
 
   def update
     @coach.update(examination_interview_date_confirmed: true)

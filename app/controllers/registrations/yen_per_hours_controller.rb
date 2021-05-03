@@ -1,8 +1,7 @@
 class Registrations::YenPerHoursController < Registrations::BaseController
   before_action :set_yen_per_hour
 
-  def show
-  end
+  def show; end
 
   def update
     @yen_per_hour.attributes = yen_per_hour_params
