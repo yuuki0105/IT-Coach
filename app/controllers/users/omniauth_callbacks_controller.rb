@@ -34,11 +34,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     @profile.save!
 
-    #ログインしていたら
+    # ログインしていたら
     if current_user
-      #ユーザーが一致しない場合エラーをあげる
+      # ユーザーが一致しない場合エラーをあげる
       raise "user is not identical" if current_user != @profile.user
-    #ログインしていなかったら
+    # ログインしていなかったら
     else
       sign_in(:user, @profile.user)
     end
