@@ -19,9 +19,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @omniauth = request.env["omniauth.auth"]
     @profile = SnsAccount.find_by(provider: @omniauth["provider"], uid: @omniauth["uid"])
 
-    unless @profile
-      @profile = SnsAccount.new(provider: @omniauth["provider"], uid: @omniauth["uid"])
-    end
+    @profile ||= SnsAccount.new(provider: @omniauth["provider"], uid: @omniauth["uid"])
 
     user = current_user || User.find_by(email: @omniauth["info"]["email"]) || User.create!(name: @omniauth["info"]["name"], email: @omniauth["info"]["email"], password: Devise.friendly_token, password_create_myself: false)
     @profile.user = user
