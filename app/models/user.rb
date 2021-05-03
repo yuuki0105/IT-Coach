@@ -49,7 +49,7 @@ class User < ApplicationRecord
   has_many :want_skills, through: :user_want_skills, source: :skill
 
   # 自分がフォローしている人
-  has_many :user_follows, class_name: "UserFollow", foreign_key: "user_id", dependent: :destroy
+  has_many :user_follows, class_name: "UserFollow", dependent: :destroy
   has_many :follows, through: :user_follows, source: :follower
 
   # 自分をフォローしている人(自分がフォローされている人)
