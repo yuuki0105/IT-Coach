@@ -45,4 +45,3 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     redirect_to user_path(@profile.user)
   end
 end
-
