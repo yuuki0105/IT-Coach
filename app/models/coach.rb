@@ -74,6 +74,7 @@ class Coach < ApplicationRecord
   def registration_complete?
     return false unless registration_complete_without_interview_date?
     return false unless examination_interview_date_confirmed
+
     true
   end
 
@@ -85,6 +86,7 @@ class Coach < ApplicationRecord
     return false if yen_per_hour.blank?
     return false if careers.blank?
     return false if portfolios.blank?
+
     true
   end
 
@@ -92,6 +94,7 @@ class Coach < ApplicationRecord
     return true if passed?
     return true if failed?
     return true if registration_complete?
+
     false
   end
 
