@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-    private
+  private
 
   def basic_auth
     return unless Rails.env.production?
