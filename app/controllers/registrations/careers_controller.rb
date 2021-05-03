@@ -6,7 +6,7 @@ class Registrations::CareersController < Registrations::BaseController
   def update
     @coach = current_user.coach
     @coach.attributes = career_params
-    @coach.careers = @coach.careers.select{ |a| a.valid? }
+    @coach.careers = @coach.careers.select(&:valid?)
     if @coach.save
       redirect_to registrations_portfolios_path
     else

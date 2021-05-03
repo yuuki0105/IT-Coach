@@ -6,7 +6,7 @@ class Registrations::PortfoliosController < Registrations::BaseController
   def update
     @coach = current_user.coach
     @coach.attributes = portfolio_params
-    @coach.portfolios = @coach.portfolios.select{ |a| a.valid? }
+    @coach.portfolios = @coach.portfolios.select(&:valid?)
     if @coach.save
       redirect_to registrations_schedules_path
     else

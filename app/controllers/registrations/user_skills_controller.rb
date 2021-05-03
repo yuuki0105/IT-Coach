@@ -7,7 +7,7 @@ class Registrations::UserSkillsController < Registrations::BaseController
   def update
     @user = current_user
     @user.attributes = user_skill_params
-    @user.user_skills = @user.user_skills.select{ |a| a.valid? }
+    @user.user_skills = @user.user_skills.select(&:valid?)
     if @user.save
       redirect_to registrations_abilities_path
     else

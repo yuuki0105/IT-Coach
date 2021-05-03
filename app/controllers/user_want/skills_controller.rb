@@ -10,7 +10,7 @@ class UserWant::SkillsController < ApplicationController
   end
 
   def create
-    skill_ids = user_want_skill_params[:want_skills].reject { |skill_id| skill_id.blank? }.map{ |skill_id| skill_id.to_i }
+    skill_ids = user_want_skill_params[:want_skills].reject(&:blank?).map(&:to_i)
     user_want_skills = []
     ActiveRecord::Base.transaction do
       skill_ids.each do |skill_id|
