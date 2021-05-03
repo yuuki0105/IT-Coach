@@ -19,6 +19,6 @@ class Registrations::YenPerHoursController < Registrations::BaseController
   end
 
   def set_yen_per_hour
-    @yen_per_hour = current_user.coach.yen_per_hour ? current_user.coach.yen_per_hour : YenPerHour.new(coach: current_user.coach)
+    @yen_per_hour = current_user.coach.yen_per_hour || YenPerHour.new(coach: current_user.coach)
   end
 end
