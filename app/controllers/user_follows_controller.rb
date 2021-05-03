@@ -6,14 +6,14 @@ class UserFollowsController < ApplicationController
   end
 
   def create
-    @user =User.find(user_follow_params[:follow_id])
+    @user = User.find(user_follow_params[:follow_id])
     current_user.follow(@user)
     redirect_to coach_path(id: @user.coach.id)
     # @userはフォローされたユーザーのこと
   end
 
   def destroy
-    @user =User.find(user_follow_params[:follow_id])
+    @user = User.find(user_follow_params[:follow_id])
     current_user.unfollow(@user)
     redirect_to coach_path(id: @user.coach.id)
   end

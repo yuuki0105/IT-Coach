@@ -119,7 +119,7 @@ class Coach < ApplicationRecord
     complete_array << careers.present?
     complete_array << portfolios.present?
     complete_array << examination_interview_date_confirmed
-    float_rate = (complete_array.select{ |n| n }.size.to_f / complete_array.size.to_f)*100
+    float_rate = (complete_array.select{ |n| n }.size.to_f / complete_array.size.to_f) * 100
     float_rate.round
 
   end
