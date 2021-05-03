@@ -9,6 +9,5 @@ class User::MailerPreview
         User::Mailer.reset_password_email(@user)
       end
     end
-
   end
 end
