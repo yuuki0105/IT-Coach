@@ -90,3 +90,7 @@ Style/IfUnlessModifier:
 # InverseOfは書かなくてもいい
 Rails/InverseOf:
   Enabled: false
+
+# メソッド名は11文字まで
+Metrics/MethodLength:
+  Max: 11
