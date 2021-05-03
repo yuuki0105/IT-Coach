@@ -11,12 +11,10 @@ class Settings::PasswordsController < ApplicationController
       return render :edit
     end
 
-    if @user.password_create_myself
-      unless @user.valid_password?(current_user_params[:current_password])
+    if @user.password_create_myself && !@user.valid_password?(current_user_params[:current_password])
         flash[:error] = "パスワード更新に失敗しました"
         return render :edit
       end
-    end
 
     if @user.update(user_params)
       sign_in(@user, bypass: true) if current_user.id == @user.id
