@@ -86,3 +86,7 @@ Metrics/BlockLength:
 # if/unless分を1行で書かなくてもいい
 Style/IfUnlessModifier:
   Enabled: false
+
+# InverseOfは書かなくてもいい
+Rails/InverseOf:
+  Enabled: false
