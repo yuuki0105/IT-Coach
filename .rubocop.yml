@@ -48,9 +48,9 @@ Style/FrozenStringLiteralComment:
 Style/SymbolArray:
   Enabled: false
 
-# Module名::Class名って書き方に統一
+# Module名::Class名の書き方の指定なし
 Style/ClassAndModuleChildren:
-  EnforcedStyle: compact
+  Enabled: false
 
 # 英語以外の文字があることを許可
 Style/AsciiComments:
