@@ -9,7 +9,7 @@ ActiveAdmin.register Coach do
 
   form do |f|
     unless f.object.examination_result_date
-      f.object.examination_result_date = Date.today
+      f.object.examination_result_date = Time.zone.today
     end
 
     f.inputs do
