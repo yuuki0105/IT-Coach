@@ -5,7 +5,7 @@ class Registrations::YenPerHoursController < Registrations::BaseController
   end
 
   def update
-     @yen_per_hour.attributes = yen_per_hour_params
+    @yen_per_hour.attributes = yen_per_hour_params
     if @yen_per_hour.save
       redirect_to registrations_careers_path
     else

@@ -2,7 +2,7 @@
 
 class User::MailerPreview
   module Password
-  extend ActiveSupport::Concern
+    extend ActiveSupport::Concern
     included do
       def reset_password_email
         @user = User.find_by(id: params[:id]) || User.last

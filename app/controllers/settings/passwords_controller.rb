@@ -30,11 +30,11 @@ class Settings::PasswordsController < ApplicationController
 
   private
 
-    def current_user_params
-      params.require(:user).permit(:current_password)
-    end
+  def current_user_params
+    params.require(:user).permit(:current_password)
+  end
 
-    def user_params
-      params.require(:user).permit(:password, :password_confirmation).merge(password_create_myself: true)
-    end
+  def user_params
+    params.require(:user).permit(:password, :password_confirmation).merge(password_create_myself: true)
+  end
 end
