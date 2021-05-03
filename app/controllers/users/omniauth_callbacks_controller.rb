@@ -22,7 +22,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     user = current_user || User.find_by(email: @omniauth["info"]["email"]) || User.create!(name: @omniauth["info"]["name"], email: @omniauth["info"]["email"], password: Devise.friendly_token, password_create_myself: false)
     @profile.user = user
     unless @profile.user.image.attached?
-      image = open(@omniauth["info"]["image"])
+      image = URI.parse(@omniauth["info"]["image"]).open
       @profile.user.image.attach(io: image, filename: "user.png")
     end
     @profile.save!
