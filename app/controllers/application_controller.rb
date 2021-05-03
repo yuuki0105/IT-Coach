@@ -19,10 +19,10 @@ class ApplicationController < ActionController::Base
 
   def basic_auth
     return unless Rails.env.production?
-      return unless request.path.start_with?("/admin")
+    return unless request.path.start_with?("/admin")
 
-      authenticate_or_request_with_http_basic do |id, password|
-        id == Rails.application.credentials.basic_auth[:id] && password == Rails.application. credentials.basic_auth[:password]
-      end
+    authenticate_or_request_with_http_basic do |id, password|
+      id == Rails.application.credentials.basic_auth[:id] && password == Rails.application. credentials.basic_auth[:password]
+    end
   end
 end
