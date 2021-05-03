@@ -21,7 +21,7 @@ namespace :batch do
           items.concat(response.items)
         end
 
-        confirmed_items = items.select{|item| item.status == "confirmed"}
+        confirmed_items = items.select{ |item| item.status == "confirmed" }
 
         events = events_format(confirmed_items, coach.id, calendar.id)
 
