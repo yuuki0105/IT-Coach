@@ -50,3 +50,7 @@ Style/FrozenStringLiteralComment:
 # シンボルの配列の書き方の指定 :%iは使わない
 Style/SymbolArray:
   Enabled: false
+
+# Module名::Class名って書き方に統一
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
