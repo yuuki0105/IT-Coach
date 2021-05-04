@@ -18,5 +18,5 @@
 #
 class YenPerHour < ApplicationRecord
   belongs_to :coach
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 5000,less_than_or_equal_to: 99999 }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 5000, less_than_or_equal_to: 99_999 }
 end

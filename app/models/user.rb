@@ -31,7 +31,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable,
          # Omniauthを使用するためのオプション
-         :omniauthable, omniauth_providers: [:facebook,:twitter]
+         :omniauthable, omniauth_providers: [:facebook, :twitter]
 
   # アソシエーション
   has_one :coach, dependent: :destroy
@@ -49,7 +49,7 @@ class User < ApplicationRecord
   has_many :want_skills, through: :user_want_skills, source: :skill
 
   # 自分がフォローしている人
-  has_many :user_follows, class_name: "UserFollow", foreign_key: "user_id", dependent: :destroy
+  has_many :user_follows, class_name: "UserFollow", dependent: :destroy
   has_many :follows, through: :user_follows, source: :follower
 
   # 自分をフォローしている人(自分がフォローされている人)
@@ -69,11 +69,11 @@ class User < ApplicationRecord
 
   # フォローを解除するメソッド
   def unfollow(follower)
-    self.user_follows.find_by(follow_id: follower.id).destroy
+    user_follows.find_by(follow_id: follower.id).destroy
   end
 
   # すでにフォロー済みであればture返す
   def following?(follower)
-    self.follows.include?(follower)
+    follows.include?(follower)
   end
 end

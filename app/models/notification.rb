@@ -29,13 +29,13 @@ class Notification < ApplicationRecord
   validates :read, inclusion: { in: [true, false] }
   validates :notification_type_id, presence: true, inclusion: { in: NotificationType.all.pluck(:id) }
 
-  scope :unread, -> do
+  scope :unread, lambda {
     where(read: false)
-  end
+  }
 
-  scope :type_is_messages, -> do
+  scope :type_is_messages, lambda {
     where(notification_type_id: NotificationType::MESSAGE.id)
-  end
+  }
 
   def type_is_message?
     notification_type == NotificationType::MESSAGE

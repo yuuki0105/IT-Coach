@@ -15,15 +15,15 @@ namespace :batch do
         next_sync_token = response.next_sync_token
         repeat_count = 1
 
-        while response.next_page_token && repeat_count <= 10 do
+        while response.next_page_token && repeat_count <= 10
           repeat_count += 1
           response = calendar.list_events_next_page(page_token: response.next_page_token)
           items.concat(response.items)
         end
 
-        confirmed_items = items.select{|item| item.status == "confirmed"}
+        confirmed_items = items.select { |item| item.status == "confirmed" }
 
-        events = events_format(confirmed_items,coach.id,calendar.id)
+        events = events_format(confirmed_items, coach.id, calendar.id)
 
         ActiveRecord::Base.transaction do
           ScheduledEvent.import(events, on_duplicate_key_ignore: true)
@@ -45,4 +45,3 @@ namespace :batch do
     end
   end
 end
-

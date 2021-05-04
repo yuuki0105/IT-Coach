@@ -10,8 +10,9 @@
 #
 # Indexes
 #
-#  index_rooms_on_other_user_id  (other_user_id)
-#  index_rooms_on_user_id        (user_id)
+#  index_rooms_on_other_user_id              (other_user_id)
+#  index_rooms_on_user_id                    (user_id)
+#  index_rooms_on_user_id_and_other_user_id  (user_id,other_user_id) UNIQUE
 #
 # Foreign Keys
 #
@@ -26,19 +27,19 @@ class Room < ApplicationRecord
   validates :user_id, uniqueness: { scope: [:other_user_id] }
   validate :user_not_equal_other_user
 
-  def other_side_user(me)
-    self.user == me ? other_user : user
+  def other_side_user(other_user)
+    user == other_user ? other_user : user
   end
 
-  def self.relative(me)
-    where(user: me).or(where(other_user: me))
+  def self.relative(other_user)
+    where(user: other_user).or(where(other_user: other_user))
   end
 
   private
 
   def user_not_equal_other_user
-    if user_id == other_user_id
-      errors.add(:user_id, "同じユーザー同士でルームをつくることはできません")
-    end
+    return if user_id != other_user_id
+
+    errors.add(:user_id, "同じユーザー同士でルームをつくることはできません")
   end
 end

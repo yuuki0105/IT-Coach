@@ -2,11 +2,6 @@ require:
   - rubocop-rails
   - rubocop-performance
 
-inherit_mode:
-  merge:
-    - Exclude
-    - AllowedMethods
-
 AllCops:
   Exclude:
     - "vendor/**/*"
@@ -16,9 +11,11 @@ AllCops:
     - ".git/**/*"
     - "tmp/**/*"
     - "public/**/*"
+    - 'node_modules/**/*'
+    - "lib/templates/**/*"
   DisplayCopNames: true
-  TargetRubyVersion: 2.7
   NewCops: enable
+  TargetRubyVersion: 2.7
 
 Rails:
   Enabled: true
@@ -47,10 +44,54 @@ Metrics/AbcSize:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-# 末尾の空行を入れない ：trueは書かない
-Layout/TrailingEmptyLines:
-  Enabled: false
-
 # シンボルの配列の書き方の指定 :%iは使わない
 Style/SymbolArray:
   Enabled: false
+
+# Module名::Class名の書き方の指定なし
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# 英語以外の文字があることを許可
+Style/AsciiComments:
+  Enabled: false
+
+# Gemはアルファベット順に並べなくていい
+Bundler/OrderedGems:
+  Enabled: false
+
+# ModuleやClassのドキュメントを書かなくてもいい
+Style/Documentation:
+  Enabled: false
+
+# do~endが空であることを今はSpecファイルだけ許可
+Lint/EmptyBlock:
+  Exclude:
+    - "spec/**/*"
+
+# 1行長さに指定なし
+Layout/LineLength:
+  Enabled: false
+
+# Block内の行数指定
+Metrics/BlockLength:
+  Exclude:
+    - "lib/tasks/**/*"
+    - "config/routes.rb"
+    - "config/environments/**"
+
+# if/unless分を1行で書かなくてもいい
+Style/IfUnlessModifier:
+  Enabled: false
+
+# InverseOfは書かなくてもいい
+Rails/InverseOf:
+  Enabled: false
+
+# メソッド名は17文字まで
+Metrics/MethodLength:
+  Max: 17
+
+# 循環複雑度は8がMax
+Metrics/CyclomaticComplexity:
+  Max: 8

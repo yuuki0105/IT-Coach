@@ -1,4 +1,3 @@
 class Registrations::SchedulesController < Registrations::BaseController
-  def show
-  end
+  def show; end
 end

@@ -6,7 +6,7 @@ class Rooms::MessagesController < ApplicationController
     @message = Message.new(message_params)
 
     if @message.save
-      @notification = Notification.new(user: @room.other_side_user(current_user),message: @message,notification_type: NotificationType::MESSAGE)
+      @notification = Notification.new(user: @room.other_side_user(current_user), message: @message, notification_type: NotificationType::MESSAGE)
       @notification.save
       redirect_to room_path(id: @room.id)
     else

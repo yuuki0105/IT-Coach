@@ -9,6 +9,5 @@ class Users::RoomsController < ApplicationController
       coach = User.find(params[:user_id]).coach
       redirect_to coach_path(id: coach.id)
     end
-
   end
 end

@@ -23,12 +23,12 @@
 class Message < ApplicationRecord
   belongs_to :room
   belongs_to :user
-  has_many :notifications
+  has_many :notifications, dependent: :destory
 
   validates :content, presence: true, length: { maximum: 1000 }
   validates :read, inclusion: { in: [true, false] }
 
-  scope :have_unread, -> (user_id) do
+  scope :have_unread, lambda  { |user_id|
     where(read: false, user_id: user_id)
-  end
+  }
 end

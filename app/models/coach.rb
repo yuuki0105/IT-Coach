@@ -47,33 +47,32 @@ class Coach < ApplicationRecord
   delegate :refresh_token, to: :google_calendar_token, allow_nil: true
 
   # Scopes
-  scope :before_examinations, -> do
+  scope :before_examinations, lambda {
     where(examination_status_id: ExaminationStatus::BEFORE_EXAMINATION.id)
-  end
+  }
 
-  scope :failed, -> do
+  scope :failed, lambda {
     where(examination_status_id: ExaminationStatus::FAILED.id)
-  end
+  }
 
-  scope :passed, -> do
+  scope :passed, lambda {
     where(examination_status_id: ExaminationStatus::PASSED.id)
-  end
+  }
 
   # Methods
   def self.search(keyword)
-
     return Coach.all if keyword.blank?
 
     skills = Skill.where("name LIKE ?", "%#{keyword}%").pluck(:id)
-    users = User.joins(:coach).eager_load(:user_skills).where("name LIKE ? OR profile LIKE ? OR user_skills.id in (?)", "%#{keyword}%","%#{keyword}%",skills.join(",")).distinct.pluck(:id)
+    users = User.joins(:coach).eager_load(:user_skills).where("name LIKE ? OR profile LIKE ? OR user_skills.id in (?)", "%#{keyword}%", "%#{keyword}%", skills.join(",")).distinct.pluck(:id)
 
-    eager_load(:careers,:portfolios,:abilities).where("careers.organization LIKE ? OR careers.role LIKE ? OR portfolios.title LIKE ? OR abilities.content LIKE ? OR user_id in (?)", "%#{keyword}%","%#{keyword}%","%#{keyword}%","%#{keyword}%" ,users.join(","))
-
+    eager_load(:careers, :portfolios, :abilities).where("careers.organization LIKE ? OR careers.role LIKE ? OR portfolios.title LIKE ? OR abilities.content LIKE ? OR user_id in (?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", users.join(","))
   end
 
   def registration_complete?
     return false unless registration_complete_without_interview_date?
     return false unless examination_interview_date_confirmed
+
     true
   end
 
@@ -85,30 +84,31 @@ class Coach < ApplicationRecord
     return false if yen_per_hour.blank?
     return false if careers.blank?
     return false if portfolios.blank?
+
     true
   end
 
   def registration_complete_or_after_examination?
-    return true if self.passed?
-    return true if self.failed?
-    return true if self.registration_complete?
+    return true if passed?
+    return true if failed?
+    return true if registration_complete?
+
     false
   end
 
   def before_examination?
-    self.examination_status_id == ExaminationStatus::BEFORE_EXAMINATION.id
+    examination_status_id == ExaminationStatus::BEFORE_EXAMINATION.id
   end
 
   def passed?
-    self.examination_status_id == ExaminationStatus::PASSED.id
+    examination_status_id == ExaminationStatus::PASSED.id
   end
 
   def failed?
-    self.examination_status_id == ExaminationStatus::FAILED.id
+    examination_status_id == ExaminationStatus::FAILED.id
   end
 
   def registration_complete_rate
-
     complete_array = []
 
     complete_array << user.image.present?
@@ -119,8 +119,7 @@ class Coach < ApplicationRecord
     complete_array << careers.present?
     complete_array << portfolios.present?
     complete_array << examination_interview_date_confirmed
-    float_rate = (complete_array.select{ |n| n }.size.to_f / complete_array.size.to_f)*100
+    float_rate = (complete_array.count { |n| n }.to_f / complete_array.size) * 100
     float_rate.round
-
   end
 end
