@@ -5,12 +5,10 @@
   <div id="user_skills">
     <%= link_to_add_association '追加する', form, :user_skills, data: { association_insertion_method: 'append' } %>
     <%= form.fields_for :user_skills do |user_skill| %>
-     <%= render "registrations/user_skills/user_skill_fields", f: user_skill %>
+      <%= render "registrations/user_skills/user_skill_fields", f: user_skill %>
     <% end %>
   </div>
 
-  <div class="actions">
-    <%= form.submit "保存して次へ" %>
-  </div>
+  <%= render "registrations/shared/buttons", form: form, path: registrations_profile_path %>
 
 <% end %>
