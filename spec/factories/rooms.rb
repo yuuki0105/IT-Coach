@@ -10,8 +10,9 @@
 #
 # Indexes
 #
-#  index_rooms_on_other_user_id  (other_user_id)
-#  index_rooms_on_user_id        (user_id)
+#  index_rooms_on_other_user_id              (other_user_id)
+#  index_rooms_on_user_id                    (user_id)
+#  index_rooms_on_user_id_and_other_user_id  (user_id,other_user_id) UNIQUE
 #
 # Foreign Keys
 #

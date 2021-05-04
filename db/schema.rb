@@ -150,6 +150,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["other_user_id"], name: "index_rooms_on_other_user_id"
+    t.index ["user_id", "other_user_id"], name: "index_rooms_on_user_id_and_other_user_id", unique: true
     t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
@@ -208,6 +209,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.integer "level", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["skill_id", "user_id"], name: "index_user_skills_on_skill_id_and_user_id", unique: true
     t.index ["skill_id"], name: "index_user_skills_on_skill_id"
     t.index ["user_id"], name: "index_user_skills_on_user_id"
   end
