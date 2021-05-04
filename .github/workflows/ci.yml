@@ -77,6 +77,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-rails-bundle-v1-
 
+      - name: gem install
+        run: |
+          gem install bundler -v 2.1.4
+
+      - name: bundler install
+        run: |
+          bundle check || bundle install --path vendor/bundle --jobs 4 --retry 3
+
       - name: Exec rubocop
         run: |
           bundle exec rubocop --extra-details --display-style-guide --parallel --display-cop-names
