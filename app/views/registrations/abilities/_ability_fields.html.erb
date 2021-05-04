@@ -1,4 +1,6 @@
-<div class="nested-fields">
-  <%= f.text_field :content %>
-  <%= link_to_remove_association "削除", f %>
+<div class="nested-fields mt-4">
+  <div class="flex items-center justify-between">
+    <%= f.text_area :content, rows: 4, placeholder: "できることを入力（120文字以内）", maxlength: 120, class: "text_field w-full" %>
+    <%= link_to_remove_association "✕", f, class: "block ml-2 text-primary text-base sm:text-xl font-bold" %>
+  </div>
 </div>

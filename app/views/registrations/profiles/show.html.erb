@@ -12,12 +12,9 @@
 
   <%= form_with model: @user, url: registrations_profile_path, method: :put, class: "mt-4" do |form|  %>
 
-    <%= form.text_area :profile , rows: 10 , placeholder: "プロフィールを入力（400文字以内）", class: "text_field w-full" %>
+    <%= form.text_area :profile , rows: 10 , placeholder: "プロフィールを入力（400文字以内）", maxlength: 400, class: "text_field w-full" %>
 
-    <div class="py-4 space-y-4 sm:space-y-0 sm:space-x-6 mt-6 sm:mt-8 sm:flex">
-      <%= form.submit "保存して次へ" , class: "button_main" %>
-      <%= link_to "戻る", registrations_image_path, class: "button_sub" %>
-    </div>
+    <%= render "registrations/shared/buttons", form: form, path: registrations_image_path %>
 
   <% end %>
 
