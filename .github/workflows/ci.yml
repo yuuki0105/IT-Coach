@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  rspec:
+    name: RSpec
+    runs-on: ubuntu-18.04
+    services:
+      mysql:
+        image: mysql:5.7.34
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_DATABASE: it_coach_test
+          MYSQL_USER: root
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          TZ: Asia/Tokyo
+          MYSQL_HOST: 127.0.0.1
+          MYSQL_USERNAME: root
+          RAILS_ENV: test
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Ruby 2.7.2のセットアップ
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.2
+
+      - name: Cache Gemfile.lock
+        uses: actions/cache@v2
+        with:
+          path: ./vendor/bundle
+          key: ${{ runner.os }}-rails-bundle-v1-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-rails-bundle-v1-
+
+      - name: gem install
+        run: |
+          gem install bundler -v 2.1.4
+
+      - name: bundler install
+        run: |
+          bundle check || bundle install --path vendor/bundle --jobs 4 --retry 3
+
+      - name: Setup Database
+        run: |
+          bundle exec rails db:create db:schema:load --trace
+
+      - name: Exec RSpec
+        run: |
+          bundle exec rspec --format documentation --force-color --backtrace
+
+  rubocop:
+    name: Rubocop
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Ruby 2.7.2のセットアップ
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.2
+
+      - name: Cache Gemfile.lock
+        uses: actions/cache@v2
+        with:
+          path: ./vendor/bundle
+          key: ${{ runner.os }}-rails-bundle-v1-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-rails-bundle-v1-
+
+      - name: Exec rubocop
+        run: |
+          bundle exec rubocop --extra-details --display-style-guide --parallel --display-cop-names
