@@ -1,6 +1,7 @@
 <% content_for :javascripts do %>
   <%= javascript_pack_tag "utilities/form" %>
   <%= javascript_pack_tag "utilities/text" %>
+  <%= javascript_pack_tag "utilities/button" %>
 <% end %>
 
 <div class="sm:px-8">
@@ -13,12 +14,8 @@
 
     <%= form.number_field :price %>
 
-    <div class="actions">
-      <%= form.submit "保存して次へ" %>
-    </div>
+    <%= render "registrations/shared/buttons", form: form, path: registrations_abilities_path %>
 
   <% end %>
-
-  <%= link_to "戻る", registrations_abilities_path %>
 
 </div>

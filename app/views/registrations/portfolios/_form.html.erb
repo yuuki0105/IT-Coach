@@ -5,12 +5,10 @@
   <div id="portfolios">
     <%= link_to_add_association '追加する', form, :portfolios, data: { association_insertion_method: 'append' } %>
     <%= form.fields_for :portfolios do |portfolio| %>
-     <%= render "registrations/portfolios/portfolio_fields", f: portfolio %>
+      <%= render "registrations/portfolios/portfolio_fields", f: portfolio %>
     <% end %>
   </div>
 
-  <div class="actions">
-    <%= form.submit "保存して次へ" %>
-  </div>
+  <%= render "registrations/shared/buttons", form: form, path: registrations_careers_path %>
 
 <% end %>
