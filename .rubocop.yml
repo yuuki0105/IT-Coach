@@ -95,6 +95,3 @@ Metrics/MethodLength:
 # 循環複雑度は8がMax
 Metrics/CyclomaticComplexity:
   Max: 8
-
-Rails/FilePath:
-  Enabled: true

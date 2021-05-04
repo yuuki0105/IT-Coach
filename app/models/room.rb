@@ -26,12 +26,12 @@ class Room < ApplicationRecord
   validates :user_id, uniqueness: { scope: [:other_user_id] }
   validate :user_not_equal_other_user
 
-  def other_side_user(onther_user)
-    user == onther_user ? other_user : user
+  def other_side_user(other_user)
+    user == other_user ? other_user : user
   end
 
-  def self.relative(onther_user)
-    where(user: onther_user).or(where(other_user: onther_user))
+  def self.relative(other_user)
+    where(user: other_user).or(where(other_user: other_user))
   end
 
   private
