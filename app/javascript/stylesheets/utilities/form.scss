@@ -2,8 +2,6 @@
   @apply border focus:outline-none focus:ring py-1 px-3 rounded-md;
 }
 
-
-
 .form_label {
-  @apply font-bold block;
+  @apply sm:text-xl font-bold block;
 }
