@@ -16,13 +16,14 @@ jobs:
         ports:
           - 3306:3306
         env:
+          MYSQL_HOST: 127.0.0.1
           MYSQL_DATABASE: it_coach_test
           MYSQL_USER: root
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
 
     env:
       TZ: Asia/Tokyo
-      DATABASE_HOST: mysql
+      DATABASE_HOST: localhost
       DATABASE_NAME: it_coach_test
       DATABASE_USERNAME: root
       DATABASE_PASSWORD: ""
