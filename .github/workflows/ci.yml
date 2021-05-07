@@ -61,7 +61,6 @@ jobs:
 
       - name: Setup Database
         run: |
-          sudo /etc/init.d/mysql start
           bundle exec rails db:create db:schema:load --trace
 
       - name: Exec RSpec
