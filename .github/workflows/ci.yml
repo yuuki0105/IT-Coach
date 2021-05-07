@@ -27,7 +27,7 @@ jobs:
 
     env:
       TZ: Asia/Tokyo
-      MYSQL_HOST: 127.0.0.1
+      DATABASE_HOST: 127.0.0.1
       DATABASE_NAME: it_coach_test
       DATABASE_USERNAME: root
       DATABASE_PASSWORD: password
