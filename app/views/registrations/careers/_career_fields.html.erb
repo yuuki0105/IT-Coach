@@ -1,4 +1,4 @@
-<div class="nested-fields my-4 sm:my-8 border-borderGray border-b">
+<div class="nested-fields my-4 sm:my-8 pb-4 sm:pb-8 border-borderGray border-b">
 
   <div class="flex justify-between">
     <h3 class="form_label">職歴</h3>
@@ -15,19 +15,22 @@
       <%= f.text_field :role, class: "text_field w-full", placeholder: "役割" %>
     </div>
 
-    <div class="flex justify-between">
-      <div>
-        <%= f.date_select :start_month ,discard_day: true, start_year: 2000,  end_year: Time.zone.today.year, use_month_numbers: true, class: "border border-baseGray w-full"  %>
-      </div>
-      <span class="">〜</span>
-      <div>
-        <%= f.date_select :end_month ,discard_day: true, start_year: 2000,  end_year: Time.zone.today.year, use_month_numbers: true, class: "w-full" %>
-      </div>
-    </div>
+    <div class="flex justify-between placeholder-blank sm:items-center">
 
-    <div>
-      <%= f.label :現在 %><br />
-      <%= f.check_box :ongoing %>
+      <div class="space-x-4">
+        <%= f.date_select :start_month ,{discard_day: true, start_year: 2000,  end_year: Time.zone.today.year, use_month_numbers: true, date_separator: "年", prompt: "--"}, {class: "sm:py-1 sm:px-2 border border-borderGray rounded-md bg-white"}  %>月
+      </div>
+      <span>〜</span>
+      <div class="sm:flex sm:items-center sm:space-x-4 space-y-1 sm:space-y-0">
+        <div class="space-x-4">
+          <%= f.date_select :end_month ,{discard_day: true, start_year: 2000,  end_year: Time.zone.today.year, use_month_numbers: true, date_separator: "年", prompt: "--"}, {class: "sm:py-1 sm:px-2 border border-borderGray rounded-md bg-white"} %>月
+        </div>
+        <div class="text-right">
+          <%= f.check_box :ongoing, class:"h-4 w-4" %>
+          <%= f.label :ongoing, "在籍中" %>
+        </div>
+      </div>
+
     </div>
 
   </div>
