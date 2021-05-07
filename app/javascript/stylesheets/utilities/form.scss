@@ -1,5 +1,5 @@
 .text_field {
-  @apply border focus:outline-none focus:ring py-1 px-3 rounded-md;
+  @apply border focus:outline-none focus:ring py-1 px-3 rounded-md placeholder-blank;
 }
 
 .form_label {
