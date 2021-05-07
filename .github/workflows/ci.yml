@@ -23,6 +23,7 @@ jobs:
           MYSQL_HOST: 127.0.0.1
           MYSQL_USERNAME: root
           RAILS_ENV: test
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
 
     steps:
       - name: Check out code
