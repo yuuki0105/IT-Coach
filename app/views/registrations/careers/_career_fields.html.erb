@@ -8,11 +8,11 @@
   <div class="mt-4 space-y-2 sm:space-y-4">
 
     <div>
-      <%= f.text_field :organization, class: "text_field w-full", placeholder: "所属" %>
+      <%= f.text_field :organization, maxlength: 20, class: "text_field w-full", placeholder: "所属" %>
     </div>
 
     <div>
-      <%= f.text_field :role, class: "text_field w-full", placeholder: "役割" %>
+      <%= f.text_field :role, maxlength: 40, class: "text_field w-full", placeholder: "役割" %>
     </div>
 
     <div class="flex justify-between placeholder-blank sm:items-center">
