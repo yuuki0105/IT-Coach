@@ -10,13 +10,18 @@
     <%= render "registrations/shared/coach_registration_title", registration_complete_rate: @registration_complete_rate %>
   </div>
 
-  <h2>審査面談スケジュール登録</h2>
+  <h2  class="h2_text">審査面談スケジュール登録</h2>
+
+  <div class="mt-4 space-y-2">
+    <p class="base_text">以下のリンクから日時を選択してください。</p>
+    <p class="sub_text">※面談時間は約1時間となります。</p>
+    <p class="sub_text">※面談終了後1週間以内に合否を登録メールアドレスへご連絡いたします。</p>
+  </div>
 
   <!-- Calendly inline widget begin -->
   <div class="calendly-inline-widget" data-url="https://calendly.com/komatsu3613" style="min-width:320px;height:630px;"></div>
 
-  <%= link_to "戻る", registrations_schedules_path %>
-
+  <%= link_to "戻る", registrations_schedules_path, class: "button_sub" %>
 </div>
 
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
