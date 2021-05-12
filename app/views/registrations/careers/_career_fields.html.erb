@@ -23,11 +23,11 @@
       <span>〜</span>
       <div class="sm:flex sm:items-center sm:space-x-4 space-y-1 sm:space-y-0">
         <div class="space-x-4">
-          <%= f.date_select :end_month ,{discard_day: true, start_year: 2000,  end_year: Time.zone.today.year, use_month_numbers: true, date_separator: "年", prompt: "--"}, {class: "sm:py-1 sm:px-2 border border-borderGray rounded-md bg-white"} %>月
+          <%= f.date_select :end_month ,{discard_day: true, start_year: 2000, end_year: Time.zone.today.year, use_month_numbers: true, date_separator: "年", prompt: "--"}, {id: "end_month_#{f.index}", class: "end_month_#{f.index} sm:py-1 sm:px-2 border border-borderGray rounded-md bg-white"} %>月
         </div>
         <div class="text-right">
-          <%= f.check_box :ongoing, class:"h-4 w-4" %>
-          <%= f.label :ongoing, "在籍中" %>
+          <%= f.check_box :ongoing, id: "ongoing_checkbox_#{f.index}", class: "h-4 w-4 ongoing_checkbox" %>
+          <%= f.label :ongoing, "在籍中", id: "ongoing_label_#{f.index}", class: "ongoing_checkbox" %>
         </div>
       </div>
 
@@ -36,3 +36,20 @@
   </div>
 
 </div>
+
+<script>
+  $(document).ready(function() {
+    $("#ongoing_checkbox_<%= f.index %>").change(function() {
+      const checked = $(this).is(":checked");
+      if(checked){
+        $(".end_month_<%= f.index %>").val("");
+      }
+    });
+    $(".end_month_<%= f.index %>").change(function() {
+      const value = $(this).val();
+      if(value){
+        $("#ongoing_checkbox_<%= f.index %>").prop('checked', false);
+      }
+    });
+  });
+</script>
