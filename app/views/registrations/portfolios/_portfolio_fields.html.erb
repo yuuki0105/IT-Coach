@@ -2,12 +2,12 @@
 
   <div class="field">
     <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.text_field :title, maxlength: 80 %>
   </div>
 
   <div class="field">
     <%= f.label :url %><br />
-    <%= f.url_field :url %>
+    <%= f.url_field :url, maxlength: 255 %>
   </div>
 
   <%= link_to_remove_association "削除", f %>

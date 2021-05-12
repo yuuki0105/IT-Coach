@@ -12,6 +12,8 @@
 
   <%= form_with model: @user, url: registrations_profile_path, method: :put, class: "mt-4" do |form|  %>
 
+    <%= render "shared/error_messages", model: @user %>
+
     <%= form.text_area :profile , rows: 10 , placeholder: "プロフィールを入力（400文字以内）", maxlength: 400, class: "text_field w-full" %>
 
     <%= render "registrations/shared/buttons", form: form, path: registrations_image_path %>

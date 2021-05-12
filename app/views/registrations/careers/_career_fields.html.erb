@@ -1,28 +1,55 @@
-<div class="nested-fields">
-  <div class="field">
-    <%= f.label :organization %><br />
-    <%= f.text_field :organization %>
+<div class="nested-fields my-4 sm:my-8 pb-4 sm:pb-8 border-borderGray border-b">
+
+  <div class="flex justify-between">
+    <h3 class="form_label">職歴</h3>
+    <%= link_to_remove_association "✕", f, class: "block ml-2 text-primary text-base sm:text-xl font-bold" %>
   </div>
 
-  <div class="field">
-    <%= f.label :role %><br />
-    <%= f.text_field :role %>
+  <div class="mt-4 space-y-2 sm:space-y-4">
+
+    <div>
+      <%= f.text_field :organization, maxlength: 20, class: "text_field w-full", placeholder: "所属" %>
+    </div>
+
+    <div>
+      <%= f.text_field :role, maxlength: 40, class: "text_field w-full", placeholder: "役割" %>
+    </div>
+
+    <div class="flex justify-between placeholder-blank sm:items-center">
+
+      <div class="space-x-4">
+        <%= f.date_select :start_month ,{discard_day: true, start_year: 2000,  end_year: Time.zone.today.year, use_month_numbers: true, date_separator: "年", prompt: "--"}, {class: "sm:py-1 sm:px-2 border border-borderGray rounded-md bg-white"}  %>月
+      </div>
+      <span>〜</span>
+      <div class="sm:flex sm:items-center sm:space-x-4 space-y-1 sm:space-y-0">
+        <div class="space-x-4">
+          <%= f.date_select :end_month ,{discard_day: true, start_year: 2000, end_year: Time.zone.today.year, use_month_numbers: true, date_separator: "年", prompt: "--"}, {id: "end_month_#{f.index}", class: "end_month_#{f.index} sm:py-1 sm:px-2 border border-borderGray rounded-md bg-white"} %>月
+        </div>
+        <div class="text-right">
+          <%= f.check_box :ongoing, id: "ongoing_checkbox_#{f.index}", class: "h-4 w-4 ongoing_checkbox" %>
+          <%= f.label :ongoing, "在籍中", id: "ongoing_label_#{f.index}", class: "ongoing_checkbox" %>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="field">
-    <%= f.label :start_month %><br />
-    <%= f.date_select :start_month ,discard_day: true, start_year: 2000,  end_year: Time.zone.today.year, use_month_numbers: true  %>
-  </div>
-
-  <div class="field">
-    <%= f.label :end_month %><br />
-    <%= f.date_select :end_month ,discard_day: true, start_year: 2000,  end_year: Time.zone.today.year, use_month_numbers: true %>
-  </div>
-
-   <div class="field">
-     <%= f.label :ongoing %><br />
-     <%= f.check_box :ongoing %>
-  </div>
-
-  <%= link_to_remove_association "削除", f %>
 </div>
+
+<script>
+  $(document).ready(function() {
+    $("#ongoing_checkbox_<%= f.index %>").change(function() {
+      const checked = $(this).is(":checked");
+      if(checked){
+        $(".end_month_<%= f.index %>").val("");
+      }
+    });
+    $(".end_month_<%= f.index %>").change(function() {
+      const value = $(this).val();
+      if(value){
+        $("#ongoing_checkbox_<%= f.index %>").prop('checked', false);
+      }
+    });
+  });
+</script>

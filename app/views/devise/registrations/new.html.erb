@@ -14,22 +14,22 @@
   <div class="space-y-4 my-6">
 
     <div>
-      <%= f.label :name, "名前", class: "form_label" %>
+      <%= f.label :name, "名前", class: "font-bold block" %>
       <%= f.text_field :name, autofocus: true, class: "text_field block w-full mt-4", placeholder: "名前"  %>
     </div>
 
     <div>
-      <%= f.label :email, "メールアドレス", class: "form_label" %>
+      <%= f.label :email, "メールアドレス", class: "font-bold block" %>
       <%= f.email_field :email, autocomplete: "email", class: "text_field block w-full mt-4", placeholder: "メールアドレス" %>
     </div>
 
     <div>
-      <%= f.label :password, "パスワード", class: "form_label" %>
+      <%= f.label :password, "パスワード", class: "font-bold block" %>
       <%= f.password_field :password, autocomplete: "new-password", class: "text_field block w-full mt-4", placeholder: "#{@minimum_password_length}文字以上でご入力ください" %>
     </div>
 
     <div>
-      <%= f.label :password_confirmation, "パスワード（確認用）", class: "form_label" %>
+      <%= f.label :password_confirmation, "パスワード（確認用）", class: "font-bold block" %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "text_field block w-full mt-4", placeholder: "再度パスワードをご入力ください" %>
     </div>
 

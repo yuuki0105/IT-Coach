@@ -6,7 +6,6 @@ class Registrations::AbilitiesController < Registrations::BaseController
   def update
     @coach = current_user.coach
     @coach.attributes = ability_params
-    @coach.abilities = @coach.abilities.select(&:valid?)
     if @coach.save
       redirect_to registrations_yen_per_hours_path
     else
