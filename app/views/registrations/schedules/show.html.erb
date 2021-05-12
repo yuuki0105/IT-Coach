@@ -8,11 +8,20 @@
 
   <%= render "registrations/shared/coach_registration_title", registration_complete_rate: @registration_complete_rate %>
 
-  <h2>スケジュール</h2>
+  <h2 class="h2_text">スケジュール</h2>
 
-  <%= link_to "Googleカレンダーと連携する", new_google_calendar_events_path %>
+  <div class="mt-4 space-y-2">
+    <p class="base_text">ITコーチを実施するときの空き時間の管理がGoogleカレンダーと同期できます。</p>
+    <p class="sub_text">※Googleカレンダーを使用していない方は連携せずとも構いません。審査に影響はありません。</p>
+  </div>
 
-  <%= link_to "次へ", registrations_examination_interview_date_path %>
-  <%= link_to "戻る", registrations_portfolios_path %>
+  <div class="mt-6">
+    <%= link_to "Googleカレンダーと連携する", new_google_calendar_events_path, class: "button_main" %>
+  </div>
+
+  <div class="py-4 space-y-4 sm:space-y-0 sm:space-x-6 mt-6 sm:mt-8 sm:flex">
+    <%= link_to "戻る", registrations_portfolios_path, class: "button_sub" %>
+    <%= link_to "スキップして次へ", registrations_examination_interview_date_path, class: "button_main" %>
+  </div>
 
 </div>

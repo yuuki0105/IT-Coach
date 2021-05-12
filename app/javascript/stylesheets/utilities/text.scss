@@ -5,3 +5,11 @@
 .h2_text {
   @apply text-xl sm:text-2xl font-bold tracking-tight;
 }
+
+.base_text {
+  @apply text-sm
+}
+
+.sub_text {
+  @apply text-xs text-subtext
+}
