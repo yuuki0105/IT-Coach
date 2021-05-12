@@ -8,12 +8,14 @@
 
   <%= render "registrations/shared/coach_registration_title", registration_complete_rate: @registration_complete_rate %>
 
-  <h2>時給</h2>
+  <h2 class="h2_text">時給</h2>
 
   <%= form_with model: @yen_per_hour, url: registrations_yen_per_hours_path, method: :put do |form| %>
 
     <%= render "shared/error_messages", model: @yen_per_hour %>
-    <%= form.number_field :price %>
+    <div class="flex items-center justify-between mt-4">
+      <%= form.number_field :price, min: 5000 , max: 999999, class: "text_field w-full" %><span class="ml-2">円</span>
+    </div>
 
     <%= render "registrations/shared/buttons", form: form, path: registrations_abilities_path %>
 
