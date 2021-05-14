@@ -1,7 +1,3 @@
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
-<% end %>
-
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
 <% end %>
@@ -15,11 +11,11 @@
 
   <div class="mt-2 space-y-4">
     <%= link_to omniauth_authorize_path(:user, :facebook), method: :post ,class: "flex px-3.5 sm:px-5 py-2 sm:py-1.5 bg-facebook border sm:border-2 border-facebook text-white sm:text-base rounded-3xl sm:rounded-3xl font-medium leading-4 w-full justify-center items-center" do %>
-      <%= image_tag 'facebook.svg', class: "" %><span>Facebookで登録</span>
+      <%= image_tag 'facebook.svg', class: "" %><span>Facebookで<%= button_name %></span>
     <% end %>
 
     <%= link_to omniauth_authorize_path(:user, :twitter), method: :post ,class: "flex px-3.5 sm:px-5 py-2 sm:py-1.5 bg-twitter border sm:border-2 border-twitter text-white sm:text-base rounded-3xl sm:rounded-3xl font-medium leading-4 w-full justify-center items-center" do %>
-      <%= image_tag 'twitter.svg', class: "" %><span>Twitterで登録</span>
+      <%= image_tag 'twitter.svg', class: "" %><span>Twitterで<%= button_name %></span>
     <% end %>
   </div>
   <%# end %>
