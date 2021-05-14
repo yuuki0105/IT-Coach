@@ -1,10 +1,22 @@
-<h1>パスワード変更</h1>
-
-<%= form_with url: reset_password_path do |f| %>
-
-<%= f.label :email , 'メールアドレス' %>
-<%= f.text_field :email %>
-
-<%= f.submit '送信する' %>
-
+<% content_for :javascripts do %>
+  <%= javascript_pack_tag "utilities/form" %>
+  <%= javascript_pack_tag "utilities/text" %>
+  <%= javascript_pack_tag "utilities/button" %>
 <% end %>
+
+<div class="sm:mt-5 sm:px-8 max-w-sm mx-auto">
+
+  <h1 class="h1_text my-8">パスワード変更</h1>
+
+  <%= form_with url: reset_password_path do |f| %>
+
+    <div class="my-6">
+      <%= f.label :email, "メールアドレス", class: "font-bold block" %>
+      <%= f.email_field :email, autocomplete: "email", class: "text_field block w-full mt-4", placeholder: "メールアドレス" %>
+    </div>
+
+  <%= f.submit "送信する" , class: "button_main" %>
+
+  <% end %>
+
+</div>

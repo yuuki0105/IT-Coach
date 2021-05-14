@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_04_07_142120) do
 
-  create_table "abilities", charset: "utf8mb4", force: :cascade do |t|
+  create_table "abilities", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "coach_id", null: false
     t.string "content", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["coach_id"], name: "index_abilities_on_coach_id"
   end
 
-  create_table "active_admin_comments", charset: "utf8mb4", force: :cascade do |t|
+  create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
   end
 
-  create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
+  create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", charset: "utf8mb4", force: :cascade do |t|
+  create_table "active_storage_blobs", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -56,13 +56,13 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "active_storage_variant_records", charset: "utf8mb4", force: :cascade do |t|
+  create_table "active_storage_variant_records", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "admin_users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "admin_users", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "careers", charset: "utf8mb4", force: :cascade do |t|
+  create_table "careers", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "coach_id", null: false
     t.string "organization", null: false
     t.string "role"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["coach_id"], name: "index_careers_on_coach_id"
   end
 
-  create_table "coaches", charset: "utf8mb4", force: :cascade do |t|
+  create_table "coaches", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.boolean "examination_interview_date_confirmed", default: false, null: false, comment: "審査面談日程の確定"
     t.integer "examination_status_id", default: 1, null: false
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["user_id"], name: "index_coaches_on_user_id"
   end
 
-  create_table "google_calendar_tokens", charset: "utf8mb4", force: :cascade do |t|
+  create_table "google_calendar_tokens", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "coach_id", null: false
     t.string "refresh_token", default: "", null: false, comment: "googleカレンダーへアクセスするトークンを生成処理をするために使う"
     t.datetime "created_at", precision: 6, null: false
@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["coach_id"], name: "index_google_calendar_tokens_on_coach_id"
   end
 
-  create_table "google_calendars", charset: "utf8mb4", force: :cascade do |t|
+  create_table "google_calendars", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "coach_id", null: false
     t.string "calendar_id", null: false
     t.string "next_sync_token", default: "", null: false, comment: "googleカレンダーの更新された情報を最新化するために使う"
@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["coach_id"], name: "index_google_calendars_on_coach_id"
   end
 
-  create_table "messages", charset: "utf8mb4", force: :cascade do |t|
+  create_table "messages", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "room_id", null: false
     t.bigint "user_id", null: false
     t.text "content", null: false
@@ -124,7 +124,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "notifications", charset: "utf8mb4", force: :cascade do |t|
+  create_table "notifications", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "message_id"
     t.boolean "read", default: false, null: false, comment: "既読/未読"
@@ -135,7 +135,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
-  create_table "portfolios", charset: "utf8mb4", force: :cascade do |t|
+  create_table "portfolios", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "coach_id", null: false
     t.string "title", null: false
     t.string "url"
@@ -144,7 +144,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["coach_id"], name: "index_portfolios_on_coach_id"
   end
 
-  create_table "rooms", charset: "utf8mb4", force: :cascade do |t|
+  create_table "rooms", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "other_user_id", null: false, comment: "もう一人のユーザー"
     t.datetime "created_at", precision: 6, null: false
@@ -154,7 +154,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
-  create_table "scheduled_events", charset: "utf8mb4", force: :cascade do |t|
+  create_table "scheduled_events", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "coach_id", null: false
     t.bigint "google_calendar_id", null: false
     t.string "google_calendar_event_id", null: false
@@ -167,14 +167,14 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["google_calendar_id"], name: "index_scheduled_events_on_google_calendar_id"
   end
 
-  create_table "skill_categories", charset: "utf8mb4", force: :cascade do |t|
+  create_table "skill_categories", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "en_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "skills", charset: "utf8mb4", force: :cascade do |t|
+  create_table "skills", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "skill_category_id", null: false
     t.string "name", null: false, comment: "スキル名"
     t.string "en_name", null: false, comment: "英語スキル名"
@@ -184,7 +184,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["skill_category_id"], name: "index_skills_on_skill_category_id"
   end
 
-  create_table "sns_accounts", charset: "utf8mb4", force: :cascade do |t|
+  create_table "sns_accounts", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "provider", null: false
     t.string "uid", null: false
@@ -193,7 +193,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["user_id"], name: "index_sns_accounts_on_user_id"
   end
 
-  create_table "user_follows", charset: "utf8mb4", force: :cascade do |t|
+  create_table "user_follows", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "follow_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -202,7 +202,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["user_id"], name: "index_user_follows_on_user_id"
   end
 
-  create_table "user_skills", charset: "utf8mb4", force: :cascade do |t|
+  create_table "user_skills", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "skill_id", null: false
     t.integer "experience_year", default: 0, null: false
@@ -214,7 +214,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["user_id"], name: "index_user_skills_on_user_id"
   end
 
-  create_table "user_want_abilities", charset: "utf8mb4", force: :cascade do |t|
+  create_table "user_want_abilities", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.integer "technology_degree_id", null: false
     t.integer "communication_degree_id", null: false
@@ -223,7 +223,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["user_id"], name: "index_user_want_abilities_on_user_id"
   end
 
-  create_table "user_want_budgets", charset: "utf8mb4", force: :cascade do |t|
+  create_table "user_want_budgets", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "will", null: false
     t.integer "want_budget_id", null: false
@@ -233,7 +233,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["user_id"], name: "index_user_want_budgets_on_user_id"
   end
 
-  create_table "user_want_frees", charset: "utf8mb4", force: :cascade do |t|
+  create_table "user_want_frees", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "content", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -241,7 +241,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["user_id"], name: "index_user_want_frees_on_user_id"
   end
 
-  create_table "user_want_skills", charset: "utf8mb4", force: :cascade do |t|
+  create_table "user_want_skills", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "skill_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -250,7 +250,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["user_id"], name: "index_user_want_skills_on_user_id"
   end
 
-  create_table "users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
     t.string "encrypted_password", null: false
@@ -271,7 +271,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_142120) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "yen_per_hours", charset: "utf8mb4", force: :cascade do |t|
+  create_table "yen_per_hours", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "coach_id", null: false
     t.integer "price", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false

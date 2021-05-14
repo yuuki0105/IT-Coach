@@ -1,17 +1,33 @@
-<h1>パスワード変更</h1>
-
-<%= form_with model: @user, url: reset_password_path, method: :put do |f| %>
-
-  <%= f.hidden_field :reset_password_token %>
-
-  <%= f.label :password, "新しいパスワード" %>
-
-  <%= f.password_field :password, placeholder: "新しいパスワード" %>
-
-  <%= f.label :password_confirmation, "新しいパスワード（確認）" %>
-
-  <%= f.password_field :password_confirmation, placeholder: "新しいパスワード（確認）" %>
-
-  <%= f.submit '送信する' %>
-
+<% content_for :javascripts do %>
+  <%= javascript_pack_tag "utilities/form" %>
+  <%= javascript_pack_tag "utilities/text" %>
+  <%= javascript_pack_tag "utilities/button" %>
 <% end %>
+
+<div class="sm:mt-5 sm:px-8 max-w-sm mx-auto">
+
+  <h1 class="h1_text my-8">パスワード変更</h1>
+
+  <%= form_with model: @user, url: reset_password_path, method: :put, html: {class: "mt-3 py-6"} do |f| %>
+
+   <div class="space-y-4 my-6">
+      <%= f.hidden_field :reset_password_token %>
+
+      <div>
+        <%= f.label :password, "新しいパスワード", class: "font-bold block" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "text_field block w-full mt-4", placeholder: "6文字以上でご入力ください" %>
+      </div>
+
+      <div>
+        <%= f.label :password_confirmation, "新しいパスワード（確認用）", class: "font-bold block" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "text_field block w-full mt-4", placeholder: "再度ご入力ください" %>
+      </div>
+
+    </div>
+
+    <div>
+      <%= f.submit "更新する" , class: "button_main" %>
+    </div>
+  <% end %>
+
+</div>
