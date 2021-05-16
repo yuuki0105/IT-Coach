@@ -1,16 +1,16 @@
 import React, {useEffect, useState, useMemo} from 'react';
 import {useDropzone} from 'react-dropzone';
-import axios from "axios";
+
 export default function ImageUploader(props) {
-  const {
-    files,setfiles
-  } = props
+  const { file, setFile } = props;
+
   const thumbsContainer = {
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginTop: 16
   };
+
   const thumb = {
     display: 'inline-flex',
     borderRadius: 2,
@@ -22,16 +22,19 @@ export default function ImageUploader(props) {
     padding: 4,
     boxSizing: 'border-box'
   };
+
   const thumbInner = {
     display: 'flex',
     minWidth: 0,
     overflow: 'hidden'
   };
+
   const img = {
     display: 'block',
     width: 'auto',
     height: '100%'
   };
+
   const baseStyle = {
     flex: 1,
     display: 'flex',
@@ -47,15 +50,19 @@ export default function ImageUploader(props) {
     outline: 'none',
     transition: 'border .24s ease-in-out'
   };
+
   const activeStyle = {
     borderColor: '#2196f3'
   };
+
   const acceptStyle = {
     borderColor: '#00e676'
   };
+
   const rejectStyle = {
     borderColor: '#ff1744'
   };
+
   const {
     getRootProps,
     getInputProps,
@@ -64,18 +71,14 @@ export default function ImageUploader(props) {
     isDragReject
   } = useDropzone({
     accept: 'image/*',
-    onDrop: acceptedFiles => {
-      props.setFiles(acceptedFiles.map(file =>
+    multiple: false,
+    onDrop: acceptedFile => {
+      setFile(acceptedFile.map(file =>
         Object.assign(file, { preview: URL.createObjectURL(file) })
       ));
-      // acceptedFiles.forEach(image => {
-      //   let params = new FormData();
-      //   params.append("user[image]", image);
-      //   console.log("image", image);
-      //   const response = axios.put("/registrations/image", params)
-      // })
     }
   });
+
   const style = useMemo(() => ({
     ...baseStyle,
     ...(isDragActive ? activeStyle : {}),
@@ -86,48 +89,25 @@ export default function ImageUploader(props) {
     isDragReject,
     isDragAccept
   ]);
-  const thumbs = files.map(file => (
-    <div style={thumb} key={file.name}>
-      <div style={thumbInner}>
-        <img
-          src={file.preview}
-          style={img}
-        />
-      </div>
-    </div>
-  ));
-  useEffect(() => () => {
-    // Make sure to revoke the data uris to avoid memory leaks
-    files.forEach(file => URL.revokeObjectURL(file.preview));
-  }, [files]);
-  const uploadImages = () => {
-    // this.setState({ uploadErrors: [] });
-    files.forEach(image => {
-      let params = new FormData();
-      params.append("user[image]", image);
-      console.log("image", image);
-      const response = axios.put("/registrations/image", params)
-      // axios
-      //   .post("/api/upload_images", params)
-      //   .then(response => {
-      //     const d = response.data;
-      //   })
-      //   .catch(error => {
-      //     let messages = this.state.uploadErrors;
-      //     error.response.data.errors.forEach(v => messages.push(v));
-      //   });
-    });
-  };
+
   return (
     <section className="container">
       <div {...getRootProps({style})}>
         <input {...getInputProps()} />
-        <p>ファイルを添付してください</p>
+        <p>画像ファイルを添付（20MB以内）</p>
       </div>
-      <aside style={thumbsContainer}>
-        {thumbs}
-      </aside>
-      <button onClick={() => uploadImages()}>送信する</button>
+      {file &&
+        <aside style={thumbsContainer}>
+          <div style={thumb} key={file.name}>
+            <div style={thumbInner}>
+              <img
+                src={file.preview}
+                style={img}
+              />
+            </div>
+          </div>
+        </aside>
+      }
     </section>
   );
 }
