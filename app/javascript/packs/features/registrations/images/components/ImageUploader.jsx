@@ -4,37 +4,6 @@ import {useDropzone} from 'react-dropzone';
 export default function ImageUploader(props) {
   const { file, setFile } = props;
 
-  const thumbsContainer = {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginTop: 16
-  };
-
-  const thumb = {
-    display: 'inline-flex',
-    borderRadius: 2,
-    border: '1px solid #eaeaea',
-    marginBottom: 8,
-    marginRight: 8,
-    width: 100,
-    height: 100,
-    padding: 4,
-    boxSizing: 'border-box'
-  };
-
-  const thumbInner = {
-    display: 'flex',
-    minWidth: 0,
-    overflow: 'hidden'
-  };
-
-  const img = {
-    display: 'block',
-    width: 'auto',
-    height: '100%'
-  };
-
   const baseStyle = {
     flex: 1,
     display: 'flex',
@@ -72,10 +41,10 @@ export default function ImageUploader(props) {
   } = useDropzone({
     accept: 'image/*',
     multiple: false,
-    onDrop: acceptedFile => {
-      setFile(acceptedFile.map(file =>
-        Object.assign(file, { preview: URL.createObjectURL(file) })
-      ));
+    onDrop: acceptedFiles => {
+      if (acceptedFiles.length < 1) { return null; }
+      const image = acceptedFiles[0]
+      setFile(Object.assign(image, { preview: URL.createObjectURL(image) }));
     }
   });
 
@@ -96,16 +65,12 @@ export default function ImageUploader(props) {
         <input {...getInputProps()} />
         <p>画像ファイルを添付（20MB以内）</p>
       </div>
-      {file &&
-        <aside style={thumbsContainer}>
-          <div style={thumb} key={file.name}>
-            <div style={thumbInner}>
-              <img
-                src={file.preview}
-                style={img}
-              />
-            </div>
-          </div>
+      {Object.keys(file).length > 0 &&
+        <aside className="d-flex flex-row flex-wrap mt-4">
+          <img
+            src={file.preview}
+            className="inline-flex border-2 border-borderGray rounded-full w-20 h-20 p-1 box-border"
+          />
         </aside>
       }
     </section>

@@ -3,14 +3,13 @@ import ImageUploader from "./ImageUploader"
 import axios from "axios";
 
 export default function Image(props) {
-  const { image } = props;
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState({});
+  const { image } = props
 
   useEffect(() => () => {
     URL.revokeObjectURL(file.preview);
   }, [file]);
 
-  console.log("image", image);
   const uploadImages = () => {
     // this.setState({ uploadErrors: [] });
     console.log(file)
@@ -23,10 +22,9 @@ export default function Image(props) {
   return (
     <div className="mt-4">
       <ImageUploader setFile={setFile} file={file} />
-      <img src={image} className="w-20 h-20 rounded-full"></img>
+      {image && <img src={image} className=" mt-4 w-20 h-20 rounded-full" />}
       <div className="py-4 space-y-4 sm:space-y-0 sm:space-x-6 mt-6 sm:mt-8 sm:flex">
         <a className="button_sub" href="../about_coach">戻る</a>
-
         <button className="button_main" onClick={() => uploadImages()}>
           保存して次へ
         </button>
