@@ -1,7 +1,8 @@
 import React from 'react';
-import {useDropzone} from 'react-dropzone';
+import { useDropzone } from 'react-dropzone';
+import PropTypes from "prop-types";
 
-export default function ImageUploader(props) {
+function ImageUploader(props) {
   const { file, setFile } = props;
 
   const {
@@ -34,3 +35,10 @@ export default function ImageUploader(props) {
     </div>
   );
 }
+
+ImageUploader.propTypes = {
+  file: PropTypes.object,
+  setFile: PropTypes.func.isRequired,
+}
+
+export default ImageUploader
