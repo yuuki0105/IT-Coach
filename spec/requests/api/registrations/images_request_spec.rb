@@ -1,5 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe "Api::Registrations::Images", type: :request do
-
+RSpec.describe Api::Registrations::ImagesController, type: :request do
 end

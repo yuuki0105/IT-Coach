@@ -1,5 +1,4 @@
 class Api::Registrations::ImagesController < ApplicationController
-
   skip_before_action :verify_authenticity_token
 
   def update
@@ -16,5 +15,4 @@ class Api::Registrations::ImagesController < ApplicationController
   def user_params
     params.require(:user).permit(:image)
   end
-
 end
