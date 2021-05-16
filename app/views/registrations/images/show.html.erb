@@ -2,6 +2,7 @@
   <%= javascript_pack_tag "utilities/form" %>
   <%= javascript_pack_tag "utilities/text" %>
   <%= javascript_pack_tag "utilities/button" %>
+  <%= javascript_pack_tag "features/registrations/images/show" %>
 <% end %>
 
 <div class="sm:px-8">
@@ -10,22 +11,6 @@
 
   <h2 class="h2_text">プロフィール画像</h2>
 
-  <%= form_with model: @user, url: registrations_image_path, method: :put do |form| %>
-
-    <%= render "shared/error_messages", model: @user %>
-
-    <%= form.hidden_field :id %>
-
-    <% if @user.image.attached? %>
-      <%= image_tag @user.image.variant(resize: "100x100") %>
-    <% else %>
-      <%= image_tag "default_icon.png" %>
-    <% end %>
-
-    <%= form.file_field :image %>
-
-    <%= render "registrations/shared/buttons", form: form, path: about_coach_path %>
-
-  <% end %>
+  <%= react_component("Image", props: {image: url_for(@user.image)}) %>
 
 </div>
