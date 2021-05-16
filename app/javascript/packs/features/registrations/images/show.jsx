@@ -1,6 +1,6 @@
 import ReactOnRails from 'react-on-rails';
-import Image from './components/Image';
+import ImageForm from './components/ImageForm';
 
 ReactOnRails.register({
-  Image,
+  ImageForm,
 });

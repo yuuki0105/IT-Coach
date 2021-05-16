@@ -11,6 +11,5 @@
 
   <h2 class="h2_text">プロフィール画像</h2>
 
-  <%= react_component("Image", props: {imageUrl: url_for(@user.image)}) %>
-
+  <%= react_component("ImageForm", props: {imageUrl: url_for(@user.image)}) %>
 </div>
