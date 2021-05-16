@@ -62,6 +62,9 @@ class User < ApplicationRecord
   # TODO: imagesのファイルサイズのバリデーションを付ける(20MB以内)
   validates :name, presence: true, length: { maximum: 60 }
   validates :profile, length: { maximum: 400 }
+  validate :user_image_type, :user_image_size
+
+  MAX_IMAGE_MEGABYTES = 20
 
   # フォローするメソッド
   def follow(follower)
@@ -76,5 +79,19 @@ class User < ApplicationRecord
   # すでにフォロー済みであればture返す
   def following?(follower)
     follows.include?(follower)
+  end
+
+  private
+
+  def user_image_type
+    return if image.blob.content_type.in?(%('image/jpeg image/png'))
+
+    errors.add(:image, 'はjpeg,jpgまたはpng形式でアップロードしてください')
+  end
+
+  def user_image_size
+    return if image.blob.byte_size > MAX_IMAGE_MEGABYTES.megabytes
+
+    errors.add(:image, "は#{MAX_IMAGE_MEGABYTES}MB以下でアップロードしてください")
   end
 end
