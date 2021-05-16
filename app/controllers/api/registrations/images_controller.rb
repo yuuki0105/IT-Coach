@@ -5,13 +5,14 @@ class Api::Registrations::ImagesController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      # redirect_to registrations_profile_path
+      render json: {}, status: :success
     else
-      # render :show
+      render json: { error_messages: @user.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
   private
+
   def user_params
     params.require(:user).permit(:image)
   end

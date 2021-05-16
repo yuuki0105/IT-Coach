@@ -8,7 +8,7 @@ export default function ImageUploader(props) {
     getRootProps,
     getInputProps,
   } = useDropzone({
-    accept: 'image/*',
+    accept: ['image/jpeg','image/png'],
     multiple: false,
     onDrop: acceptedFiles => {
       if (acceptedFiles.length < 1) { return null; }
