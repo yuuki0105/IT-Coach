@@ -14,6 +14,7 @@ function ImageForm(props) {
     try {
       await axios.put("/api/registrations/image", params)
       window.location.href = "/registrations/profile";
+      // TODO: うまく遷移しない
     } catch (err) {
       const response = err.response;
       setErrors(response.data.error_messages);
