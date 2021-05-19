@@ -1,21 +1,30 @@
-<div class="nested-fields">
+<div class="nested-fields my-4 sm:my-8 pb-6 sm:pb-8 border-borderGray border-b">
 
-<div class="field">
-    <%= f.label :skill_id %><br />
-    <%= f.select :skill_id,Skill.all.pluck(:name, :id) %>
+  <div class="space-y-4">
+
+    <div class="flex justify-between space-y-2">
+      <%#= f.label :skill_category_id, "カテゴリー", class: "form_label" %>
+      <%= link_to_remove_association "✕", f, class: "block ml-2 text-primary text-base sm:text-xl font-bold" %>
+      <%#= f.select :skill_category_id,SkillCategory.all.pluck(:name, :id), {}, {class: "select_box w-full"} %>
+    </div>
+
+    <div class="space-y-2">
+      <%= f.label :skill_id, "スキル名", class: "form_label" %>
+      <%= f.select :skill_id,Skill.all.pluck(:name, :id), {}, {class: "select_box w-full"} %>
+    </div>
+
+    <div class="space-y-2">
+      <%= f.label :experience_year, "経験年数", class: "form_label" %>
+      <div class="flex items-center justify-between">
+        <%= f.select :experience_year, [1..10], {}, {class: "select_box w-full"} %><span class="ml-2">年</span>
+      </div>
+    </div>
+
+    <div class="space-y-2">
+      <%= f.label :level, "レベル", class: "form_label" %>
+      <%= f.select :level,  [[1,1],[2,2],[3,3],[4,4],[5,5]], {}, {class: "select_box w-full"} %>
+    </div>
+
   </div>
-
-  <div class="field">
-    <%= f.label :experience_year %><br />
-    <%= f.number_field :experience_year %>
-  </div>
-
-  <div class="field">
-    <%= f.label :level %><br />
-    <%= f.number_field :level %>
-  </div>
-
-  <%= link_to_remove_association "削除", f %>
-
 
 </div>

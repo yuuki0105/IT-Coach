@@ -5,3 +5,7 @@
 .form_label {
   @apply sm:text-xl font-bold block;
 }
+
+.select_box{
+  @apply block rounded-md border border-borderGray
+}
