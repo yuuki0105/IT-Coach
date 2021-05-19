@@ -76,5 +76,11 @@ Rails.application.routes.draw do
 
   resource :about_coach, only: [:show]
 
+  namespace :api do
+    namespace :registrations do
+      resource :image, only: [:update]
+    end
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

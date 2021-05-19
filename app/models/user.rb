@@ -59,9 +59,9 @@ class User < ApplicationRecord
   has_one_attached :image
   accepts_nested_attributes_for :user_skills, allow_destroy: true, reject_if: :all_blank
 
-  # TODO: imagesのファイルサイズのバリデーションを付ける
   validates :name, presence: true, length: { maximum: 60 }
   validates :profile, length: { maximum: 400 }
+  validates :image, image: true
 
   # フォローするメソッド
   def follow(follower)
