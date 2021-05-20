@@ -4,7 +4,7 @@ class Api::Registrations::ImagesController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      render json: {}, status: :success
+      render json: {}, status: :ok
     else
       render json: { error_messages: @user.errors.full_messages }, status: :unprocessable_entity
     end
