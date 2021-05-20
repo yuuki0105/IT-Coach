@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   resource :google_calendar_events, only: [:new, :show]
 
   namespace :registrations do
-    resource :image, only: [:show, :update]
+    resource :image, only: [:show]
     resource :profile, only: [:show, :update]
     resource :user_skills, only: [:show, :update]
     resource :abilities, only: [:show, :update]
